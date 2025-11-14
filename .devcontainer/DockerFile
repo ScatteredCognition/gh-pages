@@ -1,0 +1,8 @@
+# Image
+FROM docker.io/library/alpine:latest
+# Install the basics
+RUN apk add --no-cache bash git openssh-client curl hugo hugo-doc hugo-bash-completion
+
+# Extras
+WORKDIR /workspace
+USER root
