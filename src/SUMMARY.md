@@ -1,10 +1,12 @@
 # Summary
 - [About](./about.md)
 ----
-# Blog
-- [2025-11-16]()
-  - [Test]()
+- [Blog]()
+  - [Reflections on Life](./blog/reflections-on-life.md)
+  - [A New Beginning](./blog/a-new-beginning.md)
 ----
-# Linux Resources
-- [Todo](./todo.md)
-  - [todo2](./todo/todo2.md)
+- [Linux & Random]()
+  - [Fedora Silverblue](./linux/fedora-silverblue.md)
+    - [todo2](./linux/fedora-silverblue/todo2.md)
+  - [CachyOS](./linux/cachyos.md)
+  - [Random]()
