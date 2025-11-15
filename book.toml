@@ -1,0 +1,24 @@
+[book]
+title = "ScatteredCognition's Biblioteca"
+authors = ["Faeiz Mahrus (ScatteredCognition)"]
+description = "Welcome to my site."
+language = "en"
+src = "src"
+
+[build]
+build-dir = "docs"                # the directory where the output is placed
+create-missing = true             # whether or not to create missing pages
+use-default-preprocessors = true  # use the default preprocessors
+
+[output.html]
+no-section-label = true            # do not show numbers before section titles
+site-url = "https://scatteredcognition.github.io/gh-pages/"
+#cname = "scatteredcognition.github.io"
+git-repository-url = "https://github.com/ScatteredCognition/gh-pages"
+git-repository-icon = "fa-github"
+input-404 = "404.md"
+
+default-theme = "auto"
+preferred-dark-theme = "ayu"
+
+fold.enable = true                # enable section folders
