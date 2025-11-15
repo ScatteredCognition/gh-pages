@@ -12,7 +12,7 @@ use-default-preprocessors = true  # use the default preprocessors
 
 [output.html]
 no-section-label = true            # do not show numbers before section titles
-#site-url = "https://scatteredcognition.github.io/gh-pages/"
+site-url = "/gh-pages/"
 #cname = "scatteredcognition.github.io"
 git-repository-url = "https://github.com/ScatteredCognition/gh-pages"
 git-repository-icon = "fa-github"
