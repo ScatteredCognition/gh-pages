@@ -1,5 +1,5 @@
 {
-  "name": "Alpine Hugo Dev Container",
+  "name": "Alpine Dev Container",
   "build": {
     "dockerfile": "DockerFile"
   },
@@ -16,6 +16,6 @@
         //"vscjava.vscode-java-pack"
       ]
     }
-  },
-  "postCreateCommand": "hugo version"
+  }
+  //,"postCreateCommand": "bash --version"
 }
