@@ -22,3 +22,4 @@ default-theme = "auto"
 preferred-dark-theme = "ayu"
 
 fold.enable = true                # enable section folders
+additional-js = ["static/custom.js"]
