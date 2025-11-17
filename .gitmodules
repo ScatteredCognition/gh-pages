@@ -1,0 +1,3 @@
+[submodule "linux-resources"]
+	path = linux-resources
+	url = https://github.com/ScatteredCognition/linux-resources.git
