@@ -1,0 +1,3 @@
+#!/bin/bash
+## run `source pt` to add cargo bin to PATH
+export PATH="$PATH:/root/.cargo/bin"

@@ -17,5 +17,5 @@
       ]
     }
   }
-  //,"postCreateCommand": "bash --version"
+  //"postCreateCommand": ".pt"
 }

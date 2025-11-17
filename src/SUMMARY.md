@@ -1,12 +1,23 @@
 # Summary
 - [About](./about.md)
 ----
+- [Hobbylist](./hobbylist.md)
+  - [Anime](./hobbylist/anime.md)
+  - [Movies & Series](./hobbylist/movies-and-series.md)
+  - [Videogames](./hobbylist/videogames.md)
+  - [Books](./hobbylist/books.md)
+  - [Other Sources](./hobbylist/other-sources.md)
+----
+- [Linux]()
+  - [Fedora Silverblue](./linux/fedora-silverblue.md)
+    - [todo2]()
+  - [CachyOS](./linux/cachyos.md)
+  - [Others]()
+----
 - [Blog]()
   - [Reflections on Life](./blog/reflections-on-life.md)
   - [A New Beginning](./blog/a-new-beginning.md)
 ----
-- [Linux & Random]()
-  - [Fedora Silverblue](./linux/fedora-silverblue.md)
-    - [todo2](./linux/fedora-silverblue/todo2.md)
-  - [CachyOS](./linux/cachyos.md)
-  - [Random]()
+- [Random]()
+  - [todo]()
+----

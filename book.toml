@@ -14,7 +14,7 @@ use-default-preprocessors = true  # use the default preprocessors
 no-section-label = true            # do not show numbers before section titles
 site-url = "/gh-pages/"
 #cname = "scatteredcognition.github.io"
-git-repository-url = "https://github.com/ScatteredCognition/gh-pages"
+git-repository-url = "https://github.com/ScatteredCognition/"
 git-repository-icon = "fa-github"
 input-404 = "404.md"
 
@@ -23,4 +23,7 @@ preferred-dark-theme = "ayu"
 
 fold.enable = true                # enable section folders
 fold.level = 1                    # fold sections starting from level 1
-additional-js = ["static/custom.js"]
+# additional-js = ["static/custom.js"]
+
+[preprocessor.external-links]
+open-in-new-tab = true

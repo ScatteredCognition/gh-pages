@@ -1,2 +1,2 @@
-# CachyOS
+# Anime
 Unfinished
