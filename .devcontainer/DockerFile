@@ -1,8 +1,6 @@
 # Image
-FROM docker.io/library/alpine:latest
+FROM docker.io/library/eclipse-temurin:8-alpine
 # Install the basics
-RUN apk add --no-cache bash git openssh-client curl
-
-# Extras
-WORKDIR /workspace
+RUN apk add --no-cache bash fish git openssh-client curl
+# Switch to user
 USER root

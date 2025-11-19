@@ -1,10 +1,9 @@
 {
-  "name": "Alpine Dev Container",
+  "name": "Alpine Java 8 Dev Container",
   "build": {
     "dockerfile": "DockerFile"
   },
   "runArgs": [
-    "--userns=keep-id"
     //,"--security-opt=label=disable"
   ],
   "customizations": {
@@ -13,9 +12,8 @@
         "terminal.integrated.shell.linux": "bash"
       },
       "extensions": [
-        //"vscjava.vscode-java-pack"
+        "vscjava.vscode-java-pack"
       ]
     }
   }
-  //"postCreateCommand": ".pt"
 }
