@@ -1,3 +1,7 @@
 [submodule "linux-resources"]
 	path = linux-resources
 	url = https://github.com/ScatteredCognition/linux-resources.git
+[submodule "devcontainers"]
+	path = devcontainers
+	url = https://github.com/ScatteredCognition/devcontainers.git
+	branch = base
