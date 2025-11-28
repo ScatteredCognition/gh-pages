@@ -37,7 +37,6 @@
             const path_to_root = "";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -94,13 +93,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -154,12 +150,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -179,9 +170,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="about"><a class="header" href="#about">About</a></h1>
-<p>Welcome to <strong>ScatteredCognition’s Biblioteca</strong>.</p>
-<p><em>“May the content you find be equal in value to time you spend here.”</em></p>
+                        <h1 style="margin-bottom: 10px;">About</h1>
+<div style="display:flex; align-items: center;">
+  <div style="display:inline-block; text-align: left;">
+    Welcome to <b>ScatteredCognition's Biblioteca</b>.
+    <hr style="margin-left:5px; margin-right:5px; max-width: 97%">
+    <i>"May the content you find be equal in value to time you spend here."</i>
+  </div>
+  <div style="flex:1; padding-left: 22px;text-align: right;">
+    <img src="static/images/scatteredcognition-gh-pages-qr.png"
+         alt="QR Code to this site"
+         style="min-width: 120px; max-width: 180px; width: 100%; height: auto;"> <br>
+    <small style="display:inline-block; text-align: left;">QR code that leads to this site.</small>
+  </div>
+</div>
+<!-- Welcome to **ScatteredCognition's Biblioteca**.  
+_"May the content you find be equal in value to time you spend here."_ -->
 <blockquote>
 <p>You can navigate this site by using the <strong>☰Sidebar</strong> and <strong>🔍Search</strong> buttons and change the theme by using the <strong>🖌️Themes</strong> button present in the <strong>↖Top-Left corner</strong> of the screen.</p>
 </blockquote>
@@ -219,9 +223,6 @@ You get the idea.</p>
 <li><em>The site author has not put any ads or trackers in this site, if you encounter any ads or trackers, they were most likely injected by GitHub or other third-parties.</em></li>
 </ul>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="hobbylist"><a class="header" href="#hobbylist">Hobbylist</a></h1>
-<p>Here, you can find a list of Books, Animes, Movies, Videogames and other content which I have consumed or are on my radar.</p>
-<p>Press the <strong>→ Right Arrow</strong> on the page to continue.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="anime"><a class="header" href="#anime">Anime</a></h1>
 <p>Unfinished</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="movies--series"><a class="header" href="#movies--series">Movies &amp; Series</a></h1>
@@ -235,8 +236,467 @@ You get the idea.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fedora-silverblue"><a class="header" href="#fedora-silverblue">Fedora Silverblue</a></h1>
 <p><a href="https://fedoraproject.org/atomic-desktops/silverblue/" title="" target="_blank">Fedora Silverblue</a> is a<br />
 Unfinished</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
+<p>I have provided some commands which will hopefully make your <em>Fedora Silverblue</em> journey better.</p>
+<h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
+<h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
+<tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
+<tr><td><code>rpm-ostree install &lt;package&gt;</code></td><td>Overlay a package (Requires Reboot)</td></tr>
+<tr><td><code>rpm-ostree remove &lt;package&gt;</code></td><td>Removes a overlayed package (Requires Reboot)</td></tr>
+<tr><td><code>rpm-ostree reset</code></td><td>Removes all overlayed packages</td></tr>
+<tr><td><code>rpm-ostree override remove &lt;package&gt;</code></td><td>Removes a preinstalled package (Requires Reboot)</td></tr>
+<tr><td><code>rpm-ostree override reset</code></td><td>Resets all the package removal overrides (Requires Reboot)</td></tr>
+</tbody></table>
+</div>
+<h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
+<tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
+<tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
+</tbody></table>
+</div>
+<h2 id="advanced"><a class="header" href="#advanced">Advanced</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your <em>Fedora Silverblue</em> installation</td></tr>
+<tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
+<tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="packages-to-layer"><a class="header" href="#packages-to-layer">Packages to layer</a></h1>
+<h3 id="local-packages-to-layer-after-install"><a class="header" href="#local-packages-to-layer-after-install">Local packages to layer after install</a></h3>
+<p>Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of <em>Fedora Silverblue</em>:</p>
+<!-- 
+- `distrobox` 
+-->
+<ul>
+<li><code>android-tools</code> (For <em>ADB</em> and <em>fastboot</em>)</li>
+<li><code>langpacks-bn</code> (For <em>Bangla</em> language pack support, replace <code>bn</code> with your language code)</li>
+<li><code>podman-compose</code> (For <em>VSCode</em>/<em>DevPod</em> Devcontainers)</li>
+<li><code>syncthing</code> (If you use it for file sync)</li>
+<li><code>OpenBangla Keyboard</code> (For <em>Bangla</em> typing) <a href="https://github.com/OpenBangla/OpenBangla-Keyboard/releases" title="" target="_blank">[Download]</a></li>
+</ul>
+<blockquote>
+<p>Run <code>systemctl enable --user --now syncthing.service</code> if you want to use <code>syncthing</code>.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
+<h1 id="flatpak-apps-to-install"><a class="header" href="#flatpak-apps-to-install">Flatpak apps to install</a></h1>
+<p>Here is a list of some Flatpak apps that I always install on a fresh install of <em>Fedora Silverblue</em> and my personal “mini-review” of them.</p>
+<ul>
+<li>Flatseal (``)</li>
+<li>Gear Lever (<code>b</code>)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="toolbox-setup-for-fedora-silverblue"><a class="header" href="#toolbox-setup-for-fedora-silverblue">Toolbox Setup for Fedora Silverblue</a></h1>
+<p><a href="https://containertoolbx.org/" title="" target="_blank">toolbox</a>  (<em>toolbx</em>) is a utility shipped with <em>Fedora Silverblue</em> to easily create and use containers.<br />
+It’s usage primarily revolves around using CLI utilities not shipped by default on <em>Fedora Silverblue</em>.<br />
+It is stylized and branded as <em>toolbx</em>, although <code>toolbox</code> is the command name.</p>
+<p>There are official <em>toolbx</em> images for <em>Fedora Linux</em>, <em>RHEL</em>, <em>Ubuntu</em> and <em>Arch Linux</em>.<br />
+Community-maintained <em>toolbx</em> images for other distros can be found at <a href="https://github.com/toolbx-images/images" title="" target="_blank">https://github.com/toolbx-images/images</a></p>
+<h2 id="alpine-linux-container"><a class="header" href="#alpine-linux-container">Alpine Linux Container</a></h2>
+<p><a href="https://www.alpinelinux.org/" title="" target="_blank">Alpine Linux</a> is a container-focused distribution that is extremely lightweight in terms of size.<br />
+As such, I recommend using <em>Alpine Linux</em> for your <em>toolbx</em> containers.</p>
+<ul>
+<li>
+<p>Create the <em>toolbx</em> container by using the <em>Alpine Linux</em> <em>toolbx</em> image from <a href="https://github.com/toolbx-images/images" title="" target="_blank">toolbx-images</a> repo.</p>
+<pre><code class="language-bash">toolbox create --image quay.io/toolbx-images/alpine-toolbox:latest toolbox-alpine-cli
+</code></pre>
+</li>
+<li>
+<p>Enter the <em>toolbx</em> container you just created.</p>
+<pre><code class="language-bash">toolbox enter toolbox-alpine-cli
+</code></pre>
+</li>
+<li>
+<p>Some common commands for managing the <em>Alpine Linux</em> container are given below.</p>
+<pre><code class="language-bash"># Install programs
+sudo apk add &lt;program&gt;
+# Remove programs
+sudo apk del &lt;program&gt;
+### Notice
+NOTE: Put your own CLI programs in /usr/local/bin
+</code></pre>
+</li>
+</ul>
+<h2 id="fedora-linux-container"><a class="header" href="#fedora-linux-container">Fedora Linux Container</a></h2>
+<p><em>Fedora Linux</em> is the default distro for the containers created by the <code>toolbox</code> tool.</p>
+<ul>
+<li>
+<p>Create a <em>Fedora Linux</em> <em>toolbx</em> container.</p>
+<pre><code class="language-bash">toolbox create -d fedora toolbox-fedora-cli
+</code></pre>
+</li>
+<li>
+<p>Enter the <em>toolbx</em> container you just created.</p>
+<pre><code class="language-bash">toolbox enter toolbox-fedora-cli
+</code></pre>
+</li>
+</ul>
+<p>You can apply some optional tweaks to your <em>Fedora Linux</em> <em>toolbx</em> containers to make the default package manager <code>dnf</code> faster.</p>
+<ul>
+<li>
+<p>Open <code>/etc/dnf/dnf.conf</code>.</p>
+<pre><code class="language-bash">sudo nano /etc/dnf/dnf.conf
+</code></pre>
+</li>
+<li>
+<p>Add/Change the following values:</p>
+<pre><code class="language-bash"># Download 20 packages simultaneously
+max_parallel_downloads = 20
+
+# Mirror must maintain download speed of atleast 256*1024 bytes (256KiB/s) for the duration of `timeout` value in seconds
+minrate = 262144
+
+# Mirror must maintain `minrate` amount of download speed in bytes for `timeout` value in seconds
+timeout = 5  
+</code></pre>
+</li>
+<li>
+<p>Save changes to <code>dnf.conf</code> and quit <code>nano</code> by first pressing <code>Ctrl + S</code> then <code>Ctrl + X</code>.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vscode-setup-for-fedora-silverblue"><a class="header" href="#vscode-setup-for-fedora-silverblue">VSCode Setup for Fedora Silverblue</a></h1>
+<p>After flip-flopping between installing <em>Visual Studio Code</em> inside a <em>distrobox</em> container, layering it on my <em>Fedora Silverblue</em> install and just using <code>nano</code> + terminal for development, I have finally settled on using the following VSCode setup with <a href="https://code.visualstudio.com/docs/devcontainers/containers" title="" target="_blank">Dev Containers</a>.</p>
+<h2 id="setting-up-vscode--dev-containers"><a class="header" href="#setting-up-vscode--dev-containers">Setting up VSCode + Dev Containers</a></h2>
+<ul>
+<li>
+<p>Download the VSCode appimage from <a href="https://github.com/valicm/VSCode-AppImage/releases/tag/latest" title="" target="_blank">valicm’s GitHub repo</a> and install it using <a href="https://flathub.org/en/apps/it.mijorus.gearlever" title="" target="_blank">Gear Lever</a>.</p>
+</li>
+<li>
+<p>Install <code>podman-compose</code>.</p>
+</li>
+<li>
+<p>Enable the <code>podman</code> service and socket for your user.</p>
+<pre><code class="language-bash">systemctl enable --user --now podman.socket
+systemctl enable --user --now podman.service
+</code></pre>
+</li>
+<li>
+<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" title="" target="_blank">Dev Containers</a> VSCode extension.</p>
+</li>
+<li>
+<p>Goto the <em>Dev Containers</em> extension’s settings.</p>
+</li>
+<li>
+<p>Set the following values for the fields below:</p>
+<ul>
+<li><code>Dev &gt; Containers: Docker Compose Path</code> -&gt; <code>podman-compose</code></li>
+<li><code>Dev &gt; Containers: Docker Path</code> -&gt; <code>podman</code></li>
+<li><code>Dev &gt; Containers: Docker Socket Path</code> -&gt;<br />
+(whatever socket path <code>systemctl status --user podman.socket | grep Listen:</code> shows)</li>
+</ul>
+</li>
+</ul>
+<h2 id="using-dev-containers-for-development"><a class="header" href="#using-dev-containers-for-development">Using Dev Containers for development</a></h2>
+<p><em>Dev Containers</em> basically creates a <em>Docker</em>/OCI container for your project from the configuration located inside the <code>.devcontainer</code> folder in your project’s topmost directory.<br />
+VSCode then SSH’s into it so you can develop inside the container as-if it was your own system.<br />
+This is the same concept as <em>toolbx</em>. (discussed <a href="linux/fedora-silverblue/./toolbox-setup.html">here</a>)</p>
+<blockquote>
+<p>You can find my devcontainer configs at <a href="https://github.com/ScatteredCognition/devcontainers/" title="" target="_blank">https://github.com/ScatteredCognition/devcontainers/</a></p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fixing-etcfstab-issues-in-fedora-silverblue"><a class="header" href="#fixing-etcfstab-issues-in-fedora-silverblue">Fixing /etc/fstab issues in Fedora Silverblue</a></h1>
+<p>Starting from <em>Fedora Silverblue 41</em> and onwards, <code>/</code> <em>(root)</em> is mounted using <a href="https://www.cncf.io/projects/composefs/" title="" target="_blank">
+<em>ComposeFS</em></a>.<br />
+As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> instead of <em>systemd</em> or by arguments sourced from <code>/etc/fstab</code>.</p>
+<p>This will result in…</p>
+<ol>
+<li>Options specified in <code>/etc/fstab</code> (notably <em>btrfs compression options</em>) not applying for <code>/</code> <em>(root)</em>.</li>
+<li>Errors related to <code>systemd-remount-fs.service</code>.</li>
+<li><code>fstrim.service</code> not trimming <code>/</code> <em>(root)</em>.</li>
+</ol>
+<p>To fix this, run the following commands:</p>
+<pre><code class="language-bash"># Add btrfs compression option
+rpm-ostree kargs --delete=rootflags=subvol=root \
+--append=rootflags=subvol=root,compress=zstd:1
+
+# Comment out the / line in fstab
+sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
+
+# Manually run fstrim for /sysroot periodically
+sudo fstrim /sysroot
+``
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cachyos"><a class="header" href="#cachyos">CachyOS</a></h1>
 <p>Unfinished</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2-in-cachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-cachyos">Configure LUKS auto-unlocking with TPM2 in CachyOS</a></h1>
+<h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip on CachyOS (August 2025)</a></h2>
+<p><strong>You need use <code>systemd-boot</code> for this to work properly.</strong></p>
+<ul>
+<li>Make a copy of your <code>/etc/crypttab</code> for initramfs</li>
+</ul>
+<pre><code class="language-bash">sudo cp /etc/crypttab /etc/crypttab.initramfs
+</code></pre>
+<ul>
+<li>Make a backup of your /etc/mkinitcpio.conf</li>
+</ul>
+<pre><code class="language-bash">sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
+</code></pre>
+<ul>
+<li>Include the necessary systemd stuff in your initramfs by replacing the following in your <code>/etc/mkinitcpio.conf</code> file: <br></li>
+<li>
+<ul>
+<li><code>udev</code> &gt; <code>systemd</code></li>
+</ul>
+</li>
+<li>
+<ul>
+<li><code>keymap</code> and <code>consolefont</code> &gt; <code>sd-vconsole</code></li>
+</ul>
+</li>
+<li>
+<ul>
+<li><code>encrypt</code> &gt; <code>sd-encrypt</code></li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Example:</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Original:</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash">HOOKS=(base udev autodetect microcode kms modconf block keyboard keymap consolefont plymouth encrypt filesystems)
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>Modified:</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole sd-encrypt block filesystems fsck)
+</code></pre>
+<ul>
+<li>Regenerate your initramfs</li>
+</ul>
+<pre><code class="language-bash">sudo mkinitcpio -P
+</code></pre>
+<h3 id="continue-onwards-with-the-guide-below"><a class="header" href="#continue-onwards-with-the-guide-below">Continue onwards with the guide below</a></h3>
+<p><a href="linux/cachyos//guides/misc/tpm-autounlock.html">Main guide</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="others"><a class="header" href="#others">Others</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
+<ul>
+<li>Run <code>systemctl enable --user --now syncthing.service</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="manage-environment-variables"><a class="header" href="#manage-environment-variables">Manage Environment Variables</a></h1>
+<ul>
+<li>Drop files like <code>~/.config/environment.d/xx-&lt;name&gt;.conf</code></li>
+<li>To add ~/.local/bin to $PATH, add <code>PATH=~/.local/bin:$PATH</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2">Configure LUKS auto-unlocking with TPM2</a></h1>
+<h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip</a></h2>
+<p>Resources used : <a href="https://gist.github.com/jdoss/777e8b52c8d88eb87467935769c98a95" title="" target="_blank">jdoss’s guide</a> - <a href="https://uapi-group.org/specifications/specs/linux_tpm_pcr_registry/" title="" target="_blank">uapi-group</a> - <a href="https://wiki.archlinux.org/title/Systemd-cryptenroll" title="" target="_blank">ArchWiki</a> - <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-cryptenroll.html" title="" target="_blank">FreeDesktop</a> - <a href="https://askubuntu.com/questions/1357694/trying-to-understand-errors-from-tpm2-tools" title="" target="_blank">AskUbuntu</a> - <a href="https://tpm2-tools.readthedocs.io" title="" target="_blank">tpm2-tools readthedocs</a></p>
+<p><strong>IF YOU HAVE MULTIPLE TPM DEVICES, SPECIFY THE TPM TO BE USED BY ENTERING THE FULL PATH TO THE TPM DEVICE (<code>/dev/&lt;TPM2_DEVICE&gt;</code>) IN <code>--tpm2-device=</code> DURING ENROLL</strong></p>
+<p><strong>UNPLUG ANY BOOTABLE EXTERNAL STORAGE DEVICES OR INSTALL MEDIA AND REBOOT BEFORE ENROLLING TPM AUTOUNLOCK</strong></p>
+<p><strong>NEED TO BE RE-ENROLLED AFTER SECUREBOOT DBX AND UEFI FIRMWARE UPDATES</strong></p>
+<h3 id="check-if-everything-is-setup-correctly"><a class="header" href="#check-if-everything-is-setup-correctly">Check if everything is setup correctly</a></h3>
+<ul>
+<li>See which volume(s) are LUKS encrypted</li>
+</ul>
+<pre><code class="language-bash">sudo blkid -t TYPE=crypto_LUKS
+</code></pre>
+<ul>
+<li>See whether secureboot is enabled</li>
+</ul>
+<pre><code class="language-bash">sudo mokutil --sb-state
+</code></pre>
+<ul>
+<li>See available TPM devices</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --tpm2-device=list
+</code></pre>
+<h3 id="clear-the-tpm-chip"><a class="header" href="#clear-the-tpm-chip">Clear the TPM chip</a></h3>
+<ul>
+<li>Either use PPI Reset via UEFI firmware options.</li>
+<li>Or run the following commands to initiate a PPI reset through linux. (Recommended)</li>
+</ul>
+<pre><code class="language-bash">sudo sh
+echo 5 &gt; /sys/class/tpm/tpm0/ppi/request
+</code></pre>
+<ul>
+<li>Reboot to finish the PPI reset</li>
+</ul>
+<pre><code class="language-bash">systemctl reboot
+</code></pre>
+<h3 id="enroll-tpm2-to-luks"><a class="header" href="#enroll-tpm2-to-luks">Enroll TPM2 to LUKS</a></h3>
+<ul>
+<li>Enroll the LUKS volumes</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=1+5+7 &lt;LUKS_Volume&gt;
+</code></pre>
+<ul>
+<li>Enroll a recovery key (QR Code)</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --recovery-key &lt;LUKS_Volume&gt;
+</code></pre>
+<ul>
+<li>Reboot to see whether it worked</li>
+</ul>
+<pre><code class="language-bash">systemctl reboot
+</code></pre>
+<h3 id="remove-tpm2-from-luks"><a class="header" href="#remove-tpm2-from-luks">Remove TPM2 from LUKS</a></h3>
+<ul>
+<li>Disable TPM autounlock</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --wipe-slot=tpm2 &lt;LUKS_Volume&gt;
+</code></pre>
+<h3 id="description-of-the-tpm-pcrs-in-linux"><a class="header" href="#description-of-the-tpm-pcrs-in-linux">Description of the TPM PCRs (in linux)</a></h3>
+<ul>
+<li><code>PCR 1</code> - <strong>Hardware configuration was changed</strong> (Changing/Adding/Removing RAM/CPU/GPU etc)</li>
+<li><code>PCR 5</code> - <strong>GPT Partition Table was changed</strong> (Creating/Deleting/Modifying partitions)</li>
+<li><code>PCR 7</code> - <strong>Changes to UEFI Secureboot State</strong></li>
+</ul>
+<h4 id="these-values-require-systemd-boot-andor-ukis"><a class="header" href="#these-values-require-systemd-boot-andor-ukis">These values require systemd-boot and/or UKIs</a></h4>
+<ul>
+<li><code>PCR 14</code> - <strong>Changes to Secureboot “MOK” certificates and keys</strong> (Enrolling new Secureboot keys)</li>
+<li><code>PCR 15</code> - <strong>Changes to <code>machine-id</code>, UUIDs of various mountpoints, other systemd measurements</strong> <a href="https://oddlama.org/blog/bypassing-disk-encryption-with-tpm2-unlock/" title="" target="_blank">(Mitigation for this ???)</a></li>
+</ul>
+<h2 id="ignore-the-section-below-its-a-scratchpad"><a class="header" href="#ignore-the-section-below-its-a-scratchpad">Ignore the section below, it’s a scratchpad</a></h2>
+<h3 id="todo-experimental-recalculate-pcr-values-after-modificationupdate"><a class="header" href="#todo-experimental-recalculate-pcr-values-after-modificationupdate">(TODO, EXPERIMENTAL) Recalculate PCR values after modification/update</a></h3>
+<ul>
+<li><strong>IF THE SYSTEM ASKS FOR A PASSWORD AFTER AN UPDATE, YOU NEED TO UPDATE THE PCR PREDICTIONS</strong></li>
+<li><strong>SCRATCH THAT, THIS WONT WORK WITUOUT SD-BOOT AND UKIS</strong></li>
+<li>Recalculate the PCRs manually.</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-pcrlock predict
+sudo systemd-pcrlock make-policy
+</code></pre>
+<ul>
+<li>Enable a service that does thiws automatically on every shutdown/boot.</li>
+</ul>
+<pre><code class="language-bash">systemctl enable systemd-pcrlock-make-policy.service
+</code></pre>
+<h3 id="unsure-what-to-do-with-this-take-ownership-and-lock-the-tpm2-chip"><a class="header" href="#unsure-what-to-do-with-this-take-ownership-and-lock-the-tpm2-chip">(UNSURE WHAT TO DO WITH THIS) Take Ownership and lock the TPM2 chip</a></h3>
+<ul>
+<li>Set Owner, Endorsement and Lockout passwords to ensure they can’t be changed by unauthorized parties. (You need to remove the locks everytime you need to re-enroll the TPM)</li>
+</ul>
+<pre><code class="language-bash">tpm2_changeauth -c owner newpass
+tpm2_changeauth -c endorsement newpass
+tpm2_changeauth -c lockout newpass
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fixes-for-electron-and-chromium-apps"><a class="header" href="#fixes-for-electron-and-chromium-apps">Fixes for Electron and Chromium apps</a></h1>
+<h2 id="launch-arguments-and-flags-for-electron-apps"><a class="header" href="#launch-arguments-and-flags-for-electron-apps">Launch arguments and flags for Electron apps</a></h2>
+<p>Various launch arguments and flags for
+Electron apps.</p>
+<h3 id="launch-arguments-"><a class="header" href="#launch-arguments-">Launch arguments :</a></h3>
+<p><strong>You need to copy the app’s <code>.desktop</code> file to <code>~/.local/share/applications/</code> and append it after <code>Exec=</code> in all entry fields.</strong> <br>
+<strong>NOTE: Arch-based distros usually have .conf files to easily handle commandline args</strong></p>
+<ul>
+<li><code>--ozone-platform-hint=auto</code> <br>
+Runs the app with Wayland support.</li>
+<li><code>--enable-wayland-ime</code> <br>
+Enables iBus/Fcitx support.</li>
+<li><code>--enable-features=TouchpadOverscrollHistoryNavigation</code> <br>
+(Use for browsers. e.g. Brave)
+Enables navigation via touchpad gestures.</li>
+</ul>
+<h3 id="flags-set-with-chromeflags-mainly-for-browsers"><a class="header" href="#flags-set-with-chromeflags-mainly-for-browsers">Flags (set with <code>chrome://flags</code>) (mainly for browsers)</a></h3>
+<ul>
+<li><code>#ozone-platform-hint</code> - <strong>Auto</strong> <br>
+Enables Wayland support.</li>
+<li><code>#wayland-ui-scaling</code> - <strong>Enabled</strong> <br>
+Enables Fractional Scaling support under Wayland.</li>
+<li><code>#wayland-per-window-scaling</code> - <strong>Enabled</strong> <br>
+Enables per-window scaling support.</li>
+<li><code>#wayland-text-input-v3</code> - <strong>Enabled</strong> <br>
+Used to enable proper ibus support on older GNOME versions without text-input-v1 support.</li>
+<li><code>#middle-button-autoscroll</code> - <strong>Enabled</strong> <br>
+Enables middle-click autoscroll.</li>
+<li><code>#web-app-universal-install</code> - <strong>Enabled</strong> <br>
+Enables installation of normal websites as webapps.</li>
+</ul>
+<h1 id="guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox"><a class="header" href="#guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox">Guide on setting up any Chromium browser inside a (Fedora) distrobox</a></h1>
+<h2 id="setup-the-distrobox"><a class="header" href="#setup-the-distrobox">Setup the Distrobox</a></h2>
+<ol>
+<li><code>distrobox create -n appbox-fedora --init --additional-packages "systemd" --pre-init-hooks ""</code></li>
+<li><code>distrobox enter appbox-fedora -- sh -c db-fedora-essential.sh</code></li>
+<li>echo “max_parallel_downloads = 20” &gt;&gt; /etc/dnf/dnf.conf</li>
+<li>sudo dnf update</li>
+<li>sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</li>
+<li>sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1</li>
+<li>sudo dnf install rpmfusion-{free,nonfree}-release-tainted</li>
+<li>sudo dnf swap ffmpeg-free ffmpeg –allowerasing
+9, sudo dnf install libdvdcss intel-media-driver libva-intel-driver gnome-keyring libsecret pipewire xdg-desktop-portal-{gtk,gnome} flatpak, xdg-user-dirs{,-gtk} xdg-utils</li>
+</ol>
+<h2 id="chromium-commands-as-of-nov-13-2025"><a class="header" href="#chromium-commands-as-of-nov-13-2025">Chromium commands (as of Nov 13 2025)</a></h2>
+<p><code>vivaldi --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,WaylandPerSurfaceScale,WaylandUiScale,MiddleClickAutoscroll --gtk-version=4</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fedora-setup-guide"><a class="header" href="#fedora-setup-guide">Fedora Setup Guide</a></h1>
+<h2 id="generic-tweaks-and-configuration-for-fedora-linux-after-fresh-install"><a class="header" href="#generic-tweaks-and-configuration-for-fedora-linux-after-fresh-install">Generic tweaks and configuration for Fedora Linux after fresh install</a></h2>
+<h2 id="dnf-is-too-slow"><a class="header" href="#dnf-is-too-slow">dnf is too slow</a></h2>
+<ul>
+<li>Open <code>dnf.conf</code> : <code>nano /etc/dnf/dnf.conf</code> <br>
+(replace nano with kwrite/gedit etc if you want to)</li>
+<li>Add/Change the following values.</li>
+</ul>
+<pre><code># Download 20 packages simultaneously
+max_parallel_downloads = 20
+
+# Mirror must maintain download speed of atleast 256*1024 bytes (256KiB/s) for the duration of `timeout` value in seconds
+minrate = 262144
+
+# Mirror must maintain `minrate` amount of download speed in bytes for `timeout` value in seconds
+timeout = 5  
+</code></pre>
+<h2 id="install-noto-fonts-and-bangla-language-pack"><a class="header" href="#install-noto-fonts-and-bangla-language-pack">Install Noto fonts and Bangla language pack</a></h2>
+<p>Install all the Noto fonts and the <code>langpacks-bn</code> language pack.</p>
+<pre><code>sudo dnf install -y google-noto-fonts-all langpacks-bn
+</code></pre>
+<h2 id="configure-flatpak-remotes"><a class="header" href="#configure-flatpak-remotes">Configure flatpak remotes</a></h2>
+<p>Remove the Fedora flatpak remotes and add the Flathub flatpak remote.</p>
+<pre><code># Delete fedora remotes
+flatpak remote-delete fedora
+flatpak remote-delete fedora-testing
+
+# Add flathub remote as user (remove --user flag to install as system)
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+<h2 id="configure-rpmfusion"><a class="header" href="#configure-rpmfusion">Configure RPMFusion</a></h2>
+<p>Configure RPMFusion and install restricted extras.</p>
+<pre><code># Run elevated to avoid password prompt spam
+sudo bash
+
+# Install rpmfusion repos
+dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Initial setup stuff
+dnf config-manager setopt fedora-cisco-openh264.enabled=1
+dnf update -y @core @multimedia
+
+# Install rpmfusion tainted repos
+dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
+
+# Install uncucked ffmpeg
+dnf swap -y ffmpeg-free ffmpeg --allowerasing
+
+# Install intel drivers
+dnf install -y intel-media-driver libva-intel-driver
+
+# Install uncucked amd drivers
+dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
+# Install 32bit uncucked amd drivers (avoid)
+#dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
+#dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
+
+# Install uncucked nvidia drivers
+dnf install -y libva-nvidia-driver
+
+# Install 32bit uncucked nvidia drivers (avoid)
+#dnf install -y libva-nvidia-driver.{i686,x86_64}
+
+# Install dvd ripping library
+dnf install libdvdcss
+
+# Install tainted firmware
+dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reflections-on-life"><a class="header" href="#reflections-on-life">Reflections on Life</a></h1>
 <p>Unfinished</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="a-new-beginning"><a class="header" href="#a-new-beginning">A New Beginning</a></h1>
@@ -282,7 +742,6 @@ Unfinished</p>
             window.setTimeout(window.print, 100);
         });
         </script>
-
 
     </div>
     </body>

@@ -1,8 +1,21 @@
-# About
+<h1 style="margin-bottom: 10px;">About</h1>
 
-Welcome to **ScatteredCognition's Biblioteca**.
+<div style="display:flex; align-items: center;">
+  <div style="display:inline-block; text-align: left;">
+    Welcome to <b>ScatteredCognition's Biblioteca</b>.
+    <hr style="margin-left:5px; margin-right:5px; max-width: 97%">
+    <i>"May the content you find be equal in value to time you spend here."</i>
+  </div>
+  <div style="flex:1; padding-left: 22px;text-align: right;">
+    <img src="static/images/scatteredcognition-gh-pages-qr.png"
+         alt="QR Code to this site"
+         style="min-width: 120px; max-width: 180px; width: 100%; height: auto;"> <br>
+    <small style="display:inline-block; text-align: left;">QR code that leads to this site.</small>
+  </div>
+</div>
 
-_"May the content you find be equal in value to time you spend here."_
+<!-- Welcome to **ScatteredCognition's Biblioteca**.  
+_"May the content you find be equal in value to time you spend here."_ -->
 
 > You can navigate this site by using the **☰Sidebar** and **🔍Search** buttons and change the theme by using the **🖌️Themes** button present in the **↖Top-Left corner** of the screen.
 

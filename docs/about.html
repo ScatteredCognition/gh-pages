@@ -36,7 +36,6 @@
             const path_to_root = "";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -93,13 +92,10 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
-                sidebar_toggle.checked = false;
             }
-            if (sidebar === 'visible') {
-                sidebar_toggle.checked = true;
-            } else {
-                html.classList.remove('sidebar-visible');
-            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -153,12 +149,7 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                            <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -178,9 +169,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="about"><a class="header" href="#about">About</a></h1>
-<p>Welcome to <strong>ScatteredCognition’s Biblioteca</strong>.</p>
-<p><em>“May the content you find be equal in value to time you spend here.”</em></p>
+                        <h1 style="margin-bottom: 10px;">About</h1>
+<div style="display:flex; align-items: center;">
+  <div style="display:inline-block; text-align: left;">
+    Welcome to <b>ScatteredCognition's Biblioteca</b>.
+    <hr style="margin-left:5px; margin-right:5px; max-width: 97%">
+    <i>"May the content you find be equal in value to time you spend here."</i>
+  </div>
+  <div style="flex:1; padding-left: 22px;text-align: right;">
+    <img src="static/images/scatteredcognition-gh-pages-qr.png"
+         alt="QR Code to this site"
+         style="min-width: 120px; max-width: 180px; width: 100%; height: auto;"> <br>
+    <small style="display:inline-block; text-align: left;">QR code that leads to this site.</small>
+  </div>
+</div>
+<!-- Welcome to **ScatteredCognition's Biblioteca**.  
+_"May the content you find be equal in value to time you spend here."_ -->
 <blockquote>
 <p>You can navigate this site by using the <strong>☰Sidebar</strong> and <strong>🔍Search</strong> buttons and change the theme by using the <strong>🖌️Themes</strong> button present in the <strong>↖Top-Left corner</strong> of the screen.</p>
 </blockquote>
@@ -224,7 +228,7 @@ You get the idea.</p>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="hobbylist.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="hobbylist/anime.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -235,7 +239,7 @@ You get the idea.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="hobbylist.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="hobbylist/anime.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -259,7 +263,6 @@ You get the idea.</p>
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-
 
 
     </div>

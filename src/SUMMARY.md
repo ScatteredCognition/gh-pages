@@ -1,7 +1,7 @@
 # Summary
 - [About](./about.md)
 ----
-- [Hobbylist](./hobbylist.md)
+- [Hobbylist]()
   - [Anime](./hobbylist/anime.md)
   - [Movies & Series](./hobbylist/movies-and-series.md)
   - [Videogames](./hobbylist/videogames.md)
@@ -10,14 +10,24 @@
 ----
 - [Linux]()
   - [Fedora Silverblue](./linux/fedora-silverblue.md)
-    - [todo2]()
+    - [Useful Commands](./linux/fedora-silverblue/useful-commands.md)
+    - [Packages to layer](./linux/fedora-silverblue/packages-to-layer.md)
+    - [Flatpak Setup](./linux/fedora-silverblue/flatpak-setup.md)
+    - [Toolbox Setup](./linux/fedora-silverblue/toolbox-setup.md)
+    - [VSCode Setup](./linux/fedora-silverblue/vscode-setup.md)
+    - [Fixing `/etc/fstab issues`](./linux/fedora-silverblue/fixing-etc-fstab-issues.md)
   - [CachyOS](./linux/cachyos.md)
-  - [Others]()
+    - [Configure LUKS auto-unlocking with TPM2 in CachyOS](./linux/cachyos/configure-luks-autounlocking-with-tpm2.md)
+  - [Others](./linux/others.md)
+    - [Configure Syncthing](./linux/others/configure-syncthing.md)
+    - [Manage Environment Variables](./linux/others/manage-environment-variables.md)
+    - [Configure LUKS auto-unlocking with TPM2](./linux/others/configure-luks-autounlocking-with-tpm2.md)
+    - [Fixes for Electron and Chromium apps](./linux/others/fixes-for-electron-and-chromium-apps.md)
+    - [Fedora Setup Guide](./linux/others/fedora-setup-guide.md)
 ----
 - [Blog]()
   - [Reflections on Life](./blog/reflections-on-life.md)
   - [A New Beginning](./blog/a-new-beginning.md)
 ----
 - [Random]()
-  - [todo]()
 ----
