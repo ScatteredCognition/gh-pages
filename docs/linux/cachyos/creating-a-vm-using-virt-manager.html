@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Configure Syncthing - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Creating a VM using virt-manager - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -169,17 +169,114 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
+                        <h1 id="unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos"><a class="header" href="#unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos">UNFINISHED Creating a VM using virt-manager on Arch Linux/CachyOS</a></h1>
+<h2 id="installing-and-configuring-virt-manager"><a class="header" href="#installing-and-configuring-virt-manager">Installing and configuring virt-manager</a></h2>
+<h3 id="installing-virt-manager"><a class="header" href="#installing-virt-manager">Installing <code>virt-manager</code></a></h3>
+<ul>
+<li>
+<p>Install <code>virt-manager</code> and other necessary packages.</p>
+<pre><code class="language-bash"> sudo pacman -Syu virt-manager qemu-full libguestfs guestfs-tools iptables-nft
+</code></pre>
+</li>
+<li>
+<p>Enable <code>libvirtd.socket</code> and <code>virtlogd.socket</code></p>
+<pre><code class="language-bash">systemctl enable --now libvirtd.socket
+systemctl enable --now virtlogd.socket
+</code></pre>
+</li>
+<li>
+<p>Ensure the variable is<code>firewall_backend=iptables</code> in <code>/etc/libvirt/network.conf</code> for NAT to function.</p>
+</li>
+<li>
+<p>Enable <code>default</code> NAT adapter</p>
+<pre><code class="language-bash">sudo virsh net-start default
+sudo virsh net-autostart default
+</code></pre>
+</li>
+</ul>
+<h3 id="configuring-virt-manager"><a class="header" href="#configuring-virt-manager">Configuring <code>virt-manager</code></a></h3>
+<ul>
+<li>Open <code>Virtual Machine Manager</code>.</li>
+<li>Goto <code>Edit &gt; Preferences</code> from the tab bar on top.
+<ul>
+<li>Under <code>General</code>
+<ul>
+<li>Enable <code>Enable XML Editing</code></li>
+<li>Enable <code>Enable libguestfs VM Introspection</code></li>
+</ul>
+</li>
+<li>Under <code>New VM</code>
+<ul>
+<li>Set <code>x86 Firmware</code> to <code>UEFI</code></li>
+<li>Set <code>CPU Default</code> to <code>host-passthrough</code></li>
+<li>Set <code>Storage Format</code> to <code>QCOW2</code> (optional)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If QEMU/KVM doesn’t exist like the pic above, Goto <code>File &gt; Add Connection</code> and configure as follows (Make sure you are using the system instance of qemu by ensuring the Generated URI field reads <code>qemu:///system</code>)</li>
+<li>Double-click on QEMU/KVM if it shows Not Connected.</li>
+<li><code>virt-manager</code> is now ready for creating and running VMs.</li>
+</ul>
+<h2 id="creating-vms"><a class="header" href="#creating-vms">Creating VMs</a></h2>
+<h3 id="linux-guests"><a class="header" href="#linux-guests">Linux Guests</a></h3>
+<p>Generally, Linux guests should work OOTB. IF you are facing any issues, consult your distro documentation.</p>
+<h3 id="windows-guests"><a class="header" href="#windows-guests">Windows Guests</a></h3>
+<ul>
+<li>Finally, click the shiny monitor icon near the top-right and create a new VM</li>
+<li>While using the wizard, choose the installed OS manually by unticking the auto detect checkbox <strong>ENSURE OS TYPE IS THE SAME OS YOU ARE GOING TO INSTALL</strong></li>
+<li>On the last screen, select <code>Customize configuration before install</code></li>
+<li><strong>(Windows Guests)</strong> Download the VirtIO guest tools iso for Windows so we can have disk and network drivers.
+<ul>
+<li><a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/" title="" target="_blank">Download VirtIO driver iso</a></li>
+</ul>
+</li>
+<li><strong>(Windows Guests)</strong> Add an emulated CD-ROM drive with our VirtIO drivers from <code>Add Hardware &gt; Storage (In the sidebar) &gt; Device Type: CDROM Device</code> and select the VirtIO driver ISO file, then click Ok to close the dialog box</li>
+<li>On default configurations, <code>virt-manager</code> will default to an emulated SATA disk as your storage drive. To enjoy better performance, select <code>SATA Disk 1</code> from the sidebar and change <code>Disk Bus:</code> to <code>VirtIO</code></li>
+<li>Similarly, you can select <code>NIC:(random characters)</code> from the sidebar and change <code>Device Model:</code> to <code>VirtIO</code></li>
+<li>Finally, select <code>Begin Installation</code> on the top-left corner and begin installation</li>
+<li><strong>(Windows Guests)</strong> At the disk partitioning screen, the installer will complain about having no disks to install to. Click <code>Load Drivers</code>, then <code>Browse</code> and goto <code>(VirtIO disk) &gt; vioscsi &gt; (windows version) &gt; AMD64</code> and click Ok to let the installer find the driver. Afterwards, our main disk should be visible in the disk partitioning screen</li>
+<li><strong>Continue the installation as normal</strong></li>
+<li>You can customize the VM after installation by switching from the Graphical Console view to the Hardware Details view on the top-left</li>
+</ul>
+<h3 id="installing-spice-and-virtio-guest-tools-windows-guests"><a class="header" href="#installing-spice-and-virtio-guest-tools-windows-guests">Installing Spice and VirtIO guest tools (Windows Guests)</a></h3>
+<ul>
+<li>After installation has finished, navigate to the emulated CDROM drive with the VirtIO drivers in Windows Explorer and install the guest tools</li>
+<li>Afterwards, visit these two links inside the VM and install the Spice guest tools
+<ul>
+<li><a href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe" title="" target="_blank">Spice Guest tools</a></li>
+<li><a href="https://www.spice-space.org/download/windows/spice-webdavd/" title="" target="_blank">Spice Webdavd</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="setting-up-rdp"><a class="header" href="#setting-up-rdp">Setting up RDP</a></h3>
+<ul>
+<li>Enable Remote Connections inside your Windows guest. Google how to.</li>
+<li>While the VM is running, Goto Hardware Details view, click on the <code>NIC:(random characters)</code> device from the sidebar and take a note of the IP Address</li>
+<li>Note that the user account you want to RDP to in the Windows guest must have a password set</li>
+<li>Install a RDP client, <code>krdc</code> is a very nice and robust client.</li>
+<li>Enter the IP Address in the address field and connect to it</li>
+<li>On the login prompt, enter your Windows username and password to connect</li>
+</ul>
+<h3 id="setting-up-gpu-passthrough"><a class="header" href="#setting-up-gpu-passthrough">Setting up GPU Passthrough</a></h3>
+<ul>
+<li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; PCI Host Device</code> and select one of the vGPUs/GPU you want to passthrough to the VM.</li>
+<li><strong>(Intel iGPUs)</strong> To avoid the Code 43 error with the i915 sriov dkms drivers, follow <a href="https://github.com/strongtz/i915-sriov-dkms/issues/8#issuecomment-1567465036" title="" target="_blank">this thread</a> and add a &lt;vendor_id&gt; tag</li>
+</ul>
+<h3 id="setting-up-usb-passthrough"><a class="header" href="#setting-up-usb-passthrough">Setting up USB Passthrough</a></h3>
+<ul>
+<li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; USB Host Device</code> and select one of the USB Devices you want to passthrough to the VM.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/others.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/cachyos/configure-luks-autounlocking-with-tpm2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/others/manage-environment-variables.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/others.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -189,11 +286,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/others.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/cachyos/configure-luks-autounlocking-with-tpm2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/others/manage-environment-variables.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/others.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

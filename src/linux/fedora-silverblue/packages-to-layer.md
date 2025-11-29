@@ -1,11 +1,10 @@
-# Packages to layer
-### Local packages to layer after install
+# Packages to layer on Fedora Silverblue
 Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of *Fedora Silverblue*:  
 
 <!-- 
 - `distrobox` 
 -->
-- `android-tools` (For *ADB* and *fastboot*)
+- `android-tools` (For using *ADB* and *fastboot*)
 - `langpacks-bn` (For *Bangla* language pack support, replace `bn` with your language code)
 - `podman-compose` (For *VSCode*/*DevPod* Devcontainers)
 - `syncthing` (If you use it for file sync)

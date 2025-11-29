@@ -10,13 +10,13 @@ This will result in...
 To fix this, run the following commands:  
 
 ```bash
-# Add btrfs compression option
+# Add btrfs compression option to kargs
 rpm-ostree kargs --delete=rootflags=subvol=root \
 --append=rootflags=subvol=root,compress=zstd:1
 
-# Comment out the / line in fstab
+# Comment out the line for the root (/) mount in /etc/fstab
 sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
 
-# Manually run fstrim for /sysroot periodically
+# Manually run fstrim on /sysroot periodically
 sudo fstrim /sysroot
 ``

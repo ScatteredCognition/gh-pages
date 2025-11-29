@@ -169,65 +169,50 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="configure-luks-auto-unlocking-with-tpm2-in-cachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-cachyos">Configure LUKS auto-unlocking with TPM2 in CachyOS</a></h1>
-<h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip on CachyOS (August 2025)</a></h2>
-<p><strong>You need use <code>systemd-boot</code> for this to work properly.</strong></p>
+                        <h1 id="configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos">Configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS</a></h1>
+<p>To configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS, do the following steps:</p>
 <ul>
-<li>Make a copy of your <code>/etc/crypttab</code> for initramfs</li>
-</ul>
+<li>
+<p>Make a copy of your <code>/etc/crypttab</code> for initramfs</p>
 <pre><code class="language-bash">sudo cp /etc/crypttab /etc/crypttab.initramfs
 </code></pre>
-<ul>
-<li>Make a backup of your /etc/mkinitcpio.conf</li>
-</ul>
+</li>
+<li>
+<p>Make a backup of your <code>/etc/mkinitcpio.conf</code></p>
 <pre><code class="language-bash">sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
 </code></pre>
-<ul>
-<li>Include the necessary systemd stuff in your initramfs by replacing the following in your <code>/etc/mkinitcpio.conf</code> file: <br></li>
+</li>
 <li>
+<p>Include the necessary systemd stuff in your initramfs by replacing the following in your <code>/etc/mkinitcpio.conf</code> file:</p>
 <ul>
 <li><code>udev</code> &gt; <code>systemd</code></li>
-</ul>
-</li>
-<li>
-<ul>
 <li><code>keymap</code> and <code>consolefont</code> &gt; <code>sd-vconsole</code></li>
-</ul>
-</li>
-<li>
-<ul>
 <li><code>encrypt</code> &gt; <code>sd-encrypt</code></li>
-</ul>
-</li>
-<li>
+<li>Example:
 <ul>
-<li>Example:</li>
-</ul>
-</li>
 <li>
-<ul>
-<li>Original:</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-bash">HOOKS=(base udev autodetect microcode kms modconf block keyboard keymap consolefont plymouth encrypt filesystems)
+<p>Original:</p>
+<pre><code class="language-bash">HOOKS=(base udev plymouth autodetect microcode modconf kms block keyboard keymap consolefont  encrypt filesystems fsck)
 </code></pre>
-<ul>
+</li>
 <li>
-<ul>
-<li>Modified:</li>
+<p>Modified:</p>
+<pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms block keyboard sd-vconsole sd-encrypt filesystems fsck)
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole sd-encrypt block filesystems fsck)
-</code></pre>
-<ul>
-<li>Regenerate your initramfs</li>
-</ul>
+</li>
+<li>
+<p>Regenerate your initramfs</p>
 <pre><code class="language-bash">sudo mkinitcpio -P
 </code></pre>
-<h3 id="continue-onwards-with-the-guide-below"><a class="header" href="#continue-onwards-with-the-guide-below">Continue onwards with the guide below</a></h3>
-<p><a href="/guides/misc/tpm-autounlock.html">Main guide</a></p>
+</li>
+<li>
+<p>Continue onwards with <a href="/linux/others/configure-luks-autounlocking-with-tpm2.html">linux/others/Configure LUKS Auto-unlocking with TPM2</a></p>
+</li>
+</ul>
 
                     </main>
 
@@ -237,7 +222,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/others.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/cachyos/creating-a-vm-using-virt-manager.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -251,7 +236,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/others.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/cachyos/creating-a-vm-using-virt-manager.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

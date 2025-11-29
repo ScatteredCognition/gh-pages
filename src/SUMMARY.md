@@ -9,6 +9,7 @@
   - [Other Sources](./hobbylist/other-sources.md)
 ----
 - [Linux]()
+  - [Basics](./linux/basics.md)
   - [Fedora Silverblue](./linux/fedora-silverblue.md)
     - [Useful Commands](./linux/fedora-silverblue/useful-commands.md)
     - [Packages to layer](./linux/fedora-silverblue/packages-to-layer.md)
@@ -16,8 +17,9 @@
     - [Toolbox Setup](./linux/fedora-silverblue/toolbox-setup.md)
     - [VSCode Setup](./linux/fedora-silverblue/vscode-setup.md)
     - [Fixing `/etc/fstab issues`](./linux/fedora-silverblue/fixing-etc-fstab-issues.md)
-  - [CachyOS](./linux/cachyos.md)
+  - [Arch Linux/CachyOS](./linux/cachyos.md)
     - [Configure LUKS auto-unlocking with TPM2 in CachyOS](./linux/cachyos/configure-luks-autounlocking-with-tpm2.md)
+    - [Creating a VM using virt-manager](./linux/cachyos/creating-a-vm-using-virt-manager.md)
   - [Others](./linux/others.md)
     - [Configure Syncthing](./linux/others/configure-syncthing.md)
     - [Manage Environment Variables](./linux/others/manage-environment-variables.md)

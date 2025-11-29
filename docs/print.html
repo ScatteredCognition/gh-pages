@@ -170,7 +170,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 style="margin-bottom: 10px;">About</h1>
+                        <h1 id="about"><a class="header" href="#about">About</a></h1>
 <div style="display:flex; align-items: center;">
   <div style="display:inline-block; text-align: left;">
     Welcome to <b>ScatteredCognition's Biblioteca</b>.
@@ -233,15 +233,121 @@ You get the idea.</p>
 <p>Unfinished</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="other-sources"><a class="header" href="#other-sources">Other Sources</a></h1>
 <p>Unfinished</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="basics-of-using-linux"><a class="header" href="#basics-of-using-linux">Basics of using Linux</a></h1>
+<h2 id="demystifying-the-jargons"><a class="header" href="#demystifying-the-jargons">Demystifying the Jargons</a></h2>
+<ul>
+<li>
+<p>The <em>terminal</em> is an application you execute commands from.</p>
+</li>
+<li>
+<p>The <em>shell</em> is the program that actually executes your commands. Think of <code>cmd.exe</code> or <em>PowerShell</em> on <em>Windows</em>.<br />
+On most linux distros, <code>bash</code> is usually the default shell, but I recommend using <code>fish</code> as your default shell and <code>bash</code> for writing shell scripts.</p>
+<p>To list available shells in your system, type the following in a terminal:</p>
+<pre><code class="language-bash">cat /etc/shells
+</code></pre>
+<p>Note that you can usually install additional shells from your package manager.</p>
+<p>To change your default <em>shell</em>, type the following in a terminal:</p>
+<pre><code class="language-bash">sudo usermod -s &lt;path_to_shell&gt; $USER
+</code></pre>
+<p>Example: <code>sudo usermod -s /bin/bash $USER</code></p>
+</li>
+<li>
+<p><em>directory</em> is a synonym for a <em>folder</em>.</p>
+</li>
+<li>
+<p><em>arguments</em> are the extra options you use with a command.<br />
+Example: <code>grep -i bash /etc/shells</code><br />
+Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
+</li>
+<li>
+<p><em>path</em> can either refer to the location of a <em>directory</em> or <em>file</em>, or a special <em>environment variable</em> <code>$PATH</code> that contains the locations from where you can launch and execute commands.</p>
+</li>
+<li>
+<p><em>environment variable</em> is a <em>shell variable</em> that works and functions mostly like variables in any programming language.</p>
+</li>
+</ul>
+<h2 id="cli-basics"><a class="header" href="#cli-basics">CLI Basics</a></h2>
+<h3 id="navigating-your-files-and-folders"><a class="header" href="#navigating-your-files-and-folders">Navigating your files and folders</a></h3>
+<ul>
+<li>Use the <code>pwd</code> command to list the directory you’re currently in.</li>
+<li>Use the <code>ls -la</code> command to list the files and directories in your current directory.</li>
+<li>Use the <code>tree -C &lt;directory&gt; | less -R</code> command to list all files and subdirectories ina scorllable window.</li>
+<li>Use the <code>cd &lt;directory&gt;</code> command to change your directory.</li>
+</ul>
+<h3 id="editing-text"><a class="header" href="#editing-text">Editing text</a></h3>
+<ul>
+<li>
+<p>Use the <code>cat &lt;filename&gt;</code> command to display the text in a file.</p>
+</li>
+<li>
+<p>Use the <code>nano &lt;filename&gt;</code> command to edit text in a file.<br />
+Example: <code>nano /etc/dnf/dnf.conf</code></p>
+<p>To save a file, press <code>Ctrl + S</code><br />
+To exit <code>nano</code> after saving a file, press <code>Ctrl + X</code></p>
+</li>
+<li>
+<p>To append some text to the end of a file, use ( <code>&gt;&gt;</code> )<br />
+Example: <code>echo "Hello World" &gt;&gt; file.txt</code></p>
+</li>
+<li>
+<p>To create/overwrite a file and write a line to it, use ( <code>&gt;</code> )<br />
+Example: <code>echo "The old file is gone" &gt; file.txt</code></p>
+</li>
+<li>
+<p>You can use the <code>awk</code> and <code>sed</code> utilities to make edits to files matching a certain pattern.<br />
+Useful for scripting, ask AI how to use them.</p>
+</li>
+</ul>
+<h2 id="the-filesystem-layout"><a class="header" href="#the-filesystem-layout">The Filesystem Layout</a></h2>
+<p>A basic overview of the modern linux filesystem is given below.</p>
+<ul>
+<li>
+<p><code>/boot</code> or <code>/efi</code> is where the bootloader is stored.</p>
+</li>
+<li>
+<p><code>/home/&lt;username&gt;/</code> <small>(aliased to <code>~</code>)</small> is your user’s home directory. <small>(equivalent to <code>C:\Users\</code>)</small></p>
+</li>
+<li>
+<p><code>/usr</code> is where your actual system is stored. <small>(equivalent to <code>C:\Windows\</code>)</small></p>
+<p><small>Note: Everything here (except <code>/usr/local/</code>) is managed by your package manager.</small></p>
+<ul>
+<li><code>/usr/bin/</code> - Contains executable files or symlinks to executables.</li>
+<li><code>/usr/sbin/</code> - Usually either symlinked to <code>/usr/bin/</code> or contains extra executables.</li>
+<li><code>/usr/lib*/</code> - Contains library files <code>.so</code> (equivalent to <code>.dll</code>)</li>
+<li><code>/usr/share/</code> - Contains non-executable resources for apps (pictures, config files etc)
+<ul>
+<li><code>/usr/share/applications/</code> - Contains <code>.desktop</code> desktop entry files for applications installed using your package manager.</li>
+<li><code>/usr/share/icons/</code> - Contains icons for applications to use.</li>
+</ul>
+</li>
+<li><code>/usr/local/</code> - A directory for users to install their own apps not managed by the package manager. <small>(system-wide)</small></li>
+</ul>
+</li>
+<li>
+<p>On modern distros, <code>/bin</code>, <code>/sbin</code>, and <code>/lib*</code> directories are usually symlinks which point to their equivalents inside <code>/usr</code>, this is called the <a href="https://systemd.io/THE_CASE_FOR_THE_USR_MERGE/" title="" target="_blank">/usr merge</a>.</p>
+</li>
+<li>
+<p><code>/etc</code> is where configuration files are stored.</p>
+</li>
+<li>
+<p><code>/opt</code> is where third-party apps like <em>Google Chrome</em>, <em>Brave Software</em> or <em>DaVinci Resolve</em> usually install their things.</p>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fedora-silverblue"><a class="header" href="#fedora-silverblue">Fedora Silverblue</a></h1>
-<p><a href="https://fedoraproject.org/atomic-desktops/silverblue/" title="" target="_blank">Fedora Silverblue</a> is a<br />
-Unfinished</p>
+<p><a href="https://fedoraproject.org/atomic-desktops/silverblue/" title="" target="_blank">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
+<p>It is an <strong>Atomic</strong>, <strong>Immutable</strong><sup>(<em>mostly</em>)</sup> linux distro built on the foundations of <em>Fedora Linux</em>, using it’s own package manager, <code>rpm-ostree</code>.</p>
+<p>You can install packages like you would on normal <em>Fedora Linux</em> <em>(“Layering” as it is called)</em>, but don’t layer too many packages. <em>Fedora Silverblue</em> ships with the <em>GNOME Desktop Environment</em>, although different spins exist like <em>Fedora Kinoite</em> (ships <em>KDE Plasma</em>), <em>Fedora Cosmic Atomic</em> and the like. But <em>Fedora Silverblue</em> remains, by far, the best experience amongst all the <em>Atomic</em> spins.</p>
+<blockquote>
+<p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br />
+I recommend reading the content at <a href="linux//linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br />
+Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
 <p>I have provided some commands which will hopefully make your <em>Fedora Silverblue</em> journey better.</p>
 <h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
 <h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
 <tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
 <tr><td><code>rpm-ostree install &lt;package&gt;</code></td><td>Overlay a package (Requires Reboot)</td></tr>
@@ -253,26 +359,39 @@ Unfinished</p>
 </div>
 <h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
 <tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
 <tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
 </tbody></table>
 </div>
-<h2 id="advanced"><a class="header" href="#advanced">Advanced</a></h2>
+<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your <em>Fedora Silverblue</em> installation</td></tr>
+<tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your<em>Fedora Silverblue</em> installation</td></tr>
 <tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
 <tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
 </tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="packages-to-layer"><a class="header" href="#packages-to-layer">Packages to layer</a></h1>
-<h3 id="local-packages-to-layer-after-install"><a class="header" href="#local-packages-to-layer-after-install">Local packages to layer after install</a></h3>
+</div>
+<h3 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
+<tr><td><code>sudo ostree pull --commit-metadata-only --depth=10 fedora:&lt;ref&gt;</code></td><td>Pull the last 10 commits for your selected ref</td></tr>
+<tr><td><code>ostree log fedora:&lt;ref&gt;</code></td><td>List all the commits for your selected ref</td></tr>
+<tr><td><code>rpm-ostree deploy &lt;ref_version&gt;</code></td><td>Deploy that specific commit version (removes overlayed packages)</td></tr>
+</tbody></table>
+</div>
+<h3 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
+<tr><td><code>rpm-ostree rebase fedora:&lt;ref&gt;</code></td><td>Rebase onto a different image/spin like<em>Kinoite</em> or <em>Cosmic Atomic</em></td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="packages-to-layer-on-fedora-silverblue"><a class="header" href="#packages-to-layer-on-fedora-silverblue">Packages to layer on Fedora Silverblue</a></h1>
 <p>Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of <em>Fedora Silverblue</em>:</p>
 <!-- 
 - `distrobox` 
 -->
 <ul>
-<li><code>android-tools</code> (For <em>ADB</em> and <em>fastboot</em>)</li>
+<li><code>android-tools</code> (For using <em>ADB</em> and <em>fastboot</em>)</li>
 <li><code>langpacks-bn</code> (For <em>Bangla</em> language pack support, replace <code>bn</code> with your language code)</li>
 <li><code>podman-compose</code> (For <em>VSCode</em>/<em>DevPod</em> Devcontainers)</li>
 <li><code>syncthing</code> (If you use it for file sync)</li>
@@ -282,11 +401,98 @@ Unfinished</p>
 <p>Run <code>systemctl enable --user --now syncthing.service</code> if you want to use <code>syncthing</code>.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
-<h1 id="flatpak-apps-to-install"><a class="header" href="#flatpak-apps-to-install">Flatpak apps to install</a></h1>
-<p>Here is a list of some Flatpak apps that I always install on a fresh install of <em>Fedora Silverblue</em> and my personal “mini-review” of them.</p>
+<p><a href="https://flatpak.org/" title="" target="_blank">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
+<p>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
+<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br />
+As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
+<h2 id="configuring-flatpak-repos"><a class="header" href="#configuring-flatpak-repos">Configuring Flatpak repos</a></h2>
+<p>The commands to remove the default <em>Fedora Flatpaks</em> repo and install the <em>Flathub</em> repo has been given below.</p>
+<pre><code class="language-bash"># Remove Fedora Flatpak repos
+flatpak remote-delete fedora
+flatpak remote-delete fedora-testing
+
+# Install Flathub repo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+<h2 id="flatpak-apps-i-use"><a class="header" href="#flatpak-apps-i-use">Flatpak apps I use</a></h2>
+<p>Here is a list of the Flatpak apps I use on my <em>Fedora Silverblue</em> install.</p>
+<h3 id="gnome-apps"><a class="header" href="#gnome-apps">GNOME Apps</a></h3>
+<h4 id="gnome-core-stuff"><a class="header" href="#gnome-core-stuff">GNOME Core Stuff</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Audio Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Decibels" title="" target="_blank">org.gnome.Decibels</a></td><td>A very simple audio player, gets the job done. Install RhythmBox if you want something more powerful.</td></tr>
+<tr><td>Video Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Showtime" title="" target="_blank">org.gnome.Showtime</a></td><td>A very simple video player, gets the job done. Install VLC if you want something more powerful.</td></tr>
+<tr><td>Image Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Loupe" title="" target="_blank">org.gnome.Loupe</a></td><td>A basic image viewer with limited image editing capabilities.</td></tr>
+<tr><td>Document Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Papers" title="" target="_blank">org.gnome.Papers</a></td><td>A basic PDF viewer. Also has a presentation function.</td></tr>
+<tr><td>Sound Recorder</td><td><a href="https://flathub.org/en/apps/org.gnome.SoundRecorder" title="" target="_blank">org.gnome.SoundRecorder</a></td><td>A very simple sound recorder app.</td></tr>
+<tr><td>Text Editor</td><td><a href="https://flathub.org/en/apps/org.gnome.TextEditor" title="" target="_blank">org.gnome.TextEditor</a></td><td>A basic text editor. Has support for tabs and some basic customization options.</td></tr>
+<tr><td>Calculator</td><td><a href="https://flathub.org/en/apps/org.gnome.Calculator" title="" target="_blank">org.gnome.Calculator</a></td><td>A relatively powerful calculator app.</td></tr>
+<tr><td>Calendar</td><td><a href="https://flathub.org/en/apps/org.gnome.Calendar" title="" target="_blank">org.gnome.Calendar</a></td><td>A basic calendar app with support for account syncing.</td></tr>
+<tr><td>Clocks</td><td><a href="https://flathub.org/en/apps/org.gnome.clocks" title="" target="_blank">org.gnome.clocks</a></td><td>A basic clock app.</td></tr>
+<tr><td>Camera</td><td><a href="https://flathub.org/en/apps/org.gnome.Snapshot" title="" target="_blank">org.gnome.Snapshot</a></td><td>A basic camera app.</td></tr>
+<tr><td>Contacts</td><td><a href="https://flathub.org/en/apps/org.gnome.Contacts" title="" target="_blank">org.gnome.Contacts</a></td><td>A basic contacts app with support for account syncing.</td></tr>
+<tr><td>Maps</td><td><a href="https://flathub.org/en/apps/org.gnome.Maps" title="" target="_blank">org.gnome.Maps</a></td><td>A very simple maps application, has issues determining your location sometimes.</td></tr>
+<tr><td>Weather</td><td><a href="https://flathub.org/en/appsd/org.gnome.Weather" title="" target="_blank">org.gnome.Weather</a></td><td>A very simple weather application.</td></tr>
+<tr><td>Web</td><td><a href="https://flathub.org/en/apps/org.gnome.Epiphany" title="" target="_blank">org.gnome.Epiphany</a></td><td>A very simple web browser. lacks extension support and has very weak adblocking.</td></tr>
+<tr><td>Connections</td><td><a href="https://flathub.org/en/apps/org.gnome.Connections" title="" target="_blank">org.gnome.Connections</a></td><td>Simple remote desktop client application supporting the RDP, VNC and SPICE protocols.</td></tr>
+<tr><td>Firmware</td><td><a href="https://flathub.org/en/apps/org.gnome.Firmware" title="" target="_blank">org.gnome.Firmware</a></td><td>A very simple application for displaying and updating the firmware of your devices.</td></tr>
+<tr><td>Fonts</td><td><a href="https://flathub.org/en/apps/org.gnome.font-viewer" title="" target="_blank">org.gnome.font-viewer</a></td><td>A very simple font viewer application. Can install fonts.</td></tr>
+<tr><td>Document Scanner</td><td><a href="https://flathub.org/en/apps/org.gnome.SimpleScan" title="" target="_blank">org.gnome.SimpleScan</a></td><td>A very simple document scanner application. Install NAPS2 if you want something more powerful.</td></tr>
+<tr><td>Disk Usage Analyzer</td><td><a href="https://flathub.org/en/apps/org.gnome.baobab" title="" target="_blank">org.gnome.baobab</a></td><td>A very simple disk usage analyzer tool. Can only analyze your home folder.</td></tr>
+<tr><td>Logs</td><td><a href="https://flathub.org/en/apps/org.gnome.Logs" title="" target="_blank">org.gnome.Logs</a></td><td>A very handy log viewer application to find out issues with your system.</td></tr>
+<tr><td>Passwords and Keys</td><td><a href="https://flathub.org/en/apps/org.gnome.seahorse.Application" title="" target="_blank">org.gnome.seahorse.Application</a></td><td>A basic key management application for creating and managing your GPG, SSH and gnome-keyring/libsecret keys.</td></tr>
+</tbody></table>
+</div>
+<h4 id="gnome-extra-stuff"><a class="header" href="#gnome-extra-stuff">GNOME Extra Stuff</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Refine</td><td><a href="https://flathub.org/en/apps/page.tesk.Refine" title="" target="_blank">page.tesk.Refine</a></td><td>A successor to the GNOME Tweaks application. Lets you tweak and configure various aspects of the GNOME DE.</td></tr>
+<tr><td>Extension Manager</td><td><a href="https://flathub.org/en/apps/com.mattjakeman.ExtensionManager" title="" target="_blank">com.mattjakeman.ExtensionManager</a></td><td>An GNOME Shell extension manager application. Lets you directly install and manage your GNOME extensions and check whether they are compatible with your current GNOME version.</td></tr>
+<tr><td>Flatseal</td><td><a href="https://flathub.org/en/apps/com.github.tchx84.Flatseal" title="" target="_blank">com.github.tchx84.Flatseal</a></td><td>A very powerful application for configuring the permissions and other aspects of your Flatpak apps</td></tr>
+<tr><td>Ignition</td><td><a href="https://flathub.org/en/apps/io.github.flattool.Ignition" title="" target="_blank">io.github.flattool.Ignition</a></td><td>A basic startup application manager.</td></tr>
+<tr><td>Resources</td><td><a href="https://flathub.org/en/apps/net.nokyan.Resources" title="" target="_blank">net.nokyan.Resources</a></td><td>A beautiful, stunning and powerful system monitor utility.</td></tr>
+<tr><td>Gear Lever</td><td><a href="https://flathub.org/en/apps/it.mijorus.gearlever" title="" target="_blank">it.mijorus.gearlever</a></td><td>An application for integrating appimages into your system.</td></tr>
+<tr><td>Pika Backup</td><td><a href="https://flathub.org/en/apps/org.gnome.World.PikaBackup" title="" target="_blank">org.gnome.World.PikaBackup</a></td><td>A very powerful and flexible backup utility.</td></tr>
+<tr><td>Foliate</td><td><a href="https://flathub.org/en/apps/com.github.johnfactotum.Foliate" title="" target="_blank">com.github.johnfactotum.Foliate</a></td><td>A beautiful ebook reader.</td></tr>
+<tr><td>Fractal</td><td><a href="https://flathub.org/en/apps/org.gnome.Fractal" title="" target="_blank">org.gnome.Fractal</a></td><td>A Matrix client. Supports multi-account.</td></tr>
+<tr><td>DistroShelf</td><td><a href="https://flathub.org/en/apps/com.ranfdev.DistroShelf" title="" target="_blank">com.ranfdev.DistroShelf</a></td><td>An application for managing distrobox containers, should you need one.</td></tr>
+<tr><td>Keypunch</td><td><a href="https://flathub.org/en/apps/dev.bragefuglseth.Keypunch" title="" target="_blank">dev.bragefuglseth.Keypunch</a></td><td>A simple, minimal typing practice app with support for a wide variety of languages.</td></tr>
+<tr><td>Bottles</td><td><a href="https://flathub.org/en/apps/com.usebottles.bottles" title="" target="_blank">com.usebottles.bottles</a></td><td>An extremely feature-rich wine and wine-prefix manager app. I prefer it over Lutris and all other wine managers.</td></tr>
+<tr><td>Authenticator</td><td><a href="https://flathub.org/en/apps/com.belmoussaoui.Authenticator" title="" target="_blank">com.belmoussaoui.Authenticator</a></td><td>A basic but really useful app for managing your 2FA codes. Supports Aegis and tons of other 2FA OTP providers.</td></tr>
+</tbody></table>
+</div>
+<h3 id="other-utilities"><a class="header" href="#other-utilities">Other Utilities</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Firefox</td><td><a href="https://flathub.org/en/apps/org.mozilla.firefox" title="" target="_blank">org.mozilla.firefox</a></td><td>Has better integration for linux than most other browsers. Supports HW-Accelerated Video Transcoding OOTB for Intel and AMD GPUs.</td></tr>
+<tr><td>Tor Browser Launcher</td><td><a href="https://flathub.org/en/apps/org.torproject.torbrowser-launcher" title="" target="_blank">org.torproject.torbrowser-launcher</a></td><td>uhh</td></tr>
+<tr><td>qBittorrent</td><td><a href="https://flathub.org/en/apps/org.qbittorrent.qBittorrent" title="" target="_blank">org.qbittorrent.qBittorrent</a></td><td>Postmodern Marxist-Leninism.</td></tr>
+<tr><td>Vesktop</td><td><a href="https://flathub.org/en/apps/dev.vencord.Vesktop" title="" target="_blank">dev.vencord.Vesktop</a></td><td>A better Discord client with support for proper, functional screen sharing on Wayland with audio.</td></tr>
+<tr><td>Slack</td><td><a href="https://flathub.org/en/apps/com.slack.Slack" title="" target="_blank">com.slack.Slack</a></td><td>Discord for BBA grads.</td></tr>
+<tr><td>Telegram Desktop</td><td><a href="https://flathub.org/en/apps/org.telegram.desktop" title="" target="_blank">org.telegram.desktop</a></td><td>Atp having this installed is more questionable than having the Tor Browser installed.</td></tr>
+<tr><td>OnlyOffice Desktop Editors</td><td><a href="https://flathub.org/en/apps/org.onlyoffice.desktopeditors" title="" target="_blank">org.onlyoffice.desktopeditors</a></td><td>Best replacement for MS Office with good linux support.</td></tr>
+<tr><td>Obsidian</td><td><a href="https://flathub.org/en/apps/md.obsidian.Obsidian" title="" target="_blank">md.obsidian.Obsidian</a></td><td>Best notetaking app in existence.</td></tr>
+<tr><td>OBS Studio</td><td><a href="https://flathub.org/en/apps/com.obsproject.Studio" title="" target="_blank">com.obsproject.Studio</a></td><td>works ig</td></tr>
+<tr><td>LocalSend</td><td><a href="https://flathub.org/en/apps/org.localsend.localsend_app" title="" target="_blank">org.localsend.localsend_app</a></td><td>Fantastic app for quickly and easily sharing files between devices. A decent Airdrop/Quick Share/Shareit replacement.</td></tr>
+<tr><td>RetroArch</td><td><a href="https://flathub.org/en/apps/org.libretro.RetroArch" title="" target="_blank">org.libretro.RetroArch</a></td><td>Jack of emulating all retro games, master of none.</td></tr>
+<tr><td>GIMP</td><td><a href="https://flathub.org/en/apps/org.gimp.GIMP" title="" target="_blank">org.gimp.GIMP</a></td><td>Image editor, I hate it.</td></tr>
+<tr><td>Krita</td><td><a href="https://flathub.org/en/apps/org.kde.krita" title="" target="_blank">org.kde.krita</a></td><td>Image editor, I love it.</td></tr>
+<tr><td>Kdenlive</td><td><a href="https://flathub.org/en/apps/org.kde.kdenlive" title="" target="_blank">org.kde.kdenlive</a></td><td>Very basic video editor, I am neutral. Get DaVinci Resolve Studio + DavinciBox if you need something good.</td></tr>
+<tr><td>Fedora Media Writer</td><td><a href="https://flathub.org/en/apps/org.fedoraproject.MediaWriter" title="" target="_blank">org.fedoraproject.MediaWriter</a></td><td>Best ISO flasher utility for linux.</td></tr>
+<tr><td>Virtual Machine Manager</td><td><a href="https://flathub.org/en/apps/org.virt_manager.virt-manager" title="" target="_blank">org.virt_manager.virt-manager</a></td><td>A very powerful app for creating and managing VMs, also grab the QEMU addon.</td></tr>
+</tbody></table>
+</div>
+<h2 id="apps-to-add-later"><a class="header" href="#apps-to-add-later">Apps to add later</a></h2>
 <ul>
-<li>Flatseal (``)</li>
-<li>Gear Lever (<code>b</code>)</li>
+<li>Gradia</li>
+<li>Desktop Plus (GIT UI)</li>
+<li>gitg</li>
+<li>Collision</li>
+<li>Inspector</li>
+<li>Pods</li>
+<li>File Roller</li>
+<li>Secrets</li>
+<li>Polari</li>
+<li>Pinta</li>
+<li>Inkscape</li>
+<li>Tuba</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="toolbox-setup-for-fedora-silverblue"><a class="header" href="#toolbox-setup-for-fedora-silverblue">Toolbox Setup for Fedora Silverblue</a></h1>
 <p><a href="https://containertoolbx.org/" title="" target="_blank">toolbox</a>  (<em>toolbx</em>) is a utility shipped with <em>Fedora Silverblue</em> to easily create and use containers.<br />
@@ -335,14 +541,11 @@ NOTE: Put your own CLI programs in /usr/local/bin
 </ul>
 <p>You can apply some optional tweaks to your <em>Fedora Linux</em> <em>toolbx</em> containers to make the default package manager <code>dnf</code> faster.</p>
 <ul>
-<li>
-<p>Open <code>/etc/dnf/dnf.conf</code>.</p>
-<pre><code class="language-bash">sudo nano /etc/dnf/dnf.conf
-</code></pre>
-</li>
-<li>
-<p>Add/Change the following values:</p>
-<pre><code class="language-bash"># Download 20 packages simultaneously
+<li>Open <code>/etc/dnf/dnf.conf</code> and add/change the following values:
+<pre><code class="language-bash"># see `man dnf.conf` for defaults and possible options
+
+[main]
+# Download 20 packages simultaneously
 max_parallel_downloads = 20
 
 # Mirror must maintain download speed of atleast 256*1024 bytes (256KiB/s) for the duration of `timeout` value in seconds
@@ -351,9 +554,6 @@ minrate = 262144
 # Mirror must maintain `minrate` amount of download speed in bytes for `timeout` value in seconds
 timeout = 5  
 </code></pre>
-</li>
-<li>
-<p>Save changes to <code>dnf.conf</code> and quit <code>nano</code> by first pressing <code>Ctrl + S</code> then <code>Ctrl + X</code>.</p>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vscode-setup-for-fedora-silverblue"><a class="header" href="#vscode-setup-for-fedora-silverblue">VSCode Setup for Fedora Silverblue</a></h1>
@@ -406,83 +606,170 @@ As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> ins
 <li><code>fstrim.service</code> not trimming <code>/</code> <em>(root)</em>.</li>
 </ol>
 <p>To fix this, run the following commands:</p>
-<pre><code class="language-bash"># Add btrfs compression option
+<pre><code class="language-bash"># Add btrfs compression option to kargs
 rpm-ostree kargs --delete=rootflags=subvol=root \
 --append=rootflags=subvol=root,compress=zstd:1
 
-# Comment out the / line in fstab
+# Comment out the line for the root (/) mount in /etc/fstab
 sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
 
-# Manually run fstrim for /sysroot periodically
+# Manually run fstrim on /sysroot periodically
 sudo fstrim /sysroot
 ``
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cachyos"><a class="header" href="#cachyos">CachyOS</a></h1>
-<p>Unfinished</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2-in-cachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-cachyos">Configure LUKS auto-unlocking with TPM2 in CachyOS</a></h1>
-<h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip-on-cachyos-august-2025">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip on CachyOS (August 2025)</a></h2>
-<p><strong>You need use <code>systemd-boot</code> for this to work properly.</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="arch-linuxcachyos"><a class="header" href="#arch-linuxcachyos">Arch Linux/CachyOS</a></h1>
+<p><a href="https://archlinux.org/" title="" target="_blank">Arch Linux</a> is a <em>community-driven</em>, <em>rolling release</em> distro that features a wide selection of packages in it’s repositories. It features a CLI installer for easy installation.<br />
+<a href="https://cachyos.org/" title="" target="_blank">CachyOS</a> is an <em>Arch Linux</em> derivative that provides their own optimizations on top of <em>Arch Linux</em>, making it blazingly fast.</p>
+<p>Overall, you will have a good time with either one of these distros.</p>
+<blockquote>
+<p>This section contains guides and information mostly specific to <em>Arch Linux/CachyOS</em>.<br />
+I recommend reading the content at <a href="linux//linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br />
+Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos">Configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS</a></h1>
+<p>To configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS, do the following steps:</p>
 <ul>
-<li>Make a copy of your <code>/etc/crypttab</code> for initramfs</li>
-</ul>
+<li>
+<p>Make a copy of your <code>/etc/crypttab</code> for initramfs</p>
 <pre><code class="language-bash">sudo cp /etc/crypttab /etc/crypttab.initramfs
 </code></pre>
-<ul>
-<li>Make a backup of your /etc/mkinitcpio.conf</li>
-</ul>
+</li>
+<li>
+<p>Make a backup of your <code>/etc/mkinitcpio.conf</code></p>
 <pre><code class="language-bash">sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
 </code></pre>
-<ul>
-<li>Include the necessary systemd stuff in your initramfs by replacing the following in your <code>/etc/mkinitcpio.conf</code> file: <br></li>
+</li>
 <li>
+<p>Include the necessary systemd stuff in your initramfs by replacing the following in your <code>/etc/mkinitcpio.conf</code> file:</p>
 <ul>
 <li><code>udev</code> &gt; <code>systemd</code></li>
-</ul>
-</li>
-<li>
-<ul>
 <li><code>keymap</code> and <code>consolefont</code> &gt; <code>sd-vconsole</code></li>
-</ul>
-</li>
-<li>
-<ul>
 <li><code>encrypt</code> &gt; <code>sd-encrypt</code></li>
-</ul>
-</li>
-<li>
+<li>Example:
 <ul>
-<li>Example:</li>
-</ul>
-</li>
 <li>
-<ul>
-<li>Original:</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-bash">HOOKS=(base udev autodetect microcode kms modconf block keyboard keymap consolefont plymouth encrypt filesystems)
+<p>Original:</p>
+<pre><code class="language-bash">HOOKS=(base udev plymouth autodetect microcode modconf kms block keyboard keymap consolefont  encrypt filesystems fsck)
 </code></pre>
-<ul>
+</li>
 <li>
-<ul>
-<li>Modified:</li>
+<p>Modified:</p>
+<pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms block keyboard sd-vconsole sd-encrypt filesystems fsck)
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole sd-encrypt block filesystems fsck)
-</code></pre>
-<ul>
-<li>Regenerate your initramfs</li>
-</ul>
+</li>
+<li>
+<p>Regenerate your initramfs</p>
 <pre><code class="language-bash">sudo mkinitcpio -P
 </code></pre>
-<h3 id="continue-onwards-with-the-guide-below"><a class="header" href="#continue-onwards-with-the-guide-below">Continue onwards with the guide below</a></h3>
-<p><a href="linux/cachyos//guides/misc/tpm-autounlock.html">Main guide</a></p>
+</li>
+<li>
+<p>Continue onwards with <a href="linux/cachyos//linux/others/configure-luks-autounlocking-with-tpm2.html">linux/others/Configure LUKS Auto-unlocking with TPM2</a></p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos"><a class="header" href="#unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos">UNFINISHED Creating a VM using virt-manager on Arch Linux/CachyOS</a></h1>
+<h2 id="installing-and-configuring-virt-manager"><a class="header" href="#installing-and-configuring-virt-manager">Installing and configuring virt-manager</a></h2>
+<h3 id="installing-virt-manager"><a class="header" href="#installing-virt-manager">Installing <code>virt-manager</code></a></h3>
+<ul>
+<li>
+<p>Install <code>virt-manager</code> and other necessary packages.</p>
+<pre><code class="language-bash"> sudo pacman -Syu virt-manager qemu-full libguestfs guestfs-tools iptables-nft
+</code></pre>
+</li>
+<li>
+<p>Enable <code>libvirtd.socket</code> and <code>virtlogd.socket</code></p>
+<pre><code class="language-bash">systemctl enable --now libvirtd.socket
+systemctl enable --now virtlogd.socket
+</code></pre>
+</li>
+<li>
+<p>Ensure the variable is<code>firewall_backend=iptables</code> in <code>/etc/libvirt/network.conf</code> for NAT to function.</p>
+</li>
+<li>
+<p>Enable <code>default</code> NAT adapter</p>
+<pre><code class="language-bash">sudo virsh net-start default
+sudo virsh net-autostart default
+</code></pre>
+</li>
+</ul>
+<h3 id="configuring-virt-manager"><a class="header" href="#configuring-virt-manager">Configuring <code>virt-manager</code></a></h3>
+<ul>
+<li>Open <code>Virtual Machine Manager</code>.</li>
+<li>Goto <code>Edit &gt; Preferences</code> from the tab bar on top.
+<ul>
+<li>Under <code>General</code>
+<ul>
+<li>Enable <code>Enable XML Editing</code></li>
+<li>Enable <code>Enable libguestfs VM Introspection</code></li>
+</ul>
+</li>
+<li>Under <code>New VM</code>
+<ul>
+<li>Set <code>x86 Firmware</code> to <code>UEFI</code></li>
+<li>Set <code>CPU Default</code> to <code>host-passthrough</code></li>
+<li>Set <code>Storage Format</code> to <code>QCOW2</code> (optional)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If QEMU/KVM doesn’t exist like the pic above, Goto <code>File &gt; Add Connection</code> and configure as follows (Make sure you are using the system instance of qemu by ensuring the Generated URI field reads <code>qemu:///system</code>)</li>
+<li>Double-click on QEMU/KVM if it shows Not Connected.</li>
+<li><code>virt-manager</code> is now ready for creating and running VMs.</li>
+</ul>
+<h2 id="creating-vms"><a class="header" href="#creating-vms">Creating VMs</a></h2>
+<h3 id="linux-guests"><a class="header" href="#linux-guests">Linux Guests</a></h3>
+<p>Generally, Linux guests should work OOTB. IF you are facing any issues, consult your distro documentation.</p>
+<h3 id="windows-guests"><a class="header" href="#windows-guests">Windows Guests</a></h3>
+<ul>
+<li>Finally, click the shiny monitor icon near the top-right and create a new VM</li>
+<li>While using the wizard, choose the installed OS manually by unticking the auto detect checkbox <strong>ENSURE OS TYPE IS THE SAME OS YOU ARE GOING TO INSTALL</strong></li>
+<li>On the last screen, select <code>Customize configuration before install</code></li>
+<li><strong>(Windows Guests)</strong> Download the VirtIO guest tools iso for Windows so we can have disk and network drivers.
+<ul>
+<li><a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/" title="" target="_blank">Download VirtIO driver iso</a></li>
+</ul>
+</li>
+<li><strong>(Windows Guests)</strong> Add an emulated CD-ROM drive with our VirtIO drivers from <code>Add Hardware &gt; Storage (In the sidebar) &gt; Device Type: CDROM Device</code> and select the VirtIO driver ISO file, then click Ok to close the dialog box</li>
+<li>On default configurations, <code>virt-manager</code> will default to an emulated SATA disk as your storage drive. To enjoy better performance, select <code>SATA Disk 1</code> from the sidebar and change <code>Disk Bus:</code> to <code>VirtIO</code></li>
+<li>Similarly, you can select <code>NIC:(random characters)</code> from the sidebar and change <code>Device Model:</code> to <code>VirtIO</code></li>
+<li>Finally, select <code>Begin Installation</code> on the top-left corner and begin installation</li>
+<li><strong>(Windows Guests)</strong> At the disk partitioning screen, the installer will complain about having no disks to install to. Click <code>Load Drivers</code>, then <code>Browse</code> and goto <code>(VirtIO disk) &gt; vioscsi &gt; (windows version) &gt; AMD64</code> and click Ok to let the installer find the driver. Afterwards, our main disk should be visible in the disk partitioning screen</li>
+<li><strong>Continue the installation as normal</strong></li>
+<li>You can customize the VM after installation by switching from the Graphical Console view to the Hardware Details view on the top-left</li>
+</ul>
+<h3 id="installing-spice-and-virtio-guest-tools-windows-guests"><a class="header" href="#installing-spice-and-virtio-guest-tools-windows-guests">Installing Spice and VirtIO guest tools (Windows Guests)</a></h3>
+<ul>
+<li>After installation has finished, navigate to the emulated CDROM drive with the VirtIO drivers in Windows Explorer and install the guest tools</li>
+<li>Afterwards, visit these two links inside the VM and install the Spice guest tools
+<ul>
+<li><a href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe" title="" target="_blank">Spice Guest tools</a></li>
+<li><a href="https://www.spice-space.org/download/windows/spice-webdavd/" title="" target="_blank">Spice Webdavd</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="setting-up-rdp"><a class="header" href="#setting-up-rdp">Setting up RDP</a></h3>
+<ul>
+<li>Enable Remote Connections inside your Windows guest. Google how to.</li>
+<li>While the VM is running, Goto Hardware Details view, click on the <code>NIC:(random characters)</code> device from the sidebar and take a note of the IP Address</li>
+<li>Note that the user account you want to RDP to in the Windows guest must have a password set</li>
+<li>Install a RDP client, <code>krdc</code> is a very nice and robust client.</li>
+<li>Enter the IP Address in the address field and connect to it</li>
+<li>On the login prompt, enter your Windows username and password to connect</li>
+</ul>
+<h3 id="setting-up-gpu-passthrough"><a class="header" href="#setting-up-gpu-passthrough">Setting up GPU Passthrough</a></h3>
+<ul>
+<li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; PCI Host Device</code> and select one of the vGPUs/GPU you want to passthrough to the VM.</li>
+<li><strong>(Intel iGPUs)</strong> To avoid the Code 43 error with the i915 sriov dkms drivers, follow <a href="https://github.com/strongtz/i915-sriov-dkms/issues/8#issuecomment-1567465036" title="" target="_blank">this thread</a> and add a &lt;vendor_id&gt; tag</li>
+</ul>
+<h3 id="setting-up-usb-passthrough"><a class="header" href="#setting-up-usb-passthrough">Setting up USB Passthrough</a></h3>
+<ul>
+<li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; USB Host Device</code> and select one of the USB Devices you want to passthrough to the VM.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="others"><a class="header" href="#others">Others</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
-<ul>
-<li>Run <code>systemctl enable --user --now syncthing.service</code></li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="manage-environment-variables"><a class="header" href="#manage-environment-variables">Manage Environment Variables</a></h1>
 <ul>
 <li>Drop files like <code>~/.config/environment.d/xx-&lt;name&gt;.conf</code></li>

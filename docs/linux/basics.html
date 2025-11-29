@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Configure Syncthing - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Basics - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../../favicon.svg">
-        <link rel="shortcut icon" href="../../favicon.png">
-        <link rel="stylesheet" href="../../css/variables.css">
-        <link rel="stylesheet" href="../../css/general.css">
-        <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../../";
+            const path_to_root = "../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -102,7 +102,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -137,7 +137,7 @@
                     <h1 class="menu-title">ScatteredCognition&#x27;s Biblioteca</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/ScatteredCognition/" title="Git repository" aria-label="Git repository">
@@ -169,17 +169,116 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
+                        <h1 id="basics-of-using-linux"><a class="header" href="#basics-of-using-linux">Basics of using Linux</a></h1>
+<h2 id="demystifying-the-jargons"><a class="header" href="#demystifying-the-jargons">Demystifying the Jargons</a></h2>
+<ul>
+<li>
+<p>The <em>terminal</em> is an application you execute commands from.</p>
+</li>
+<li>
+<p>The <em>shell</em> is the program that actually executes your commands. Think of <code>cmd.exe</code> or <em>PowerShell</em> on <em>Windows</em>.<br />
+On most linux distros, <code>bash</code> is usually the default shell, but I recommend using <code>fish</code> as your default shell and <code>bash</code> for writing shell scripts.</p>
+<p>To list available shells in your system, type the following in a terminal:</p>
+<pre><code class="language-bash">cat /etc/shells
+</code></pre>
+<p>Note that you can usually install additional shells from your package manager.</p>
+<p>To change your default <em>shell</em>, type the following in a terminal:</p>
+<pre><code class="language-bash">sudo usermod -s &lt;path_to_shell&gt; $USER
+</code></pre>
+<p>Example: <code>sudo usermod -s /bin/bash $USER</code></p>
+</li>
+<li>
+<p><em>directory</em> is a synonym for a <em>folder</em>.</p>
+</li>
+<li>
+<p><em>arguments</em> are the extra options you use with a command.<br />
+Example: <code>grep -i bash /etc/shells</code><br />
+Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
+</li>
+<li>
+<p><em>path</em> can either refer to the location of a <em>directory</em> or <em>file</em>, or a special <em>environment variable</em> <code>$PATH</code> that contains the locations from where you can launch and execute commands.</p>
+</li>
+<li>
+<p><em>environment variable</em> is a <em>shell variable</em> that works and functions mostly like variables in any programming language.</p>
+</li>
+</ul>
+<h2 id="cli-basics"><a class="header" href="#cli-basics">CLI Basics</a></h2>
+<h3 id="navigating-your-files-and-folders"><a class="header" href="#navigating-your-files-and-folders">Navigating your files and folders</a></h3>
+<ul>
+<li>Use the <code>pwd</code> command to list the directory you’re currently in.</li>
+<li>Use the <code>ls -la</code> command to list the files and directories in your current directory.</li>
+<li>Use the <code>tree -C &lt;directory&gt; | less -R</code> command to list all files and subdirectories ina scorllable window.</li>
+<li>Use the <code>cd &lt;directory&gt;</code> command to change your directory.</li>
+</ul>
+<h3 id="editing-text"><a class="header" href="#editing-text">Editing text</a></h3>
+<ul>
+<li>
+<p>Use the <code>cat &lt;filename&gt;</code> command to display the text in a file.</p>
+</li>
+<li>
+<p>Use the <code>nano &lt;filename&gt;</code> command to edit text in a file.<br />
+Example: <code>nano /etc/dnf/dnf.conf</code></p>
+<p>To save a file, press <code>Ctrl + S</code><br />
+To exit <code>nano</code> after saving a file, press <code>Ctrl + X</code></p>
+</li>
+<li>
+<p>To append some text to the end of a file, use ( <code>&gt;&gt;</code> )<br />
+Example: <code>echo "Hello World" &gt;&gt; file.txt</code></p>
+</li>
+<li>
+<p>To create/overwrite a file and write a line to it, use ( <code>&gt;</code> )<br />
+Example: <code>echo "The old file is gone" &gt; file.txt</code></p>
+</li>
+<li>
+<p>You can use the <code>awk</code> and <code>sed</code> utilities to make edits to files matching a certain pattern.<br />
+Useful for scripting, ask AI how to use them.</p>
+</li>
+</ul>
+<h2 id="the-filesystem-layout"><a class="header" href="#the-filesystem-layout">The Filesystem Layout</a></h2>
+<p>A basic overview of the modern linux filesystem is given below.</p>
+<ul>
+<li>
+<p><code>/boot</code> or <code>/efi</code> is where the bootloader is stored.</p>
+</li>
+<li>
+<p><code>/home/&lt;username&gt;/</code> <small>(aliased to <code>~</code>)</small> is your user’s home directory. <small>(equivalent to <code>C:\Users\</code>)</small></p>
+</li>
+<li>
+<p><code>/usr</code> is where your actual system is stored. <small>(equivalent to <code>C:\Windows\</code>)</small></p>
+<p><small>Note: Everything here (except <code>/usr/local/</code>) is managed by your package manager.</small></p>
+<ul>
+<li><code>/usr/bin/</code> - Contains executable files or symlinks to executables.</li>
+<li><code>/usr/sbin/</code> - Usually either symlinked to <code>/usr/bin/</code> or contains extra executables.</li>
+<li><code>/usr/lib*/</code> - Contains library files <code>.so</code> (equivalent to <code>.dll</code>)</li>
+<li><code>/usr/share/</code> - Contains non-executable resources for apps (pictures, config files etc)
+<ul>
+<li><code>/usr/share/applications/</code> - Contains <code>.desktop</code> desktop entry files for applications installed using your package manager.</li>
+<li><code>/usr/share/icons/</code> - Contains icons for applications to use.</li>
+</ul>
+</li>
+<li><code>/usr/local/</code> - A directory for users to install their own apps not managed by the package manager. <small>(system-wide)</small></li>
+</ul>
+</li>
+<li>
+<p>On modern distros, <code>/bin</code>, <code>/sbin</code>, and <code>/lib*</code> directories are usually symlinks which point to their equivalents inside <code>/usr</code>, this is called the <a href="https://systemd.io/THE_CASE_FOR_THE_USR_MERGE/" title="" target="_blank">/usr merge</a>.</p>
+</li>
+<li>
+<p><code>/etc</code> is where configuration files are stored.</p>
+</li>
+<li>
+<p><code>/opt</code> is where third-party apps like <em>Google Chrome</em>, <em>Brave Software</em> or <em>DaVinci Resolve</em> usually install their things.</p>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/others.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../hobbylist/other-sources.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/others/manage-environment-variables.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../linux/fedora-silverblue.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -189,11 +288,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/others.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../hobbylist/other-sources.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/others/manage-environment-variables.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../linux/fedora-silverblue.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -208,13 +307,13 @@
         </script>
 
 
-        <script src="../../elasticlunr.min.js"></script>
-        <script src="../../mark.min.js"></script>
-        <script src="../../searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../../clipboard.min.js"></script>
-        <script src="../../highlight.js"></script>
-        <script src="../../book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 

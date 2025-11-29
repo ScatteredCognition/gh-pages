@@ -45,13 +45,11 @@ As such, I recommend using *Alpine Linux* for your *toolbx* containers.
 
 You can apply some optional tweaks to your *Fedora Linux* *toolbx* containers to make the default package manager `dnf` faster.
 
-- Open `/etc/dnf/dnf.conf`.  
+- Open `/etc/dnf/dnf.conf` and add/change the following values:  
   ```bash
-  sudo nano /etc/dnf/dnf.conf
-  ```
-
-- Add/Change the following values:  
-  ```bash
+  # see `man dnf.conf` for defaults and possible options
+  
+  [main]
   # Download 20 packages simultaneously
   max_parallel_downloads = 20
   
@@ -61,5 +59,3 @@ You can apply some optional tweaks to your *Fedora Linux* *toolbx* containers to
   # Mirror must maintain `minrate` amount of download speed in bytes for `timeout` value in seconds
   timeout = 5  
   ```
-
-- Save changes to `dnf.conf` and quit `nano` by first pressing `Ctrl + S` then `Ctrl + X`.

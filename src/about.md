@@ -1,4 +1,4 @@
-<h1 style="margin-bottom: 10px;">About</h1>
+# About
 
 <div style="display:flex; align-items: center;">
   <div style="display:inline-block; text-align: left;">

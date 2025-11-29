@@ -216,14 +216,11 @@ NOTE: Put your own CLI programs in /usr/local/bin
 </ul>
 <p>You can apply some optional tweaks to your <em>Fedora Linux</em> <em>toolbx</em> containers to make the default package manager <code>dnf</code> faster.</p>
 <ul>
-<li>
-<p>Open <code>/etc/dnf/dnf.conf</code>.</p>
-<pre><code class="language-bash">sudo nano /etc/dnf/dnf.conf
-</code></pre>
-</li>
-<li>
-<p>Add/Change the following values:</p>
-<pre><code class="language-bash"># Download 20 packages simultaneously
+<li>Open <code>/etc/dnf/dnf.conf</code> and add/change the following values:
+<pre><code class="language-bash"># see `man dnf.conf` for defaults and possible options
+
+[main]
+# Download 20 packages simultaneously
 max_parallel_downloads = 20
 
 # Mirror must maintain download speed of atleast 256*1024 bytes (256KiB/s) for the duration of `timeout` value in seconds
@@ -232,9 +229,6 @@ minrate = 262144
 # Mirror must maintain `minrate` amount of download speed in bytes for `timeout` value in seconds
 timeout = 5  
 </code></pre>
-</li>
-<li>
-<p>Save changes to <code>dnf.conf</code> and quit <code>nano</code> by first pressing <code>Ctrl + S</code> then <code>Ctrl + X</code>.</p>
 </li>
 </ul>
 

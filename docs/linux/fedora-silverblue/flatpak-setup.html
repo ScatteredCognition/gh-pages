@@ -170,11 +170,98 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
-<h1 id="flatpak-apps-to-install"><a class="header" href="#flatpak-apps-to-install">Flatpak apps to install</a></h1>
-<p>Here is a list of some Flatpak apps that I always install on a fresh install of <em>Fedora Silverblue</em> and my personal “mini-review” of them.</p>
+<p><a href="https://flatpak.org/" title="" target="_blank">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
+<p>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
+<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br />
+As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
+<h2 id="configuring-flatpak-repos"><a class="header" href="#configuring-flatpak-repos">Configuring Flatpak repos</a></h2>
+<p>The commands to remove the default <em>Fedora Flatpaks</em> repo and install the <em>Flathub</em> repo has been given below.</p>
+<pre><code class="language-bash"># Remove Fedora Flatpak repos
+flatpak remote-delete fedora
+flatpak remote-delete fedora-testing
+
+# Install Flathub repo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+<h2 id="flatpak-apps-i-use"><a class="header" href="#flatpak-apps-i-use">Flatpak apps I use</a></h2>
+<p>Here is a list of the Flatpak apps I use on my <em>Fedora Silverblue</em> install.</p>
+<h3 id="gnome-apps"><a class="header" href="#gnome-apps">GNOME Apps</a></h3>
+<h4 id="gnome-core-stuff"><a class="header" href="#gnome-core-stuff">GNOME Core Stuff</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Audio Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Decibels" title="" target="_blank">org.gnome.Decibels</a></td><td>A very simple audio player, gets the job done. Install RhythmBox if you want something more powerful.</td></tr>
+<tr><td>Video Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Showtime" title="" target="_blank">org.gnome.Showtime</a></td><td>A very simple video player, gets the job done. Install VLC if you want something more powerful.</td></tr>
+<tr><td>Image Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Loupe" title="" target="_blank">org.gnome.Loupe</a></td><td>A basic image viewer with limited image editing capabilities.</td></tr>
+<tr><td>Document Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Papers" title="" target="_blank">org.gnome.Papers</a></td><td>A basic PDF viewer. Also has a presentation function.</td></tr>
+<tr><td>Sound Recorder</td><td><a href="https://flathub.org/en/apps/org.gnome.SoundRecorder" title="" target="_blank">org.gnome.SoundRecorder</a></td><td>A very simple sound recorder app.</td></tr>
+<tr><td>Text Editor</td><td><a href="https://flathub.org/en/apps/org.gnome.TextEditor" title="" target="_blank">org.gnome.TextEditor</a></td><td>A basic text editor. Has support for tabs and some basic customization options.</td></tr>
+<tr><td>Calculator</td><td><a href="https://flathub.org/en/apps/org.gnome.Calculator" title="" target="_blank">org.gnome.Calculator</a></td><td>A relatively powerful calculator app.</td></tr>
+<tr><td>Calendar</td><td><a href="https://flathub.org/en/apps/org.gnome.Calendar" title="" target="_blank">org.gnome.Calendar</a></td><td>A basic calendar app with support for account syncing.</td></tr>
+<tr><td>Clocks</td><td><a href="https://flathub.org/en/apps/org.gnome.clocks" title="" target="_blank">org.gnome.clocks</a></td><td>A basic clock app.</td></tr>
+<tr><td>Camera</td><td><a href="https://flathub.org/en/apps/org.gnome.Snapshot" title="" target="_blank">org.gnome.Snapshot</a></td><td>A basic camera app.</td></tr>
+<tr><td>Contacts</td><td><a href="https://flathub.org/en/apps/org.gnome.Contacts" title="" target="_blank">org.gnome.Contacts</a></td><td>A basic contacts app with support for account syncing.</td></tr>
+<tr><td>Maps</td><td><a href="https://flathub.org/en/apps/org.gnome.Maps" title="" target="_blank">org.gnome.Maps</a></td><td>A very simple maps application, has issues determining your location sometimes.</td></tr>
+<tr><td>Weather</td><td><a href="https://flathub.org/en/appsd/org.gnome.Weather" title="" target="_blank">org.gnome.Weather</a></td><td>A very simple weather application.</td></tr>
+<tr><td>Web</td><td><a href="https://flathub.org/en/apps/org.gnome.Epiphany" title="" target="_blank">org.gnome.Epiphany</a></td><td>A very simple web browser. lacks extension support and has very weak adblocking.</td></tr>
+<tr><td>Connections</td><td><a href="https://flathub.org/en/apps/org.gnome.Connections" title="" target="_blank">org.gnome.Connections</a></td><td>Simple remote desktop client application supporting the RDP, VNC and SPICE protocols.</td></tr>
+<tr><td>Firmware</td><td><a href="https://flathub.org/en/apps/org.gnome.Firmware" title="" target="_blank">org.gnome.Firmware</a></td><td>A very simple application for displaying and updating the firmware of your devices.</td></tr>
+<tr><td>Fonts</td><td><a href="https://flathub.org/en/apps/org.gnome.font-viewer" title="" target="_blank">org.gnome.font-viewer</a></td><td>A very simple font viewer application. Can install fonts.</td></tr>
+<tr><td>Document Scanner</td><td><a href="https://flathub.org/en/apps/org.gnome.SimpleScan" title="" target="_blank">org.gnome.SimpleScan</a></td><td>A very simple document scanner application. Install NAPS2 if you want something more powerful.</td></tr>
+<tr><td>Disk Usage Analyzer</td><td><a href="https://flathub.org/en/apps/org.gnome.baobab" title="" target="_blank">org.gnome.baobab</a></td><td>A very simple disk usage analyzer tool. Can only analyze your home folder.</td></tr>
+<tr><td>Logs</td><td><a href="https://flathub.org/en/apps/org.gnome.Logs" title="" target="_blank">org.gnome.Logs</a></td><td>A very handy log viewer application to find out issues with your system.</td></tr>
+<tr><td>Passwords and Keys</td><td><a href="https://flathub.org/en/apps/org.gnome.seahorse.Application" title="" target="_blank">org.gnome.seahorse.Application</a></td><td>A basic key management application for creating and managing your GPG, SSH and gnome-keyring/libsecret keys.</td></tr>
+</tbody></table>
+</div>
+<h4 id="gnome-extra-stuff"><a class="header" href="#gnome-extra-stuff">GNOME Extra Stuff</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Refine</td><td><a href="https://flathub.org/en/apps/page.tesk.Refine" title="" target="_blank">page.tesk.Refine</a></td><td>A successor to the GNOME Tweaks application. Lets you tweak and configure various aspects of the GNOME DE.</td></tr>
+<tr><td>Extension Manager</td><td><a href="https://flathub.org/en/apps/com.mattjakeman.ExtensionManager" title="" target="_blank">com.mattjakeman.ExtensionManager</a></td><td>An GNOME Shell extension manager application. Lets you directly install and manage your GNOME extensions and check whether they are compatible with your current GNOME version.</td></tr>
+<tr><td>Flatseal</td><td><a href="https://flathub.org/en/apps/com.github.tchx84.Flatseal" title="" target="_blank">com.github.tchx84.Flatseal</a></td><td>A very powerful application for configuring the permissions and other aspects of your Flatpak apps</td></tr>
+<tr><td>Ignition</td><td><a href="https://flathub.org/en/apps/io.github.flattool.Ignition" title="" target="_blank">io.github.flattool.Ignition</a></td><td>A basic startup application manager.</td></tr>
+<tr><td>Resources</td><td><a href="https://flathub.org/en/apps/net.nokyan.Resources" title="" target="_blank">net.nokyan.Resources</a></td><td>A beautiful, stunning and powerful system monitor utility.</td></tr>
+<tr><td>Gear Lever</td><td><a href="https://flathub.org/en/apps/it.mijorus.gearlever" title="" target="_blank">it.mijorus.gearlever</a></td><td>An application for integrating appimages into your system.</td></tr>
+<tr><td>Pika Backup</td><td><a href="https://flathub.org/en/apps/org.gnome.World.PikaBackup" title="" target="_blank">org.gnome.World.PikaBackup</a></td><td>A very powerful and flexible backup utility.</td></tr>
+<tr><td>Foliate</td><td><a href="https://flathub.org/en/apps/com.github.johnfactotum.Foliate" title="" target="_blank">com.github.johnfactotum.Foliate</a></td><td>A beautiful ebook reader.</td></tr>
+<tr><td>Fractal</td><td><a href="https://flathub.org/en/apps/org.gnome.Fractal" title="" target="_blank">org.gnome.Fractal</a></td><td>A Matrix client. Supports multi-account.</td></tr>
+<tr><td>DistroShelf</td><td><a href="https://flathub.org/en/apps/com.ranfdev.DistroShelf" title="" target="_blank">com.ranfdev.DistroShelf</a></td><td>An application for managing distrobox containers, should you need one.</td></tr>
+<tr><td>Keypunch</td><td><a href="https://flathub.org/en/apps/dev.bragefuglseth.Keypunch" title="" target="_blank">dev.bragefuglseth.Keypunch</a></td><td>A simple, minimal typing practice app with support for a wide variety of languages.</td></tr>
+<tr><td>Bottles</td><td><a href="https://flathub.org/en/apps/com.usebottles.bottles" title="" target="_blank">com.usebottles.bottles</a></td><td>An extremely feature-rich wine and wine-prefix manager app. I prefer it over Lutris and all other wine managers.</td></tr>
+<tr><td>Authenticator</td><td><a href="https://flathub.org/en/apps/com.belmoussaoui.Authenticator" title="" target="_blank">com.belmoussaoui.Authenticator</a></td><td>A basic but really useful app for managing your 2FA codes. Supports Aegis and tons of other 2FA OTP providers.</td></tr>
+</tbody></table>
+</div>
+<h3 id="other-utilities"><a class="header" href="#other-utilities">Other Utilities</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
+<tr><td>Firefox</td><td><a href="https://flathub.org/en/apps/org.mozilla.firefox" title="" target="_blank">org.mozilla.firefox</a></td><td>Has better integration for linux than most other browsers. Supports HW-Accelerated Video Transcoding OOTB for Intel and AMD GPUs.</td></tr>
+<tr><td>Tor Browser Launcher</td><td><a href="https://flathub.org/en/apps/org.torproject.torbrowser-launcher" title="" target="_blank">org.torproject.torbrowser-launcher</a></td><td>uhh</td></tr>
+<tr><td>qBittorrent</td><td><a href="https://flathub.org/en/apps/org.qbittorrent.qBittorrent" title="" target="_blank">org.qbittorrent.qBittorrent</a></td><td>Postmodern Marxist-Leninism.</td></tr>
+<tr><td>Vesktop</td><td><a href="https://flathub.org/en/apps/dev.vencord.Vesktop" title="" target="_blank">dev.vencord.Vesktop</a></td><td>A better Discord client with support for proper, functional screen sharing on Wayland with audio.</td></tr>
+<tr><td>Slack</td><td><a href="https://flathub.org/en/apps/com.slack.Slack" title="" target="_blank">com.slack.Slack</a></td><td>Discord for BBA grads.</td></tr>
+<tr><td>Telegram Desktop</td><td><a href="https://flathub.org/en/apps/org.telegram.desktop" title="" target="_blank">org.telegram.desktop</a></td><td>Atp having this installed is more questionable than having the Tor Browser installed.</td></tr>
+<tr><td>OnlyOffice Desktop Editors</td><td><a href="https://flathub.org/en/apps/org.onlyoffice.desktopeditors" title="" target="_blank">org.onlyoffice.desktopeditors</a></td><td>Best replacement for MS Office with good linux support.</td></tr>
+<tr><td>Obsidian</td><td><a href="https://flathub.org/en/apps/md.obsidian.Obsidian" title="" target="_blank">md.obsidian.Obsidian</a></td><td>Best notetaking app in existence.</td></tr>
+<tr><td>OBS Studio</td><td><a href="https://flathub.org/en/apps/com.obsproject.Studio" title="" target="_blank">com.obsproject.Studio</a></td><td>works ig</td></tr>
+<tr><td>LocalSend</td><td><a href="https://flathub.org/en/apps/org.localsend.localsend_app" title="" target="_blank">org.localsend.localsend_app</a></td><td>Fantastic app for quickly and easily sharing files between devices. A decent Airdrop/Quick Share/Shareit replacement.</td></tr>
+<tr><td>RetroArch</td><td><a href="https://flathub.org/en/apps/org.libretro.RetroArch" title="" target="_blank">org.libretro.RetroArch</a></td><td>Jack of emulating all retro games, master of none.</td></tr>
+<tr><td>GIMP</td><td><a href="https://flathub.org/en/apps/org.gimp.GIMP" title="" target="_blank">org.gimp.GIMP</a></td><td>Image editor, I hate it.</td></tr>
+<tr><td>Krita</td><td><a href="https://flathub.org/en/apps/org.kde.krita" title="" target="_blank">org.kde.krita</a></td><td>Image editor, I love it.</td></tr>
+<tr><td>Kdenlive</td><td><a href="https://flathub.org/en/apps/org.kde.kdenlive" title="" target="_blank">org.kde.kdenlive</a></td><td>Very basic video editor, I am neutral. Get DaVinci Resolve Studio + DavinciBox if you need something good.</td></tr>
+<tr><td>Fedora Media Writer</td><td><a href="https://flathub.org/en/apps/org.fedoraproject.MediaWriter" title="" target="_blank">org.fedoraproject.MediaWriter</a></td><td>Best ISO flasher utility for linux.</td></tr>
+<tr><td>Virtual Machine Manager</td><td><a href="https://flathub.org/en/apps/org.virt_manager.virt-manager" title="" target="_blank">org.virt_manager.virt-manager</a></td><td>A very powerful app for creating and managing VMs, also grab the QEMU addon.</td></tr>
+</tbody></table>
+</div>
+<h2 id="apps-to-add-later"><a class="header" href="#apps-to-add-later">Apps to add later</a></h2>
 <ul>
-<li>Flatseal (``)</li>
-<li>Gear Lever (<code>b</code>)</li>
+<li>Gradia</li>
+<li>Desktop Plus (GIT UI)</li>
+<li>gitg</li>
+<li>Collision</li>
+<li>Inspector</li>
+<li>Pods</li>
+<li>File Roller</li>
+<li>Secrets</li>
+<li>Polari</li>
+<li>Pinta</li>
+<li>Inkscape</li>
+<li>Tuba</li>
 </ul>
 
                     </main>

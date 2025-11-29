@@ -174,7 +174,7 @@
 <h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
 <h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
 <tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
 <tr><td><code>rpm-ostree install &lt;package&gt;</code></td><td>Overlay a package (Requires Reboot)</td></tr>
@@ -186,17 +186,31 @@
 </div>
 <h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all <code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
 <tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
 <tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
 </tbody></table>
 </div>
-<h2 id="advanced"><a class="header" href="#advanced">Advanced</a></h2>
+<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
 <div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
-<tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your <em>Fedora Silverblue</em> installation</td></tr>
+<tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your<em>Fedora Silverblue</em> installation</td></tr>
 <tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
 <tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
+</tbody></table>
+</div>
+<h3 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
+<tr><td><code>sudo ostree pull --commit-metadata-only --depth=10 fedora:&lt;ref&gt;</code></td><td>Pull the last 10 commits for your selected ref</td></tr>
+<tr><td><code>ostree log fedora:&lt;ref&gt;</code></td><td>List all the commits for your selected ref</td></tr>
+<tr><td><code>rpm-ostree deploy &lt;ref_version&gt;</code></td><td>Deploy that specific commit version (removes overlayed packages)</td></tr>
+</tbody></table>
+</div>
+<h3 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
+<tr><td><code>rpm-ostree rebase fedora:&lt;ref&gt;</code></td><td>Rebase onto a different image/spin like<em>Kinoite</em> or <em>Cosmic Atomic</em></td></tr>
 </tbody></table>
 </div>
                     </main>
