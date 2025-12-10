@@ -88,6 +88,7 @@ Here is a list of the Flatpak apps I use on my *Fedora Silverblue* install.
 | Virtual Machine Manager    | [org.virt_manager.virt-manager](https://flathub.org/en/apps/org.virt_manager.virt-manager)           | A very powerful app for creating and managing VMs, also grab the QEMU addon.                                                      |
 
 ## Apps to add later
+- Syncthingy
 - Gradia
 - Desktop Plus (GIT UI)
 - gitg

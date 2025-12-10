@@ -22,6 +22,7 @@
     - [Creating a VM using virt-manager](./linux/cachyos/creating-a-vm-using-virt-manager.md)
   - [Others](./linux/others.md)
     - [Configure Syncthing](./linux/others/configure-syncthing.md)
+    - [Using Podman Quadlets](./linux/others/using-podman-quadlets.md)
     - [Manage Environment Variables](./linux/others/manage-environment-variables.md)
     - [Configure LUKS auto-unlocking with TPM2](./linux/others/configure-luks-autounlocking-with-tpm2.md)
     - [Fixes for Electron and Chromium apps](./linux/others/fixes-for-electron-and-chromium-apps.md)

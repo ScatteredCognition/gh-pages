@@ -214,24 +214,24 @@ dnf update -y @core @multimedia
 # Install rpmfusion tainted repos
 dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted
 
-# Install uncucked ffmpeg
+# Install unrestricted ffmpeg
 dnf swap -y ffmpeg-free ffmpeg --allowerasing
 
 # Install intel drivers
 dnf install -y intel-media-driver libva-intel-driver
 
-# Install uncucked amd drivers
+# Install unrestricted amd drivers
 dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
 dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
 
-# Install 32bit uncucked amd drivers (avoid)
+# Install 32bit unrestricted amd drivers (avoid)
 #dnf swap -y mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
 #dnf swap -y mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
 
-# Install uncucked nvidia drivers
+# Install unrestricted nvidia drivers
 dnf install -y libva-nvidia-driver
 
-# Install 32bit uncucked nvidia drivers (avoid)
+# Install 32bit unrestricted nvidia drivers (avoid)
 #dnf install -y libva-nvidia-driver.{i686,x86_64}
 
 # Install dvd ripping library
