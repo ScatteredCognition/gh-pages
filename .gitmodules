@@ -1,0 +1,3 @@
+[submodule "devcon-alp"]
+	path = devcon-alp
+	url = https://github.com/ScatteredCognition/devcon-alp.git
