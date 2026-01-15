@@ -15,7 +15,7 @@ no-section-label = true            # do not show numbers before section titles
 site-url = "/gh-pages/"
 #cname = "scatteredcognition.github.io"
 git-repository-url = "https://github.com/ScatteredCognition/"
-git-repository-icon = "fa-github"
+#git-repository-icon = "fa-github"
 input-404 = "404.md"
 
 default-theme = "auto"
@@ -25,5 +25,5 @@ fold.enable = true                # enable section folders
 fold.level = 1                    # fold sections starting from level 1
 # additional-js = ["static/custom.js"]
 
-[preprocessor.external-links]
-open-in-new-tab = true
+#[preprocessor.external-links]
+#open-in-new-tab = true

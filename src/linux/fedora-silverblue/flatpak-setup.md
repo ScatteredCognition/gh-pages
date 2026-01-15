@@ -1,4 +1,5 @@
 # Flatpak Setup for Fedora Silverblue
+
 [Flatpak](https://flatpak.org/) is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as *Docker* but for desktop linux apps.  
 
 Being centered around the ideas of containerization, immutability and atomicity, *Fedora Silverblue* prefers apps to be shipped as *Flatpaks*.  
@@ -7,6 +8,7 @@ Out of the box, *Fedora Silverblue* ships and configures *Fedora's* own *Flatpak
 As such, I generally like to remove the default *Fedora Flatpaks* repository and install the *Flathub* repository.  
 
 ## Configuring Flatpak repos
+
 The commands to remove the default *Fedora Flatpaks* repo and install the *Flathub* repo has been given below.
 
 ```bash
@@ -19,9 +21,11 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 ```
 
 ## Flatpak apps I use
+
 Here is a list of the Flatpak apps I use on my *Fedora Silverblue* install.
 
 ### GNOME Apps
+
 #### GNOME Core Stuff
 
 | App Name            | App ID                                                                                       | Description                                                                                                  |
@@ -88,6 +92,7 @@ Here is a list of the Flatpak apps I use on my *Fedora Silverblue* install.
 | Virtual Machine Manager    | [org.virt_manager.virt-manager](https://flathub.org/en/apps/org.virt_manager.virt-manager)           | A very powerful app for creating and managing VMs, also grab the QEMU addon.                                                      |
 
 ## Apps to add later
+
 - Syncthingy
 - Gradia
 - Desktop Plus (GIT UI)

@@ -1,4 +1,5 @@
 # Fedora Silverblue
+
 [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/) is what happens when you look at a *Docker* container one day and think "Hmm... I wonder if we can build an entire OS out of this if we included a kernel and a bootloader...".  
 
 It is an **Atomic**, **Immutable**<sup>(*mostly*)</sup> linux distro built on the foundations of *Fedora Linux*, using it's own package manager, `rpm-ostree`.  

@@ -1,4 +1,5 @@
 # Arch Linux/CachyOS
+
 [Arch Linux](https://archlinux.org/) is a *community-driven*, *rolling release* distro that features a wide selection of packages in it's repositories. It features a CLI installer for easy installation.  
 [CachyOS](https://cachyos.org/) is an *Arch Linux* derivative that provides their own optimizations on top of *Arch Linux*, making it blazingly fast.
 

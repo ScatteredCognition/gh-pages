@@ -1,12 +1,14 @@
 # Fedora Setup Guide
+
 ## Generic tweaks and configuration for Fedora Linux after fresh install
+
 ## dnf is too slow
 
-- Open `dnf.conf` : `nano /etc/dnf/dnf.conf` <br>
-(replace nano with kwrite/gedit etc if you want to) 
+- Open `dnf.conf` : `nano /etc/dnf/dnf.conf`  
+(replace nano with kwrite/gedit etc if you want to)
 - Add/Change the following values.
 
-```
+```bash
 # Download 20 packages simultaneously
 max_parallel_downloads = 20
 
@@ -18,16 +20,18 @@ timeout = 5
 ```
 
 ## Install Noto fonts and Bangla language pack
+
 Install all the Noto fonts and the `langpacks-bn` language pack.
 
-```
+```bash
 sudo dnf install -y google-noto-fonts-all langpacks-bn
 ```
 
 ## Configure flatpak remotes
+
 Remove the Fedora flatpak remotes and add the Flathub flatpak remote.
 
-``` 
+```bash
 # Delete fedora remotes
 flatpak remote-delete fedora
 flatpak remote-delete fedora-testing
@@ -37,9 +41,10 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 ```
 
 ## Configure RPMFusion
+
 Configure RPMFusion and install restricted extras.
 
-```
+```bash
 # Run elevated to avoid password prompt spam
 sudo bash
 

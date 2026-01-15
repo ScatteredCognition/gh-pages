@@ -13,21 +13,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -37,9 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
+            window.path_to_searchindex_js = "searchindex-4000925e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-824d1b5d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,56 +82,59 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -139,69 +142,75 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/ScatteredCognition/" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="about"><a class="header" href="#about">About</a></h1>
 <div style="display:flex; align-items: center;">
-  <div style="display:inline-block; text-align: left;">
+  
+<div style="display:inline-block; text-align: left;">
     Welcome to <b>ScatteredCognition's Biblioteca</b>.
-    <hr style="margin-left:5px; margin-right:5px; max-width: 97%">
+    
+<hr style="margin-left:5px; margin-right:5px; max-width: 97%">
     <i>"May the content you find be equal in value to time you spend here."</i>
   </div>
-  <div style="flex:1; padding-left: 22px;text-align: right;">
-    <img src="static/images/scatteredcognition-gh-pages-qr.png"
-         alt="QR Code to this site"
-         style="min-width: 120px; max-width: 180px; width: 100%; height: auto;"> <br>
+
+  
+<div style="flex:1; padding-left: 22px;text-align: right;">
+    <img src="static/images/scatteredcognition-gh-pages-qr.png" alt="QR Code to this site" style="min-width: 120px; max-width: 180px; width: 100%; height: auto;"> <br>
     <small style="display:inline-block; text-align: left;">QR code that leads to this site.</small>
   </div>
+
 </div>
+
 <!-- Welcome to **ScatteredCognition's Biblioteca**.  
 _"May the content you find be equal in value to time you spend here."_ -->
 <blockquote>
 <p>You can navigate this site by using the <strong>☰Sidebar</strong> and <strong>🔍Search</strong> buttons and change the theme by using the <strong>🖌️Themes</strong> button present in the <strong>↖Top-Left corner</strong> of the screen.</p>
 </blockquote>
 <h2 id="about-myself"><a class="header" href="#about-myself">About Myself</a></h2>
-<p>Hi, I am <strong>Faeiz Mahrus (21yo/Male/Bangladesh)</strong>, although I usually go by the alias <strong><code>ScatteredCognition</code></strong>.<br />
-I can speak, read and write in <em>Bangla</em> and <em>English</em>, although I have also recently started learning <em>Hindi</em> and <em>Russian</em>.</p>
+<p>Hi, I am <strong>Faeiz Mahrus (21yo/Male/Bangladesh)</strong>, although I usually go by the alias <strong><code>ScatteredCognition</code></strong>.<br>I can speak, read and write in <em>Bangla</em> and <em>English</em>, although I have also recently started learning <em>Hindi</em> and <em>Russian</em>.</p>
 <h2 id="education"><a class="header" href="#education">Education</a></h2>
 <p>I am currently pursuing a <strong>B.Sc in Computer Science and Engineering (CSE)</strong> from <strong>BRAC University (BRACu)</strong>.</p>
 <p>I also previously attended two semesters in the <strong>University of Chittagong (CU)</strong>, pursuing a <strong>BBA in Accounting</strong>, but I later came to BRACu as I decided that I wanted to pursue a different major.</p>
 <h2 id="hobbies-and-interests"><a class="header" href="#hobbies-and-interests">Hobbies and Interests</a></h2>
 <blockquote>
-<p>You can find a list of the things mentioned below by going to the <a href="./hobbylist.html">Hobbylist</a> section.</p>
+<p>You can find a list of the things mentioned below by going to the <a href="hobbylist.html">Hobbylist</a> section.</p>
 </blockquote>
-<p>I like doing the usual stuff all other people like to do.<br />
-Watching <em>Anime</em>, <em>Movies and TV Shows</em>, playing <em>Videogames</em>, interacting with their fandoms, binging on YouTube Documentries, doomscrolling on social media and online blogs.<br />
-You get the idea.</p>
+<p>I like doing the usual stuff all other people like to do.<br>Watching <em>Anime</em>, <em>Movies and TV Shows</em>, playing <em>Videogames</em>, interacting with their fandoms, binging on YouTube Documentries, doomscrolling on social media and online blogs.<br>You get the idea.</p>
 <p>On the more niche side, my areas of interests involve <em>Psychology</em>, <em>Ancient and Contemporary History</em>, <em>Politics</em>, and  anything that has to do with <em>Computers and Technology</em>.</p>
 <h2 id="contact-information"><a class="header" href="#contact-information">Contact Information</a></h2>
 <p>You can contact me by sending me an email at any of the following email addresses:</p>
@@ -211,9 +220,9 @@ You get the idea.</p>
 </ul>
 <p><em>I also have the following IM and Social Media accounts, although I may not always be available.</em></p>
 <ul>
-<li>@faeizmahrus2025:matrix.org - <small><a href="https://matrix.org/" title="" target="_blank">[Matrix]</a></small></li>
-<li>@faeizmahrus:fedora.im - <small><a href="https://chat.fedoraproject.org/#/room/#fedora:fedoraproject.org" title="" target="_blank">[Matrix (Fedora Project)]</a></small></li>
-<li><a href="https://mastodon.social/@faeizmahrus" title="" target="_blank">@faeizmahrus:mastodon.social</a> - <small><a href="https://joinmastodon.org/" title="" target="_blank">[Mastodon]</a></small></li>
+<li>@faeizmahrus2025:matrix.org - <small><a href="https://matrix.org/">[Matrix]</a></small></li>
+<li>@faeizmahrus:fedora.im - <small><a href="https://chat.fedoraproject.org/#/room/#fedora:fedoraproject.org">[Matrix (Fedora Project)]</a></small></li>
+<li><a href="https://mastodon.social/@faeizmahrus">@faeizmahrus:mastodon.social</a> - <small><a href="https://joinmastodon.org/">[Mastodon]</a></small></li>
 </ul>
 <p>I would like to keep the rest of my contact information reserved.</p>
 <blockquote>
@@ -223,10 +232,9 @@ You get the idea.</p>
 <li><em>The site author has not put any ads or trackers in this site, if you encounter any ads or trackers, they were most likely injected by GitHub or other third-parties.</em></li>
 </ul>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="anime"><a class="header" href="#anime">Anime</a></h1>
-<p>Although I stopped watching anime around 2020, I still vaguely remember some of their names.<br />
-Here are some of the good ones of the bunch.<br />
-I will try to write a review of them if/when I get the time.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="anime"><a class="header" href="#anime">Anime</a></h1>
+<p>Although I stopped watching anime around 2020, I still vaguely remember some of their names.<br>Here are some of the good ones of the bunch.<br>I will try to write a review of them if/when I get the time.</p>
 <ul>
 <li>Naruto</li>
 <li>Naruto Shippuden</li>
@@ -244,11 +252,12 @@ I will try to write a review of them if/when I get the time.</p>
 <li>Monogatari Series</li>
 <li>ReLife</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="movies--series"><a class="header" href="#movies--series">Movies &amp; Series</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="movies--series"><a class="header" href="#movies--series">Movies &amp; Series</a></h1>
 <p>Unfinished</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="videogames"><a class="header" href="#videogames">Videogames</a></h1>
-<p>I have played a plethora of videogames from most genres.<br />
-As usual, a list has been given below.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="videogames"><a class="header" href="#videogames">Videogames</a></h1>
+<p>I have played a plethora of videogames from most genres.<br>As usual, a list has been given below.</p>
 <h2 id="pokemon-anthology"><a class="header" href="#pokemon-anthology">Pokemon Anthology</a></h2>
 <ul>
 <li>Pokemon Ruby/Sapphire/Emerald <small>(GBA)</small></li>
@@ -299,9 +308,10 @@ As usual, a list has been given below.</p>
 <li>Counter Strike - Global Offensive (CSGO)</li>
 <li>Valorant</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="books"><a class="header" href="#books">Books</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="books"><a class="header" href="#books">Books</a></h1>
 <h2 id="history"><a class="header" href="#history">History</a></h2>
-<p>Although most of my knowledge regarding history comes from debates, YouTube Documentries and online sources like Wikipedia, these are the books I have actually read on history. The other resources will be provided in the (hobbylist/other sources)[/hobbylist/other-sources.md] section.</p>
+<p>Although most of my knowledge regarding history comes from debates, YouTube Documentries and online sources like Wikipedia, these are the books I have actually read on history. The other resources will be provided in the <a href="/hobbylist/other-sources.html">hobbylist/other sources</a> section.</p>
 <h3 id="issac-asimovs-books"><a class="header" href="#issac-asimovs-books">Issac Asimov’s books</a></h3>
 <ul>
 <li>The Egyptians</li>
@@ -315,8 +325,7 @@ As usual, a list has been given below.</p>
 <li>প্রাচীন ভারত - শ্রীযোগীন্দ্রনাথ সমাদ্দার</li>
 </ul>
 <h2 id="psychology"><a class="header" href="#psychology">Psychology</a></h2>
-<p>I am still a novice in this field.<br />
-Alot of my knowledge comes from <a href="https://www.youtube.com/samvaknin/videos" title="" target="_blank">Prof. Sam Vaknin’s</a> videos.</p>
+<p>I am still a novice in this field.<br>Alot of my knowledge comes from <a href="https://www.youtube.com/samvaknin/videos">Prof. Sam Vaknin’s</a> videos.</p>
 <ul>
 <li>Games People Play - Eric Berne</li>
 <li>The Social Animal - Elliot &amp; Joshua Aronson</li>
@@ -326,17 +335,15 @@ Alot of my knowledge comes from <a href="https://www.youtube.com/samvaknin/video
 <h3 id="bangla"><a class="header" href="#bangla">Bangla</a></h3>
 <h3 id="english"><a class="header" href="#english">English</a></h3>
 <h3 id="unfinished"><a class="header" href="#unfinished">UNFINISHED</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="other-sources"><a class="header" href="#other-sources">Other Sources</a></h1>
-<p>Unfinished</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="basics-of-using-linux"><a class="header" href="#basics-of-using-linux">Basics of using Linux</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="basics-of-using-linux"><a class="header" href="#basics-of-using-linux">Basics of using Linux</a></h1>
 <h2 id="demystifying-the-jargons"><a class="header" href="#demystifying-the-jargons">Demystifying the Jargons</a></h2>
 <ul>
 <li>
 <p>The <em>terminal</em> is an application you execute commands from.</p>
 </li>
 <li>
-<p>The <em>shell</em> is the program that actually executes your commands. Think of <code>cmd.exe</code> or <em>PowerShell</em> on <em>Windows</em>.<br />
-On most linux distros, <code>bash</code> is usually the default shell, but I recommend using <code>fish</code> as your default shell and <code>bash</code> for writing shell scripts.</p>
+<p>The <em>shell</em> is the program that actually executes your commands. Think of <code>cmd.exe</code> or <em>PowerShell</em> on <em>Windows</em>.<br>On most linux distros, <code>bash</code> is usually the default shell, but I recommend using <code>fish</code> as your default shell and <code>bash</code> for writing shell scripts.</p>
 <p>To list available shells in your system, type the following in a terminal:</p>
 <pre><code class="language-bash">cat /etc/shells
 </code></pre>
@@ -350,9 +357,7 @@ On most linux distros, <code>bash</code> is usually the default shell, but I rec
 <p><em>directory</em> is a synonym for a <em>folder</em>.</p>
 </li>
 <li>
-<p><em>arguments</em> are the extra options you use with a command.<br />
-Example: <code>grep -i bash /etc/shells</code><br />
-Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
+<p><em>arguments</em> are the extra options you use with a command.<br>Example: <code>grep -i bash /etc/shells</code><br>Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
 </li>
 <li>
 <p><em>path</em> can either refer to the location of a <em>directory</em> or <em>file</em>, or a special <em>environment variable</em> <code>$PATH</code> that contains the locations from where you can launch and execute commands.</p>
@@ -375,36 +380,25 @@ Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
 <p>Use the <code>cat &lt;filename&gt;</code> command to display the text in a file.</p>
 </li>
 <li>
-<p>Use the <code>nano &lt;filename&gt;</code> command to edit text in a file.<br />
-Example: <code>nano /etc/dnf/dnf.conf</code></p>
-<p>To save a file, press <code>Ctrl + S</code><br />
-To exit <code>nano</code> after saving a file, press <code>Ctrl + X</code></p>
+<p>Use the <code>nano &lt;filename&gt;</code> command to edit text in a file.<br>Example: <code>nano /etc/dnf/dnf.conf</code></p>
+<p>To save a file, press <code>Ctrl + S</code><br>To exit <code>nano</code> after saving a file, press <code>Ctrl + X</code></p>
 </li>
 <li>
-<p>To append some text to the end of a file, use ( <code>&gt;&gt;</code> )<br />
-Example: <code>echo "Hello World" &gt;&gt; file.txt</code></p>
+<p>To append some text to the end of a file, use ( <code>&gt;&gt;</code> )<br>Example: <code>echo "Hello World" &gt;&gt; file.txt</code></p>
 </li>
 <li>
-<p>To create/overwrite a file and write a line to it, use ( <code>&gt;</code> )<br />
-Example: <code>echo "The old file is gone" &gt; file.txt</code></p>
+<p>To create/overwrite a file and write a line to it, use ( <code>&gt;</code> )<br>Example: <code>echo "The old file is gone" &gt; file.txt</code></p>
 </li>
 <li>
-<p>You can use the <code>awk</code> and <code>sed</code> utilities to make edits to files matching a certain pattern.<br />
-Useful for scripting, ask AI how to use them.</p>
+<p>You can use the <code>awk</code> and <code>sed</code> utilities to make edits to files matching a certain pattern.<br>Useful for scripting, ask AI how to use them.</p>
 </li>
 </ul>
 <h2 id="the-filesystem-layout"><a class="header" href="#the-filesystem-layout">The Filesystem Layout</a></h2>
 <p>A basic overview of the modern linux filesystem is given below.</p>
 <ul>
-<li>
-<p><code>/boot</code> or <code>/efi</code> is where the bootloader is stored.</p>
-</li>
-<li>
-<p><code>/home/&lt;username&gt;/</code> <small>(aliased to <code>~</code>)</small> is your user’s home directory. <small>(equivalent to <code>C:\Users\</code>)</small></p>
-</li>
-<li>
-<p><code>/usr</code> is where your actual system is stored. <small>(equivalent to <code>C:\Windows\</code>)</small></p>
-<p><small>Note: Everything here (except <code>/usr/local/</code>) is managed by your package manager.</small></p>
+<li><code>/boot</code> or <code>/efi</code> is where the bootloader is stored.</li>
+<li><code>/home/&lt;username&gt;/</code> <small>(aliased to <code>~</code>)</small> is your user’s home directory. <small>(equivalent to <code>C:\Users\</code>)</small></li>
+<li><code>/usr</code> is where your actual system is stored. <small>(equivalent to <code>C:\Windows\</code>)</small><br><small>Note: Everything here (except <code>/usr/local/</code>) is managed by your package manager.</small>
 <ul>
 <li><code>/usr/bin/</code> - Contains executable files or symlinks to executables.</li>
 <li><code>/usr/sbin/</code> - Usually either symlinked to <code>/usr/bin/</code> or contains extra executables.</li>
@@ -418,30 +412,29 @@ Useful for scripting, ask AI how to use them.</p>
 <li><code>/usr/local/</code> - A directory for users to install their own apps not managed by the package manager. <small>(system-wide)</small></li>
 </ul>
 </li>
-<li>
-<p>On modern distros, <code>/bin</code>, <code>/sbin</code>, and <code>/lib*</code> directories are usually symlinks which point to their equivalents inside <code>/usr</code>, this is called the <a href="https://systemd.io/THE_CASE_FOR_THE_USR_MERGE/" title="" target="_blank">/usr merge</a>.</p>
-</li>
-<li>
-<p><code>/etc</code> is where configuration files are stored.</p>
-</li>
-<li>
-<p><code>/opt</code> is where third-party apps like <em>Google Chrome</em>, <em>Brave Software</em> or <em>DaVinci Resolve</em> usually install their things.</p>
-</li>
+<li>On modern distros, <code>/bin</code>, <code>/sbin</code>, and <code>/lib*</code> directories are usually symlinks which point to their equivalents inside <code>/usr</code>, this is called the <a href="https://systemd.io/THE_CASE_FOR_THE_USR_MERGE/">/usr merge</a>.</li>
+<li><code>/etc</code> is where configuration files are stored.</li>
+<li><code>/opt</code> is where third-party apps like <em>Google Chrome</em>, <em>Brave Software</em> or <em>DaVinci Resolve</em> usually install their things.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="fedora-silverblue"><a class="header" href="#fedora-silverblue">Fedora Silverblue</a></h1>
-<p><a href="https://fedoraproject.org/atomic-desktops/silverblue/" title="" target="_blank">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fedora-silverblue"><a class="header" href="#fedora-silverblue">Fedora Silverblue</a></h1>
+<p><a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
 <p>It is an <strong>Atomic</strong>, <strong>Immutable</strong><sup>(<em>mostly</em>)</sup> linux distro built on the foundations of <em>Fedora Linux</em>, using it’s own package manager, <code>rpm-ostree</code>.</p>
 <p>You can install packages like you would on normal <em>Fedora Linux</em> <em>(“Layering” as it is called)</em>, but don’t layer too many packages. <em>Fedora Silverblue</em> ships with the <em>GNOME Desktop Environment</em>, although different spins exist like <em>Fedora Kinoite</em> (ships <em>KDE Plasma</em>), <em>Fedora Cosmic Atomic</em> and the like. But <em>Fedora Silverblue</em> remains, by far, the best experience amongst all the <em>Atomic</em> spins.</p>
 <blockquote>
-<p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br />
-I recommend reading the content at <a href="linux//linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br />
-Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
+<p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br>I recommend reading the content at <a href="/linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br>Also read the <a href="/linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
 <p>I have provided some commands which will hopefully make your <em>Fedora Silverblue</em> journey better.</p>
 <h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
 <h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
 <tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
 <tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
@@ -450,37 +443,64 @@ Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a 
 <tr><td><code>rpm-ostree reset</code></td><td>Removes all overlayed packages</td></tr>
 <tr><td><code>rpm-ostree override remove &lt;package&gt;</code></td><td>Removes a preinstalled package (Requires Reboot)</td></tr>
 <tr><td><code>rpm-ostree override reset</code></td><td>Resets all the package removal overrides (Requires Reboot)</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
 <tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
 <tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
 <tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
 <tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
 <tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your<em>Fedora Silverblue</em> installation</td></tr>
 <tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
 <tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
 <tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
 <tr><td><code>sudo ostree pull --commit-metadata-only --depth=10 fedora:&lt;ref&gt;</code></td><td>Pull the last 10 commits for your selected ref</td></tr>
 <tr><td><code>ostree log fedora:&lt;ref&gt;</code></td><td>List all the commits for your selected ref</td></tr>
 <tr><td><code>rpm-ostree deploy &lt;ref_version&gt;</code></td><td>Deploy that specific commit version (removes overlayed packages)</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Commands</th><th>Explanation</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
 <tr><td><code>ostree remote refs fedora</code></td><td>Find all available refs for<em>Fedora Atomic</em> spins you can use</td></tr>
 <tr><td><code>rpm-ostree rebase fedora:&lt;ref&gt;</code></td><td>Rebase onto a different image/spin like<em>Kinoite</em> or <em>Cosmic Atomic</em></td></tr>
-</tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="packages-to-layer-on-fedora-silverblue"><a class="header" href="#packages-to-layer-on-fedora-silverblue">Packages to layer on Fedora Silverblue</a></h1>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="packages-to-layer-on-fedora-silverblue"><a class="header" href="#packages-to-layer-on-fedora-silverblue">Packages to layer on Fedora Silverblue</a></h1>
 <p>Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of <em>Fedora Silverblue</em>:</p>
 <!-- 
 - `distrobox` 
@@ -490,16 +510,16 @@ Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a 
 <li><code>langpacks-bn</code> (For <em>Bangla</em> language pack support, replace <code>bn</code> with your language code)</li>
 <li><code>podman-compose</code> (For <em>VSCode</em>/<em>DevPod</em> Devcontainers)</li>
 <li><code>syncthing</code> (If you use it for file sync)</li>
-<li><code>OpenBangla Keyboard</code> (For <em>Bangla</em> typing) <a href="https://github.com/OpenBangla/OpenBangla-Keyboard/releases" title="" target="_blank">[Download]</a></li>
+<li><code>OpenBangla Keyboard</code> (For <em>Bangla</em> typing) <a href="https://github.com/OpenBangla/OpenBangla-Keyboard/releases">[Download]</a></li>
 </ul>
 <blockquote>
 <p>Run <code>systemctl enable --user --now syncthing.service</code> if you want to use <code>syncthing</code>.</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
-<p><a href="https://flatpak.org/" title="" target="_blank">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
+<p><a href="https://flatpak.org/">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
 <p>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
-<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br />
-As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
+<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br>As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
 <h2 id="configuring-flatpak-repos"><a class="header" href="#configuring-flatpak-repos">Configuring Flatpak repos</a></h2>
 <p>The commands to remove the default <em>Fedora Flatpaks</em> repo and install the <em>Flathub</em> repo has been given below.</p>
 <pre><code class="language-bash"># Remove Fedora Flatpak repos
@@ -513,66 +533,84 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 <p>Here is a list of the Flatpak apps I use on my <em>Fedora Silverblue</em> install.</p>
 <h3 id="gnome-apps"><a class="header" href="#gnome-apps">GNOME Apps</a></h3>
 <h4 id="gnome-core-stuff"><a class="header" href="#gnome-core-stuff">GNOME Core Stuff</a></h4>
-<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
-<tr><td>Audio Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Decibels" title="" target="_blank">org.gnome.Decibels</a></td><td>A very simple audio player, gets the job done. Install RhythmBox if you want something more powerful.</td></tr>
-<tr><td>Video Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Showtime" title="" target="_blank">org.gnome.Showtime</a></td><td>A very simple video player, gets the job done. Install VLC if you want something more powerful.</td></tr>
-<tr><td>Image Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Loupe" title="" target="_blank">org.gnome.Loupe</a></td><td>A basic image viewer with limited image editing capabilities.</td></tr>
-<tr><td>Document Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Papers" title="" target="_blank">org.gnome.Papers</a></td><td>A basic PDF viewer. Also has a presentation function.</td></tr>
-<tr><td>Sound Recorder</td><td><a href="https://flathub.org/en/apps/org.gnome.SoundRecorder" title="" target="_blank">org.gnome.SoundRecorder</a></td><td>A very simple sound recorder app.</td></tr>
-<tr><td>Text Editor</td><td><a href="https://flathub.org/en/apps/org.gnome.TextEditor" title="" target="_blank">org.gnome.TextEditor</a></td><td>A basic text editor. Has support for tabs and some basic customization options.</td></tr>
-<tr><td>Calculator</td><td><a href="https://flathub.org/en/apps/org.gnome.Calculator" title="" target="_blank">org.gnome.Calculator</a></td><td>A relatively powerful calculator app.</td></tr>
-<tr><td>Calendar</td><td><a href="https://flathub.org/en/apps/org.gnome.Calendar" title="" target="_blank">org.gnome.Calendar</a></td><td>A basic calendar app with support for account syncing.</td></tr>
-<tr><td>Clocks</td><td><a href="https://flathub.org/en/apps/org.gnome.clocks" title="" target="_blank">org.gnome.clocks</a></td><td>A basic clock app.</td></tr>
-<tr><td>Camera</td><td><a href="https://flathub.org/en/apps/org.gnome.Snapshot" title="" target="_blank">org.gnome.Snapshot</a></td><td>A basic camera app.</td></tr>
-<tr><td>Contacts</td><td><a href="https://flathub.org/en/apps/org.gnome.Contacts" title="" target="_blank">org.gnome.Contacts</a></td><td>A basic contacts app with support for account syncing.</td></tr>
-<tr><td>Maps</td><td><a href="https://flathub.org/en/apps/org.gnome.Maps" title="" target="_blank">org.gnome.Maps</a></td><td>A very simple maps application, has issues determining your location sometimes.</td></tr>
-<tr><td>Weather</td><td><a href="https://flathub.org/en/appsd/org.gnome.Weather" title="" target="_blank">org.gnome.Weather</a></td><td>A very simple weather application.</td></tr>
-<tr><td>Web</td><td><a href="https://flathub.org/en/apps/org.gnome.Epiphany" title="" target="_blank">org.gnome.Epiphany</a></td><td>A very simple web browser. lacks extension support and has very weak adblocking.</td></tr>
-<tr><td>Connections</td><td><a href="https://flathub.org/en/apps/org.gnome.Connections" title="" target="_blank">org.gnome.Connections</a></td><td>Simple remote desktop client application supporting the RDP, VNC and SPICE protocols.</td></tr>
-<tr><td>Firmware</td><td><a href="https://flathub.org/en/apps/org.gnome.Firmware" title="" target="_blank">org.gnome.Firmware</a></td><td>A very simple application for displaying and updating the firmware of your devices.</td></tr>
-<tr><td>Fonts</td><td><a href="https://flathub.org/en/apps/org.gnome.font-viewer" title="" target="_blank">org.gnome.font-viewer</a></td><td>A very simple font viewer application. Can install fonts.</td></tr>
-<tr><td>Document Scanner</td><td><a href="https://flathub.org/en/apps/org.gnome.SimpleScan" title="" target="_blank">org.gnome.SimpleScan</a></td><td>A very simple document scanner application. Install NAPS2 if you want something more powerful.</td></tr>
-<tr><td>Disk Usage Analyzer</td><td><a href="https://flathub.org/en/apps/org.gnome.baobab" title="" target="_blank">org.gnome.baobab</a></td><td>A very simple disk usage analyzer tool. Can only analyze your home folder.</td></tr>
-<tr><td>Logs</td><td><a href="https://flathub.org/en/apps/org.gnome.Logs" title="" target="_blank">org.gnome.Logs</a></td><td>A very handy log viewer application to find out issues with your system.</td></tr>
-<tr><td>Passwords and Keys</td><td><a href="https://flathub.org/en/apps/org.gnome.seahorse.Application" title="" target="_blank">org.gnome.seahorse.Application</a></td><td>A basic key management application for creating and managing your GPG, SSH and gnome-keyring/libsecret keys.</td></tr>
-</tbody></table>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>App Name</th><th>App ID</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Audio Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Decibels">org.gnome.Decibels</a></td><td>A very simple audio player, gets the job done. Install RhythmBox if you want something more powerful.</td></tr>
+<tr><td>Video Player</td><td><a href="https://flathub.org/en/apps/org.gnome.Showtime">org.gnome.Showtime</a></td><td>A very simple video player, gets the job done. Install VLC if you want something more powerful.</td></tr>
+<tr><td>Image Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Loupe">org.gnome.Loupe</a></td><td>A basic image viewer with limited image editing capabilities.</td></tr>
+<tr><td>Document Viewer</td><td><a href="https://flathub.org/en/apps/org.gnome.Papers">org.gnome.Papers</a></td><td>A basic PDF viewer. Also has a presentation function.</td></tr>
+<tr><td>Sound Recorder</td><td><a href="https://flathub.org/en/apps/org.gnome.SoundRecorder">org.gnome.SoundRecorder</a></td><td>A very simple sound recorder app.</td></tr>
+<tr><td>Text Editor</td><td><a href="https://flathub.org/en/apps/org.gnome.TextEditor">org.gnome.TextEditor</a></td><td>A basic text editor. Has support for tabs and some basic customization options.</td></tr>
+<tr><td>Calculator</td><td><a href="https://flathub.org/en/apps/org.gnome.Calculator">org.gnome.Calculator</a></td><td>A relatively powerful calculator app.</td></tr>
+<tr><td>Calendar</td><td><a href="https://flathub.org/en/apps/org.gnome.Calendar">org.gnome.Calendar</a></td><td>A basic calendar app with support for account syncing.</td></tr>
+<tr><td>Clocks</td><td><a href="https://flathub.org/en/apps/org.gnome.clocks">org.gnome.clocks</a></td><td>A basic clock app.</td></tr>
+<tr><td>Camera</td><td><a href="https://flathub.org/en/apps/org.gnome.Snapshot">org.gnome.Snapshot</a></td><td>A basic camera app.</td></tr>
+<tr><td>Contacts</td><td><a href="https://flathub.org/en/apps/org.gnome.Contacts">org.gnome.Contacts</a></td><td>A basic contacts app with support for account syncing.</td></tr>
+<tr><td>Maps</td><td><a href="https://flathub.org/en/apps/org.gnome.Maps">org.gnome.Maps</a></td><td>A very simple maps application, has issues determining your location sometimes.</td></tr>
+<tr><td>Weather</td><td><a href="https://flathub.org/en/appsd/org.gnome.Weather">org.gnome.Weather</a></td><td>A very simple weather application.</td></tr>
+<tr><td>Web</td><td><a href="https://flathub.org/en/apps/org.gnome.Epiphany">org.gnome.Epiphany</a></td><td>A very simple web browser. lacks extension support and has very weak adblocking.</td></tr>
+<tr><td>Connections</td><td><a href="https://flathub.org/en/apps/org.gnome.Connections">org.gnome.Connections</a></td><td>Simple remote desktop client application supporting the RDP, VNC and SPICE protocols.</td></tr>
+<tr><td>Firmware</td><td><a href="https://flathub.org/en/apps/org.gnome.Firmware">org.gnome.Firmware</a></td><td>A very simple application for displaying and updating the firmware of your devices.</td></tr>
+<tr><td>Fonts</td><td><a href="https://flathub.org/en/apps/org.gnome.font-viewer">org.gnome.font-viewer</a></td><td>A very simple font viewer application. Can install fonts.</td></tr>
+<tr><td>Document Scanner</td><td><a href="https://flathub.org/en/apps/org.gnome.SimpleScan">org.gnome.SimpleScan</a></td><td>A very simple document scanner application. Install NAPS2 if you want something more powerful.</td></tr>
+<tr><td>Disk Usage Analyzer</td><td><a href="https://flathub.org/en/apps/org.gnome.baobab">org.gnome.baobab</a></td><td>A very simple disk usage analyzer tool. Can only analyze your home folder.</td></tr>
+<tr><td>Logs</td><td><a href="https://flathub.org/en/apps/org.gnome.Logs">org.gnome.Logs</a></td><td>A very handy log viewer application to find out issues with your system.</td></tr>
+<tr><td>Passwords and Keys</td><td><a href="https://flathub.org/en/apps/org.gnome.seahorse.Application">org.gnome.seahorse.Application</a></td><td>A basic key management application for creating and managing your GPG, SSH and gnome-keyring/libsecret keys.</td></tr>
+</tbody>
+</table>
 </div>
 <h4 id="gnome-extra-stuff"><a class="header" href="#gnome-extra-stuff">GNOME Extra Stuff</a></h4>
-<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
-<tr><td>Refine</td><td><a href="https://flathub.org/en/apps/page.tesk.Refine" title="" target="_blank">page.tesk.Refine</a></td><td>A successor to the GNOME Tweaks application. Lets you tweak and configure various aspects of the GNOME DE.</td></tr>
-<tr><td>Extension Manager</td><td><a href="https://flathub.org/en/apps/com.mattjakeman.ExtensionManager" title="" target="_blank">com.mattjakeman.ExtensionManager</a></td><td>An GNOME Shell extension manager application. Lets you directly install and manage your GNOME extensions and check whether they are compatible with your current GNOME version.</td></tr>
-<tr><td>Flatseal</td><td><a href="https://flathub.org/en/apps/com.github.tchx84.Flatseal" title="" target="_blank">com.github.tchx84.Flatseal</a></td><td>A very powerful application for configuring the permissions and other aspects of your Flatpak apps</td></tr>
-<tr><td>Ignition</td><td><a href="https://flathub.org/en/apps/io.github.flattool.Ignition" title="" target="_blank">io.github.flattool.Ignition</a></td><td>A basic startup application manager.</td></tr>
-<tr><td>Resources</td><td><a href="https://flathub.org/en/apps/net.nokyan.Resources" title="" target="_blank">net.nokyan.Resources</a></td><td>A beautiful, stunning and powerful system monitor utility.</td></tr>
-<tr><td>Gear Lever</td><td><a href="https://flathub.org/en/apps/it.mijorus.gearlever" title="" target="_blank">it.mijorus.gearlever</a></td><td>An application for integrating appimages into your system.</td></tr>
-<tr><td>Pika Backup</td><td><a href="https://flathub.org/en/apps/org.gnome.World.PikaBackup" title="" target="_blank">org.gnome.World.PikaBackup</a></td><td>A very powerful and flexible backup utility.</td></tr>
-<tr><td>Foliate</td><td><a href="https://flathub.org/en/apps/com.github.johnfactotum.Foliate" title="" target="_blank">com.github.johnfactotum.Foliate</a></td><td>A beautiful ebook reader.</td></tr>
-<tr><td>Fractal</td><td><a href="https://flathub.org/en/apps/org.gnome.Fractal" title="" target="_blank">org.gnome.Fractal</a></td><td>A Matrix client. Supports multi-account.</td></tr>
-<tr><td>DistroShelf</td><td><a href="https://flathub.org/en/apps/com.ranfdev.DistroShelf" title="" target="_blank">com.ranfdev.DistroShelf</a></td><td>An application for managing distrobox containers, should you need one.</td></tr>
-<tr><td>Keypunch</td><td><a href="https://flathub.org/en/apps/dev.bragefuglseth.Keypunch" title="" target="_blank">dev.bragefuglseth.Keypunch</a></td><td>A simple, minimal typing practice app with support for a wide variety of languages.</td></tr>
-<tr><td>Bottles</td><td><a href="https://flathub.org/en/apps/com.usebottles.bottles" title="" target="_blank">com.usebottles.bottles</a></td><td>An extremely feature-rich wine and wine-prefix manager app. I prefer it over Lutris and all other wine managers.</td></tr>
-<tr><td>Authenticator</td><td><a href="https://flathub.org/en/apps/com.belmoussaoui.Authenticator" title="" target="_blank">com.belmoussaoui.Authenticator</a></td><td>A basic but really useful app for managing your 2FA codes. Supports Aegis and tons of other 2FA OTP providers.</td></tr>
-</tbody></table>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>App Name</th><th>App ID</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Refine</td><td><a href="https://flathub.org/en/apps/page.tesk.Refine">page.tesk.Refine</a></td><td>A successor to the GNOME Tweaks application. Lets you tweak and configure various aspects of the GNOME DE.</td></tr>
+<tr><td>Extension Manager</td><td><a href="https://flathub.org/en/apps/com.mattjakeman.ExtensionManager">com.mattjakeman.ExtensionManager</a></td><td>An GNOME Shell extension manager application. Lets you directly install and manage your GNOME extensions and check whether they are compatible with your current GNOME version.</td></tr>
+<tr><td>Flatseal</td><td><a href="https://flathub.org/en/apps/com.github.tchx84.Flatseal">com.github.tchx84.Flatseal</a></td><td>A very powerful application for configuring the permissions and other aspects of your Flatpak apps</td></tr>
+<tr><td>Ignition</td><td><a href="https://flathub.org/en/apps/io.github.flattool.Ignition">io.github.flattool.Ignition</a></td><td>A basic startup application manager.</td></tr>
+<tr><td>Resources</td><td><a href="https://flathub.org/en/apps/net.nokyan.Resources">net.nokyan.Resources</a></td><td>A beautiful, stunning and powerful system monitor utility.</td></tr>
+<tr><td>Gear Lever</td><td><a href="https://flathub.org/en/apps/it.mijorus.gearlever">it.mijorus.gearlever</a></td><td>An application for integrating appimages into your system.</td></tr>
+<tr><td>Pika Backup</td><td><a href="https://flathub.org/en/apps/org.gnome.World.PikaBackup">org.gnome.World.PikaBackup</a></td><td>A very powerful and flexible backup utility.</td></tr>
+<tr><td>Foliate</td><td><a href="https://flathub.org/en/apps/com.github.johnfactotum.Foliate">com.github.johnfactotum.Foliate</a></td><td>A beautiful ebook reader.</td></tr>
+<tr><td>Fractal</td><td><a href="https://flathub.org/en/apps/org.gnome.Fractal">org.gnome.Fractal</a></td><td>A Matrix client. Supports multi-account.</td></tr>
+<tr><td>DistroShelf</td><td><a href="https://flathub.org/en/apps/com.ranfdev.DistroShelf">com.ranfdev.DistroShelf</a></td><td>An application for managing distrobox containers, should you need one.</td></tr>
+<tr><td>Keypunch</td><td><a href="https://flathub.org/en/apps/dev.bragefuglseth.Keypunch">dev.bragefuglseth.Keypunch</a></td><td>A simple, minimal typing practice app with support for a wide variety of languages.</td></tr>
+<tr><td>Bottles</td><td><a href="https://flathub.org/en/apps/com.usebottles.bottles">com.usebottles.bottles</a></td><td>An extremely feature-rich wine and wine-prefix manager app. I prefer it over Lutris and all other wine managers.</td></tr>
+<tr><td>Authenticator</td><td><a href="https://flathub.org/en/apps/com.belmoussaoui.Authenticator">com.belmoussaoui.Authenticator</a></td><td>A basic but really useful app for managing your 2FA codes. Supports Aegis and tons of other 2FA OTP providers.</td></tr>
+</tbody>
+</table>
 </div>
 <h3 id="other-utilities"><a class="header" href="#other-utilities">Other Utilities</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>App Name</th><th>App ID</th><th>Description</th></tr></thead><tbody>
-<tr><td>Firefox</td><td><a href="https://flathub.org/en/apps/org.mozilla.firefox" title="" target="_blank">org.mozilla.firefox</a></td><td>Has better integration for linux than most other browsers. Supports HW-Accelerated Video Transcoding OOTB for Intel and AMD GPUs.</td></tr>
-<tr><td>Tor Browser Launcher</td><td><a href="https://flathub.org/en/apps/org.torproject.torbrowser-launcher" title="" target="_blank">org.torproject.torbrowser-launcher</a></td><td>uhh</td></tr>
-<tr><td>qBittorrent</td><td><a href="https://flathub.org/en/apps/org.qbittorrent.qBittorrent" title="" target="_blank">org.qbittorrent.qBittorrent</a></td><td>Postmodern Marxist-Leninism.</td></tr>
-<tr><td>Vesktop</td><td><a href="https://flathub.org/en/apps/dev.vencord.Vesktop" title="" target="_blank">dev.vencord.Vesktop</a></td><td>A better Discord client with support for proper, functional screen sharing on Wayland with audio.</td></tr>
-<tr><td>Slack</td><td><a href="https://flathub.org/en/apps/com.slack.Slack" title="" target="_blank">com.slack.Slack</a></td><td>Discord for BBA grads.</td></tr>
-<tr><td>Telegram Desktop</td><td><a href="https://flathub.org/en/apps/org.telegram.desktop" title="" target="_blank">org.telegram.desktop</a></td><td>Atp having this installed is more questionable than having the Tor Browser installed.</td></tr>
-<tr><td>OnlyOffice Desktop Editors</td><td><a href="https://flathub.org/en/apps/org.onlyoffice.desktopeditors" title="" target="_blank">org.onlyoffice.desktopeditors</a></td><td>Best replacement for MS Office with good linux support.</td></tr>
-<tr><td>Obsidian</td><td><a href="https://flathub.org/en/apps/md.obsidian.Obsidian" title="" target="_blank">md.obsidian.Obsidian</a></td><td>Best notetaking app in existence.</td></tr>
-<tr><td>OBS Studio</td><td><a href="https://flathub.org/en/apps/com.obsproject.Studio" title="" target="_blank">com.obsproject.Studio</a></td><td>works ig</td></tr>
-<tr><td>LocalSend</td><td><a href="https://flathub.org/en/apps/org.localsend.localsend_app" title="" target="_blank">org.localsend.localsend_app</a></td><td>Fantastic app for quickly and easily sharing files between devices. A decent Airdrop/Quick Share/Shareit replacement.</td></tr>
-<tr><td>RetroArch</td><td><a href="https://flathub.org/en/apps/org.libretro.RetroArch" title="" target="_blank">org.libretro.RetroArch</a></td><td>Jack of emulating all retro games, master of none.</td></tr>
-<tr><td>GIMP</td><td><a href="https://flathub.org/en/apps/org.gimp.GIMP" title="" target="_blank">org.gimp.GIMP</a></td><td>Image editor, I hate it.</td></tr>
-<tr><td>Krita</td><td><a href="https://flathub.org/en/apps/org.kde.krita" title="" target="_blank">org.kde.krita</a></td><td>Image editor, I love it.</td></tr>
-<tr><td>Kdenlive</td><td><a href="https://flathub.org/en/apps/org.kde.kdenlive" title="" target="_blank">org.kde.kdenlive</a></td><td>Very basic video editor, I am neutral. Get DaVinci Resolve Studio + DavinciBox if you need something good.</td></tr>
-<tr><td>Fedora Media Writer</td><td><a href="https://flathub.org/en/apps/org.fedoraproject.MediaWriter" title="" target="_blank">org.fedoraproject.MediaWriter</a></td><td>Best ISO flasher utility for linux.</td></tr>
-<tr><td>Virtual Machine Manager</td><td><a href="https://flathub.org/en/apps/org.virt_manager.virt-manager" title="" target="_blank">org.virt_manager.virt-manager</a></td><td>A very powerful app for creating and managing VMs, also grab the QEMU addon.</td></tr>
-</tbody></table>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>App Name</th><th>App ID</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Firefox</td><td><a href="https://flathub.org/en/apps/org.mozilla.firefox">org.mozilla.firefox</a></td><td>Has better integration for linux than most other browsers. Supports HW-Accelerated Video Transcoding OOTB for Intel and AMD GPUs.</td></tr>
+<tr><td>Tor Browser Launcher</td><td><a href="https://flathub.org/en/apps/org.torproject.torbrowser-launcher">org.torproject.torbrowser-launcher</a></td><td>uhh</td></tr>
+<tr><td>qBittorrent</td><td><a href="https://flathub.org/en/apps/org.qbittorrent.qBittorrent">org.qbittorrent.qBittorrent</a></td><td>Postmodern Marxist-Leninism.</td></tr>
+<tr><td>Vesktop</td><td><a href="https://flathub.org/en/apps/dev.vencord.Vesktop">dev.vencord.Vesktop</a></td><td>A better Discord client with support for proper, functional screen sharing on Wayland with audio.</td></tr>
+<tr><td>Slack</td><td><a href="https://flathub.org/en/apps/com.slack.Slack">com.slack.Slack</a></td><td>Discord for BBA grads.</td></tr>
+<tr><td>Telegram Desktop</td><td><a href="https://flathub.org/en/apps/org.telegram.desktop">org.telegram.desktop</a></td><td>Atp having this installed is more questionable than having the Tor Browser installed.</td></tr>
+<tr><td>OnlyOffice Desktop Editors</td><td><a href="https://flathub.org/en/apps/org.onlyoffice.desktopeditors">org.onlyoffice.desktopeditors</a></td><td>Best replacement for MS Office with good linux support.</td></tr>
+<tr><td>Obsidian</td><td><a href="https://flathub.org/en/apps/md.obsidian.Obsidian">md.obsidian.Obsidian</a></td><td>Best notetaking app in existence.</td></tr>
+<tr><td>OBS Studio</td><td><a href="https://flathub.org/en/apps/com.obsproject.Studio">com.obsproject.Studio</a></td><td>works ig</td></tr>
+<tr><td>LocalSend</td><td><a href="https://flathub.org/en/apps/org.localsend.localsend_app">org.localsend.localsend_app</a></td><td>Fantastic app for quickly and easily sharing files between devices. A decent Airdrop/Quick Share/Shareit replacement.</td></tr>
+<tr><td>RetroArch</td><td><a href="https://flathub.org/en/apps/org.libretro.RetroArch">org.libretro.RetroArch</a></td><td>Jack of emulating all retro games, master of none.</td></tr>
+<tr><td>GIMP</td><td><a href="https://flathub.org/en/apps/org.gimp.GIMP">org.gimp.GIMP</a></td><td>Image editor, I hate it.</td></tr>
+<tr><td>Krita</td><td><a href="https://flathub.org/en/apps/org.kde.krita">org.kde.krita</a></td><td>Image editor, I love it.</td></tr>
+<tr><td>Kdenlive</td><td><a href="https://flathub.org/en/apps/org.kde.kdenlive">org.kde.kdenlive</a></td><td>Very basic video editor, I am neutral. Get DaVinci Resolve Studio + DavinciBox if you need something good.</td></tr>
+<tr><td>Fedora Media Writer</td><td><a href="https://flathub.org/en/apps/org.fedoraproject.MediaWriter">org.fedoraproject.MediaWriter</a></td><td>Best ISO flasher utility for linux.</td></tr>
+<tr><td>Virtual Machine Manager</td><td><a href="https://flathub.org/en/apps/org.virt_manager.virt-manager">org.virt_manager.virt-manager</a></td><td>A very powerful app for creating and managing VMs, also grab the QEMU addon.</td></tr>
+</tbody>
+</table>
 </div>
 <h2 id="apps-to-add-later"><a class="header" href="#apps-to-add-later">Apps to add later</a></h2>
 <ul>
@@ -590,18 +628,15 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 <li>Inkscape</li>
 <li>Tuba</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="toolbox-setup-for-fedora-silverblue"><a class="header" href="#toolbox-setup-for-fedora-silverblue">Toolbox Setup for Fedora Silverblue</a></h1>
-<p><a href="https://containertoolbx.org/" title="" target="_blank">toolbox</a>  (<em>toolbx</em>) is a utility shipped with <em>Fedora Silverblue</em> to easily create and use containers.<br />
-It’s usage primarily revolves around using CLI utilities not shipped by default on <em>Fedora Silverblue</em>.<br />
-It is stylized and branded as <em>toolbx</em>, although <code>toolbox</code> is the command name.</p>
-<p>There are official <em>toolbx</em> images for <em>Fedora Linux</em>, <em>RHEL</em>, <em>Ubuntu</em> and <em>Arch Linux</em>.<br />
-Community-maintained <em>toolbx</em> images for other distros can be found at <a href="https://github.com/toolbx-images/images" title="" target="_blank">https://github.com/toolbx-images/images</a></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="toolbox-setup-for-fedora-silverblue"><a class="header" href="#toolbox-setup-for-fedora-silverblue">Toolbox Setup for Fedora Silverblue</a></h1>
+<p><a href="https://containertoolbx.org/">toolbox</a>  (<em>toolbx</em>) is a utility shipped with <em>Fedora Silverblue</em> to easily create and use containers.<br>It’s usage primarily revolves around using CLI utilities not shipped by default on <em>Fedora Silverblue</em>.<br>It is stylized and branded as <em>toolbx</em>, although <code>toolbox</code> is the command name.</p>
+<p>There are official <em>toolbx</em> images for <em>Fedora Linux</em>, <em>RHEL</em>, <em>Ubuntu</em> and <em>Arch Linux</em>.<br>Community-maintained <em>toolbx</em> images for other distros can be found at <a href="https://github.com/toolbx-images/images">https://github.com/toolbx-images/images</a></p>
 <h2 id="alpine-linux-container"><a class="header" href="#alpine-linux-container">Alpine Linux Container</a></h2>
-<p><a href="https://www.alpinelinux.org/" title="" target="_blank">Alpine Linux</a> is a container-focused distribution that is extremely lightweight in terms of size.<br />
-As such, I recommend using <em>Alpine Linux</em> for your <em>toolbx</em> containers.</p>
+<p><a href="https://www.alpinelinux.org/">Alpine Linux</a> is a container-focused distribution that is extremely lightweight in terms of size.<br>As such, I recommend using <em>Alpine Linux</em> for your <em>toolbx</em> containers.</p>
 <ul>
 <li>
-<p>Create the <em>toolbx</em> container by using the <em>Alpine Linux</em> <em>toolbx</em> image from <a href="https://github.com/toolbx-images/images" title="" target="_blank">toolbx-images</a> repo.</p>
+<p>Create the <em>toolbx</em> container by using the <em>Alpine Linux</em> <em>toolbx</em> image from <a href="https://github.com/toolbx-images/images">toolbx-images</a> repo.</p>
 <pre><code class="language-bash">toolbox create --image quay.io/toolbx-images/alpine-toolbox:latest toolbox-alpine-cli
 </code></pre>
 </li>
@@ -637,7 +672,8 @@ NOTE: Put your own CLI programs in /usr/local/bin
 </ul>
 <p>You can apply some optional tweaks to your <em>Fedora Linux</em> <em>toolbx</em> containers to make the default package manager <code>dnf</code> faster.</p>
 <ul>
-<li>Open <code>/etc/dnf/dnf.conf</code> and add/change the following values:
+<li>
+<p>Open <code>/etc/dnf/dnf.conf</code> and add/change the following values:</p>
 <pre><code class="language-bash"># see `man dnf.conf` for defaults and possible options
 
 [main]
@@ -652,12 +688,13 @@ timeout = 5
 </code></pre>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="vscode-setup-for-fedora-silverblue"><a class="header" href="#vscode-setup-for-fedora-silverblue">VSCode Setup for Fedora Silverblue</a></h1>
-<p>After flip-flopping between installing <em>Visual Studio Code</em> inside a <em>distrobox</em> container, layering it on my <em>Fedora Silverblue</em> install and just using <code>nano</code> + terminal for development, I have finally settled on using the following VSCode setup with <a href="https://code.visualstudio.com/docs/devcontainers/containers" title="" target="_blank">Dev Containers</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vscode-setup-for-fedora-silverblue"><a class="header" href="#vscode-setup-for-fedora-silverblue">VSCode Setup for Fedora Silverblue</a></h1>
+<p>After flip-flopping between installing <em>Visual Studio Code</em> inside a <em>distrobox</em> container, layering it on my <em>Fedora Silverblue</em> install and just using <code>nano</code> + terminal for development, I have finally settled on using the following VSCode setup with <a href="https://code.visualstudio.com/docs/devcontainers/containers">Dev Containers</a>.</p>
 <h2 id="setting-up-vscode--dev-containers"><a class="header" href="#setting-up-vscode--dev-containers">Setting up VSCode + Dev Containers</a></h2>
 <ul>
 <li>
-<p>Download the VSCode appimage from <a href="https://github.com/valicm/VSCode-AppImage/releases/tag/latest" title="" target="_blank">valicm’s GitHub repo</a> and install it using <a href="https://flathub.org/en/apps/it.mijorus.gearlever" title="" target="_blank">Gear Lever</a>.</p>
+<p>Download the VSCode appimage from <a href="https://github.com/valicm/VSCode-AppImage/releases/tag/latest">valicm’s GitHub repo</a> and install it using <a href="https://flathub.org/en/apps/it.mijorus.gearlever">Gear Lever</a>.</p>
 </li>
 <li>
 <p>Install <code>podman-compose</code>.</p>
@@ -669,7 +706,7 @@ systemctl enable --user --now podman.service
 </code></pre>
 </li>
 <li>
-<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" title="" target="_blank">Dev Containers</a> VSCode extension.</p>
+<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers</a> VSCode extension.</p>
 </li>
 <li>
 <p>Goto the <em>Dev Containers</em> extension’s settings.</p>
@@ -679,22 +716,18 @@ systemctl enable --user --now podman.service
 <ul>
 <li><code>Dev &gt; Containers: Docker Compose Path</code> -&gt; <code>podman-compose</code></li>
 <li><code>Dev &gt; Containers: Docker Path</code> -&gt; <code>podman</code></li>
-<li><code>Dev &gt; Containers: Docker Socket Path</code> -&gt;<br />
-(whatever socket path <code>systemctl status --user podman.socket | grep Listen:</code> shows)</li>
+<li><code>Dev &gt; Containers: Docker Socket Path</code> -&gt;<br>(whatever socket path <code>systemctl status --user podman.socket | grep Listen:</code> shows)</li>
 </ul>
 </li>
 </ul>
 <h2 id="using-dev-containers-for-development"><a class="header" href="#using-dev-containers-for-development">Using Dev Containers for development</a></h2>
-<p><em>Dev Containers</em> basically creates a <em>Docker</em>/OCI container for your project from the configuration located inside the <code>.devcontainer</code> folder in your project’s topmost directory.<br />
-VSCode then SSH’s into it so you can develop inside the container as-if it was your own system.<br />
-This is the same concept as <em>toolbx</em>. (discussed <a href="linux/fedora-silverblue/./toolbox-setup.html">here</a>)</p>
+<p><em>Dev Containers</em> basically creates a <em>Docker</em>/OCI container for your project from the configuration located inside the <code>.devcontainer</code> folder in your project’s topmost directory.<br>VSCode then SSH’s into it so you can develop inside the container as-if it was your own system.<br>This is the same concept as <em>toolbx</em>. (<a href="#toolbox-setup-for-fedora-silverblue">discussed here</a>)</p>
 <blockquote>
-<p>You can find my devcontainer configs at <a href="https://github.com/ScatteredCognition/devcontainers/" title="" target="_blank">https://github.com/ScatteredCognition/devcontainers/</a></p>
+<p>You can find my devcontainer configs at <a href="https://github.com/ScatteredCognition/devcontainers/">https://github.com/ScatteredCognition/devcontainers/</a></p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="fixing-etcfstab-issues-in-fedora-silverblue"><a class="header" href="#fixing-etcfstab-issues-in-fedora-silverblue">Fixing /etc/fstab issues in Fedora Silverblue</a></h1>
-<p>Starting from <em>Fedora Silverblue 41</em> and onwards, <code>/</code> <em>(root)</em> is mounted using <a href="https://www.cncf.io/projects/composefs/" title="" target="_blank">
-<em>ComposeFS</em></a>.<br />
-As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> instead of <em>systemd</em> or by arguments sourced from <code>/etc/fstab</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fixing-etcfstab-issues-in-fedora-silverblue"><a class="header" href="#fixing-etcfstab-issues-in-fedora-silverblue">Fixing /etc/fstab issues in Fedora Silverblue</a></h1>
+<p>Starting from <em>Fedora Silverblue 41</em> and onwards, <code>/</code> <em>(root)</em> is mounted using <a href="https://www.cncf.io/projects/composefs/"><em>ComposeFS</em></a>.<br>As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> instead of <em>systemd</em> or by arguments sourced from <code>/etc/fstab</code>.</p>
 <p>This will result in…</p>
 <ol>
 <li>Options specified in <code>/etc/fstab</code> (notably <em>btrfs compression options</em>) not applying for <code>/</code> <em>(root)</em>.</li>
@@ -713,16 +746,15 @@ sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
 sudo fstrim /sysroot
 ``
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="arch-linuxcachyos"><a class="header" href="#arch-linuxcachyos">Arch Linux/CachyOS</a></h1>
-<p><a href="https://archlinux.org/" title="" target="_blank">Arch Linux</a> is a <em>community-driven</em>, <em>rolling release</em> distro that features a wide selection of packages in it’s repositories. It features a CLI installer for easy installation.<br />
-<a href="https://cachyos.org/" title="" target="_blank">CachyOS</a> is an <em>Arch Linux</em> derivative that provides their own optimizations on top of <em>Arch Linux</em>, making it blazingly fast.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="arch-linuxcachyos"><a class="header" href="#arch-linuxcachyos">Arch Linux/CachyOS</a></h1>
+<p><a href="https://archlinux.org/">Arch Linux</a> is a <em>community-driven</em>, <em>rolling release</em> distro that features a wide selection of packages in it’s repositories. It features a CLI installer for easy installation.<br><a href="https://cachyos.org/">CachyOS</a> is an <em>Arch Linux</em> derivative that provides their own optimizations on top of <em>Arch Linux</em>, making it blazingly fast.</p>
 <p>Overall, you will have a good time with either one of these distros.</p>
 <blockquote>
-<p>This section contains guides and information mostly specific to <em>Arch Linux/CachyOS</em>.<br />
-I recommend reading the content at <a href="linux//linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br />
-Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
+<p>This section contains guides and information mostly specific to <em>Arch Linux/CachyOS</em>.<br>I recommend reading the content at <a href="/linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br>Also read the <a href="/linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos">Configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2-in-arch-linuxcachyos">Configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS</a></h1>
 <p>To configure LUKS auto-unlocking with TPM2 in Arch Linux/CachyOS, do the following steps:</p>
 <ul>
 <li>
@@ -743,13 +775,11 @@ Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a 
 <li><code>encrypt</code> &gt; <code>sd-encrypt</code></li>
 <li>Example:
 <ul>
-<li>
-<p>Original:</p>
+<li>Original:
 <pre><code class="language-bash">HOOKS=(base udev plymouth autodetect microcode modconf kms block keyboard keymap consolefont  encrypt filesystems fsck)
 </code></pre>
 </li>
-<li>
-<p>Modified:</p>
+<li>Modified:
 <pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms block keyboard sd-vconsole sd-encrypt filesystems fsck)
 </code></pre>
 </li>
@@ -763,10 +793,11 @@ Also read the <a href="linux//linux/basics.html">linux/basics</a> section for a 
 </code></pre>
 </li>
 <li>
-<p>Continue onwards with <a href="linux/cachyos//linux/others/configure-luks-autounlocking-with-tpm2.html">linux/others/Configure LUKS Auto-unlocking with TPM2</a></p>
+<p>Continue onwards with <a href="/linux/others/configure-luks-autounlocking-with-tpm2.html">linux/others/Configure LUKS Auto-unlocking with TPM2</a></p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos"><a class="header" href="#unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos">UNFINISHED Creating a VM using virt-manager on Arch Linux/CachyOS</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos"><a class="header" href="#unfinished-creating-a-vm-using-virt-manager-on-arch-linuxcachyos">UNFINISHED Creating a VM using virt-manager on Arch Linux/CachyOS</a></h1>
 <h2 id="installing-and-configuring-virt-manager"><a class="header" href="#installing-and-configuring-virt-manager">Installing and configuring virt-manager</a></h2>
 <h3 id="installing-virt-manager"><a class="header" href="#installing-virt-manager">Installing <code>virt-manager</code></a></h3>
 <ul>
@@ -825,7 +856,7 @@ sudo virsh net-autostart default
 <li>On the last screen, select <code>Customize configuration before install</code></li>
 <li><strong>(Windows Guests)</strong> Download the VirtIO guest tools iso for Windows so we can have disk and network drivers.
 <ul>
-<li><a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/" title="" target="_blank">Download VirtIO driver iso</a></li>
+<li><a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/">Download VirtIO driver iso</a></li>
 </ul>
 </li>
 <li><strong>(Windows Guests)</strong> Add an emulated CD-ROM drive with our VirtIO drivers from <code>Add Hardware &gt; Storage (In the sidebar) &gt; Device Type: CDROM Device</code> and select the VirtIO driver ISO file, then click Ok to close the dialog box</li>
@@ -841,8 +872,8 @@ sudo virsh net-autostart default
 <li>After installation has finished, navigate to the emulated CDROM drive with the VirtIO drivers in Windows Explorer and install the guest tools</li>
 <li>Afterwards, visit these two links inside the VM and install the Spice guest tools
 <ul>
-<li><a href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe" title="" target="_blank">Spice Guest tools</a></li>
-<li><a href="https://www.spice-space.org/download/windows/spice-webdavd/" title="" target="_blank">Spice Webdavd</a></li>
+<li><a href="https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe">Spice Guest tools</a></li>
+<li><a href="https://www.spice-space.org/download/windows/spice-webdavd/">Spice Webdavd</a></li>
 </ul>
 </li>
 </ul>
@@ -858,25 +889,23 @@ sudo virsh net-autostart default
 <h3 id="setting-up-gpu-passthrough"><a class="header" href="#setting-up-gpu-passthrough">Setting up GPU Passthrough</a></h3>
 <ul>
 <li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; PCI Host Device</code> and select one of the vGPUs/GPU you want to passthrough to the VM.</li>
-<li><strong>(Intel iGPUs)</strong> To avoid the Code 43 error with the i915 sriov dkms drivers, follow <a href="https://github.com/strongtz/i915-sriov-dkms/issues/8#issuecomment-1567465036" title="" target="_blank">this thread</a> and add a &lt;vendor_id&gt; tag</li>
+<li><strong>(Intel iGPUs)</strong> To avoid the Code 43 error with the i915 sriov dkms drivers, follow <a href="https://github.com/strongtz/i915-sriov-dkms/issues/8#issuecomment-1567465036">this thread</a> and add a &lt;vendor_id&gt; tag</li>
 </ul>
 <h3 id="setting-up-usb-passthrough"><a class="header" href="#setting-up-usb-passthrough">Setting up USB Passthrough</a></h3>
 <ul>
 <li>While the VM is powered off, Goto the Hardware Details view, then <code>Add Hardware &gt; USB Host Device</code> and select one of the USB Devices you want to passthrough to the VM.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="others"><a class="header" href="#others">Others</a></h1>
-<p>This section contains content that is either generally applicable to most linux distros, or just small tidbits that don’t warrant their specific section.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
-<p>If you’re on a traditional distro, install <code>syncthing</code> from your distro’s package repo.<br />
-Afterwards, enable the syncthing systemd service.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="configure-syncthing"><a class="header" href="#configure-syncthing">Configure Syncthing</a></h1>
+<p>If you’re on a traditional distro, install <code>syncthing</code> from your distro’s package repo.<br>Afterwards, enable the syncthing systemd service.</p>
 <pre><code class="language-bash">systemctl enable --user --now syncthing.service
 </code></pre>
-<p>If you’re on an immutable distro like <em>Fedora Silverblue</em>, install <a href="https://flathub.org/en/apps/com.github.zocker_160.SyncThingy" title="" target="_blank">SyncThingy</a> from <em>Flathub</em>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="using-podman-quadlets"><a class="header" href="#using-podman-quadlets">Using Podman Quadlets</a></h1>
-<p>Sources used: <a href="https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html" title="" target="_blank">podman docs</a></p>
+<p>If you’re on an immutable distro like <em>Fedora Silverblue</em>, install <a href="https://flathub.org/en/apps/com.github.zocker_160.SyncThingy">SyncThingy</a> from <em>Flathub</em>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="using-podman-quadlets"><a class="header" href="#using-podman-quadlets">Using Podman Quadlets</a></h1>
+<p>Sources used: <a href="https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html">podman docs</a></p>
 <h2 id="intro"><a class="header" href="#intro">Intro</a></h2>
-<p>Podman Quadlet is a Podman/systemd feature that allows you to easily create and start containers on boot.<br />
-A very basic Quadlet for <code>Syncthing</code> has been given below, as example is the best way to understand anything.</p>
+<p>Podman Quadlet is a Podman/systemd feature that allows you to easily create and start containers on boot.<br>A very basic Quadlet for <code>Syncthing</code> has been given below, as example is the best way to understand anything.</p>
 <h2 id="creating-a-quadlet-file"><a class="header" href="#creating-a-quadlet-file">Creating a Quadlet file</a></h2>
 <h3 id="where-to-put-stuff"><a class="header" href="#where-to-put-stuff">Where to put stuff</a></h3>
 <p>For a rootless Quadlet (recommended), create a file under…</p>
@@ -897,7 +926,7 @@ A very basic Quadlet for <code>Syncthing</code> has been given below, as example
 <p>e.g. for our purposes, we will create the file as follows: <code>~/.config/containers/systemd/syncthing.container</code></p>
 <h3 id="basic-syntax"><a class="header" href="#basic-syntax">Basic Syntax</a></h3>
 <p>For our newly created <code>syncthing.container</code> file, we will put the following:</p>
-<pre><code># syncthing.container
+<pre><code class="language-bash"># syncthing.container
 [Unit]
 Description=Syncthing Quadlet (User)
 
@@ -922,7 +951,7 @@ Volume=./%h/:/var/syncthing
 WantedBy=default.target
 </code></pre>
 <p>This is a Quadlet file that roughly corresponds to the following podman command:</p>
-<pre><code>podman create docker.io/syncthing/syncthing \
+<pre><code class="language-bash">podman create docker.io/syncthing/syncthing \
         --network host \
         --security-opt label=disable \
         -e PUID=0 -e PGID=0 \
@@ -938,9 +967,8 @@ syncthing.container  syncthing.service  /var/home/faeizmahrus/.config/containers
 
 </code></pre>
 <h3 id="fixing-errors"><a class="header" href="#fixing-errors">Fixing errors</a></h3>
-<p>IF the <code>STATUS</code> field shows <code>Not loaded</code>, it means the podman quadlet systemd generator couldn’t generate a systemd <code>.service</code> file, most likely due to an issue with the Quadlet file’s syntax, given everything else is configured correctly.<br />
-To find out the error, run the following:</p>
-<pre><code>## To list errors and the generated .service file for all Quadlets
+<p>IF the <code>STATUS</code> field shows <code>Not loaded</code>, it means the podman quadlet systemd generator couldn’t generate a systemd <code>.service</code> file, most likely due to an issue with the Quadlet file’s syntax, given everything else is configured correctly.<br>To find out the error, run the following:</p>
+<pre><code class="language-bash">## To list errors and the generated .service file for all Quadlets
 /usr/lib/systemd/system-generators/podman-system-generator --user --dryrun
 
 ## To list only the errors for a single Quadlet
@@ -954,14 +982,16 @@ systemd-analyze verify --user --generators=true syncthing.service
 <p>Optionally, enable linger for your user so the container stays running even when your user is logged out.</p>
 <pre><code class="language-bash">loginctl enable-linger $USER
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="manage-environment-variables"><a class="header" href="#manage-environment-variables">Manage Environment Variables</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="manage-environment-variables"><a class="header" href="#manage-environment-variables">Manage Environment Variables</a></h1>
 <ul>
 <li>Drop files like <code>~/.config/environment.d/xx-&lt;name&gt;.conf</code></li>
 <li>To add <code>~/.local/bin</code> to <code>$PATH</code>, add <code>PATH=~/.local/bin:$PATH</code></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="configure-luks-auto-unlocking-with-tpm2"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2">Configure LUKS auto-unlocking with TPM2</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="configure-luks-auto-unlocking-with-tpm2"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2">Configure LUKS auto-unlocking with TPM2</a></h1>
 <h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip</a></h2>
-<p>Resources used : <a href="https://gist.github.com/jdoss/777e8b52c8d88eb87467935769c98a95" title="" target="_blank">jdoss’s guide</a> - <a href="https://uapi-group.org/specifications/specs/linux_tpm_pcr_registry/" title="" target="_blank">uapi-group</a> - <a href="https://wiki.archlinux.org/title/Systemd-cryptenroll" title="" target="_blank">ArchWiki</a> - <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-cryptenroll.html" title="" target="_blank">FreeDesktop</a> - <a href="https://askubuntu.com/questions/1357694/trying-to-understand-errors-from-tpm2-tools" title="" target="_blank">AskUbuntu</a> - <a href="https://tpm2-tools.readthedocs.io" title="" target="_blank">tpm2-tools readthedocs</a></p>
+<p>Resources used : <a href="https://gist.github.com/jdoss/777e8b52c8d88eb87467935769c98a95">jdoss’s guide</a> - <a href="https://uapi-group.org/specifications/specs/linux_tpm_pcr_registry/">uapi-group</a> - <a href="https://wiki.archlinux.org/title/Systemd-cryptenroll">ArchWiki</a> - <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-cryptenroll.html">FreeDesktop</a> - <a href="https://askubuntu.com/questions/1357694/trying-to-understand-errors-from-tpm2-tools">AskUbuntu</a> - <a href="https://tpm2-tools.readthedocs.io">tpm2-tools readthedocs</a></p>
 <p><strong>IF YOU HAVE MULTIPLE TPM DEVICES, SPECIFY THE TPM TO BE USED BY ENTERING THE FULL PATH TO THE TPM DEVICE (<code>/dev/&lt;TPM2_DEVICE&gt;</code>) IN <code>--tpm2-device=</code> DURING ENROLL</strong></p>
 <p><strong>UNPLUG ANY BOOTABLE EXTERNAL STORAGE DEVICES OR INSTALL MEDIA AND REBOOT BEFORE ENROLLING TPM AUTOUNLOCK</strong></p>
 <p><strong>NEED TO BE RE-ENROLLED AFTER SECUREBOOT DBX AND UEFI FIRMWARE UPDATES</strong></p>
@@ -1025,7 +1055,7 @@ echo 5 &gt; /sys/class/tpm/tpm0/ppi/request
 <h4 id="these-values-require-systemd-boot-andor-ukis"><a class="header" href="#these-values-require-systemd-boot-andor-ukis">These values require systemd-boot and/or UKIs</a></h4>
 <ul>
 <li><code>PCR 14</code> - <strong>Changes to Secureboot “MOK” certificates and keys</strong> (Enrolling new Secureboot keys)</li>
-<li><code>PCR 15</code> - <strong>Changes to <code>machine-id</code>, UUIDs of various mountpoints, other systemd measurements</strong> <a href="https://oddlama.org/blog/bypassing-disk-encryption-with-tpm2-unlock/" title="" target="_blank">(Mitigation for this ???)</a></li>
+<li><code>PCR 15</code> - <strong>Changes to <code>machine-id</code>, UUIDs of various mountpoints, other systemd measurements</strong> <a href="https://oddlama.org/blog/bypassing-disk-encryption-with-tpm2-unlock/">(Mitigation for this ???)</a></li>
 </ul>
 <h2 id="ignore-the-section-below-its-a-scratchpad"><a class="header" href="#ignore-the-section-below-its-a-scratchpad">Ignore the section below, it’s a scratchpad</a></h2>
 <h3 id="todo-experimental-recalculate-pcr-values-after-modificationupdate"><a class="header" href="#todo-experimental-recalculate-pcr-values-after-modificationupdate">(TODO, EXPERIMENTAL) Recalculate PCR values after modification/update</a></h3>
@@ -1050,45 +1080,36 @@ sudo systemd-pcrlock make-policy
 tpm2_changeauth -c endorsement newpass
 tpm2_changeauth -c lockout newpass
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="fixes-for-electron-and-chromium-apps"><a class="header" href="#fixes-for-electron-and-chromium-apps">Fixes for Electron and Chromium apps</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fixes-for-electron-and-chromium-apps"><a class="header" href="#fixes-for-electron-and-chromium-apps">Fixes for Electron and Chromium apps</a></h1>
 <h2 id="launch-arguments-and-flags-for-electron-apps"><a class="header" href="#launch-arguments-and-flags-for-electron-apps">Launch arguments and flags for Electron apps</a></h2>
 <p>Various launch arguments and flags for
 Electron apps.</p>
-<h3 id="launch-arguments-"><a class="header" href="#launch-arguments-">Launch arguments :</a></h3>
-<p><strong>You need to copy the app’s <code>.desktop</code> file to <code>~/.local/share/applications/</code> and append it after <code>Exec=</code> in all entry fields.</strong> <br>
-<strong>NOTE: Arch-based distros usually have .conf files to easily handle commandline args</strong></p>
+<h3 id="launch-arguments"><a class="header" href="#launch-arguments">Launch arguments</a></h3>
+<p><strong>You need to copy the app’s <code>.desktop</code> file to <code>~/.local/share/applications/</code> and append it after <code>Exec=</code> in all entry fields.</strong><br><strong>NOTE: Arch-based distros usually have .conf files to easily handle commandline args</strong></p>
 <ul>
-<li><code>--ozone-platform-hint=auto</code> <br>
-Runs the app with Wayland support.</li>
-<li><code>--enable-wayland-ime</code> <br>
-Enables iBus/Fcitx support.</li>
-<li><code>--enable-features=TouchpadOverscrollHistoryNavigation</code> <br>
-(Use for browsers. e.g. Brave)
+<li><code>--ozone-platform-hint=auto</code><br>Runs the app with Wayland support.</li>
+<li><code>--enable-wayland-ime</code><br>Enables iBus/Fcitx support.</li>
+<li><code>--enable-features=TouchpadOverscrollHistoryNavigation</code><br>(Use for browsers. e.g. Brave)
 Enables navigation via touchpad gestures.</li>
 </ul>
 <h3 id="flags-set-with-chromeflags-mainly-for-browsers"><a class="header" href="#flags-set-with-chromeflags-mainly-for-browsers">Flags (set with <code>chrome://flags</code>) (mainly for browsers)</a></h3>
 <ul>
-<li><code>#ozone-platform-hint</code> - <strong>Auto</strong> <br>
-Enables Wayland support.</li>
-<li><code>#wayland-ui-scaling</code> - <strong>Enabled</strong> <br>
-Enables Fractional Scaling support under Wayland.</li>
-<li><code>#wayland-per-window-scaling</code> - <strong>Enabled</strong> <br>
-Enables per-window scaling support.</li>
-<li><code>#wayland-text-input-v3</code> - <strong>Enabled</strong> <br>
-Used to enable proper ibus support on older GNOME versions without text-input-v1 support.</li>
-<li><code>#middle-button-autoscroll</code> - <strong>Enabled</strong> <br>
-Enables middle-click autoscroll.</li>
-<li><code>#web-app-universal-install</code> - <strong>Enabled</strong> <br>
-Enables installation of normal websites as webapps.</li>
+<li><code>#ozone-platform-hint</code> - <strong>Auto</strong><br>Enables Wayland support.</li>
+<li><code>#wayland-ui-scaling</code> - <strong>Enabled</strong><br>Enables Fractional Scaling support under Wayland.</li>
+<li><code>#wayland-per-window-scaling</code> - <strong>Enabled</strong><br>Enables per-window scaling support.</li>
+<li><code>#wayland-text-input-v3</code> - <strong>Enabled</strong><br>Used to enable proper ibus support on older GNOME versions without text-input-v1 support.</li>
+<li><code>#middle-button-autoscroll</code> - <strong>Enabled</strong><br>Enables middle-click autoscroll.</li>
+<li><code>#web-app-universal-install</code> - <strong>Enabled</strong><br>Enables installation of normal websites as webapps.</li>
 </ul>
-<h1 id="guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox"><a class="header" href="#guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox">Guide on setting up any Chromium browser inside a (Fedora) distrobox</a></h1>
+<h2 id="guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox"><a class="header" href="#guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox">Guide on setting up any Chromium browser inside a (Fedora) distrobox</a></h2>
 <h2 id="setup-the-distrobox"><a class="header" href="#setup-the-distrobox">Setup the Distrobox</a></h2>
 <ol>
 <li><code>distrobox create -n appbox-fedora --init --additional-packages "systemd" --pre-init-hooks ""</code></li>
 <li><code>distrobox enter appbox-fedora -- sh -c db-fedora-essential.sh</code></li>
 <li>echo “max_parallel_downloads = 20” &gt;&gt; /etc/dnf/dnf.conf</li>
 <li>sudo dnf update</li>
-<li>sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</li>
+<li>sudo dnf install <a href="https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm">https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm</a> -E %fedora).noarch.rpm <a href="https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm">https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm</a> -E %fedora).noarch.rpm</li>
 <li>sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1</li>
 <li>sudo dnf install rpmfusion-{free,nonfree}-release-tainted</li>
 <li>sudo dnf swap ffmpeg-free ffmpeg –allowerasing
@@ -1096,15 +1117,15 @@ Enables installation of normal websites as webapps.</li>
 </ol>
 <h2 id="chromium-commands-as-of-nov-13-2025"><a class="header" href="#chromium-commands-as-of-nov-13-2025">Chromium commands (as of Nov 13 2025)</a></h2>
 <p><code>vivaldi --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,WaylandPerSurfaceScale,WaylandUiScale,MiddleClickAutoscroll --gtk-version=4</code></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="fedora-setup-guide"><a class="header" href="#fedora-setup-guide">Fedora Setup Guide</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fedora-setup-guide"><a class="header" href="#fedora-setup-guide">Fedora Setup Guide</a></h1>
 <h2 id="generic-tweaks-and-configuration-for-fedora-linux-after-fresh-install"><a class="header" href="#generic-tweaks-and-configuration-for-fedora-linux-after-fresh-install">Generic tweaks and configuration for Fedora Linux after fresh install</a></h2>
 <h2 id="dnf-is-too-slow"><a class="header" href="#dnf-is-too-slow">dnf is too slow</a></h2>
 <ul>
-<li>Open <code>dnf.conf</code> : <code>nano /etc/dnf/dnf.conf</code> <br>
-(replace nano with kwrite/gedit etc if you want to)</li>
+<li>Open <code>dnf.conf</code> : <code>nano /etc/dnf/dnf.conf</code><br>(replace nano with kwrite/gedit etc if you want to)</li>
 <li>Add/Change the following values.</li>
 </ul>
-<pre><code># Download 20 packages simultaneously
+<pre><code class="language-bash"># Download 20 packages simultaneously
 max_parallel_downloads = 20
 
 # Mirror must maintain download speed of atleast 256*1024 bytes (256KiB/s) for the duration of `timeout` value in seconds
@@ -1115,11 +1136,11 @@ timeout = 5
 </code></pre>
 <h2 id="install-noto-fonts-and-bangla-language-pack"><a class="header" href="#install-noto-fonts-and-bangla-language-pack">Install Noto fonts and Bangla language pack</a></h2>
 <p>Install all the Noto fonts and the <code>langpacks-bn</code> language pack.</p>
-<pre><code>sudo dnf install -y google-noto-fonts-all langpacks-bn
+<pre><code class="language-bash">sudo dnf install -y google-noto-fonts-all langpacks-bn
 </code></pre>
 <h2 id="configure-flatpak-remotes"><a class="header" href="#configure-flatpak-remotes">Configure flatpak remotes</a></h2>
 <p>Remove the Fedora flatpak remotes and add the Flathub flatpak remote.</p>
-<pre><code># Delete fedora remotes
+<pre><code class="language-bash"># Delete fedora remotes
 flatpak remote-delete fedora
 flatpak remote-delete fedora-testing
 
@@ -1128,7 +1149,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 </code></pre>
 <h2 id="configure-rpmfusion"><a class="header" href="#configure-rpmfusion">Configure RPMFusion</a></h2>
 <p>Configure RPMFusion and install restricted extras.</p>
-<pre><code># Run elevated to avoid password prompt spam
+<pre><code class="language-bash"># Run elevated to avoid password prompt spam
 sudo bash
 
 # Install rpmfusion repos
@@ -1168,9 +1189,11 @@ dnf install libdvdcss
 dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="reflections-on-life"><a class="header" href="#reflections-on-life">Reflections on Life</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="reflections-on-life"><a class="header" href="#reflections-on-life">Reflections on Life</a></h1>
 <p>Unfinished</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="a-new-beginning"><a class="header" href="#a-new-beginning">A New Beginning</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a-new-beginning"><a class="header" href="#a-new-beginning">A New Beginning</a></h1>
 <p>Unfinished</p>
 
                     </main>
@@ -1190,6 +1213,11 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1198,13 +1226,13 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
@@ -1213,6 +1241,7 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
             window.setTimeout(window.print, 100);
         });
         </script>
+
 
     </div>
     </body>

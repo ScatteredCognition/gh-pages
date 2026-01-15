@@ -1,20 +1,26 @@
 # Basics of using Linux
+
 ## Demystifying the Jargons
+
 - The *terminal* is an application you execute commands from.
 
 - The *shell* is the program that actually executes your commands. Think of `cmd.exe` or *PowerShell* on *Windows*.  
   On most linux distros, `bash` is usually the default shell, but I recommend using `fish` as your default shell and `bash` for writing shell scripts.
 
   To list available shells in your system, type the following in a terminal:
+
   ```bash
   cat /etc/shells
   ```
+
   Note that you can usually install additional shells from your package manager.
 
   To change your default *shell*, type the following in a terminal:
+
   ```bash
   sudo usermod -s <path_to_shell> $USER
   ```
+
   Example: `sudo usermod -s /bin/bash $USER`
 
 - *directory* is a synonym for a *folder*.  
@@ -25,13 +31,16 @@
 - *environment variable* is a *shell variable* that works and functions mostly like variables in any programming language.
 
 ## CLI Basics
+
 ### Navigating your files and folders
+
 - Use the `pwd` command to list the directory you're currently in.
 - Use the `ls -la` command to list the files and directories in your current directory.
 - Use the `tree -C <directory> | less -R` command to list all files and subdirectories ina scorllable window.
 - Use the `cd <directory>` command to change your directory.
 
 ### Editing text
+
 - Use the `cat <filename>` command to display the text in a file.
 - Use the `nano <filename>` command to edit text in a file.  
   Example: `nano /etc/dnf/dnf.conf`
@@ -49,6 +58,7 @@
   Useful for scripting, ask AI how to use them.
 
 ## The Filesystem Layout
+
 A basic overview of the modern linux filesystem is given below.  
 
 - `/boot` or `/efi` is where the bootloader is stored.

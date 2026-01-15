@@ -1,8 +1,10 @@
 # Videogames
+
 I have played a plethora of videogames from most genres.  
 As usual, a list has been given below.  
 
 ## Pokemon Anthology
+
 - Pokemon Ruby/Sapphire/Emerald <small>(GBA)</small>
 - Pokemon Flora Sky <small>(GBA)</small>
 - Pokemon Dark Rising <small>(GBA)</small>
@@ -10,6 +12,7 @@ As usual, a list has been given below.
 - Pokemon Ranger series <small>(NDS)</small>
 
 ## Assassin's Creed Anthology
+
 - Assassin's Creed 1 (Good)
 - Assassin's Creed - Bloodlines (Good) <small>(PSP)</small>
 - Assassin's Creed 2/Brotherhood/Revelations (Ezio Trilogy was bad, sorry)
@@ -20,16 +23,19 @@ As usual, a list has been given below.
 - Assassin's Creed - Origins (Good)
 
 ## Metal Gear Solid Anthology
+
 - Metal Gear Solid 1 (+Twin Snakes) <small>(PS1/GC)</small>
 - Metal Gear Solid 2 <small>(PS3)</small>
 - Metal Gear Solid 3 <small>(PS3)</small>
 
 ## GTA Anthology
+
 - GTA - Vice City
 - GTA - Vice City Stories <small>(PSP)</small>
 - GTA 4
 
 ## Underrated Gems
+
 - Madagascar - Operation Penguin <small>(GBA)</small>
 - Beyblade - G Revolution <small>(GBA)</small>
 - DemiKids - Dark/Light Version <small>(GBA)</small>
@@ -43,5 +49,6 @@ As usual, a list has been given below.
 - Rimworld
 
 ## Multiplayer
+
 - Counter Strike - Global Offensive (CSGO)
 - Valorant

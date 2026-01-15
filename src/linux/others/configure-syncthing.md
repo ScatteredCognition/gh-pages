@@ -1,6 +1,8 @@
 # Configure Syncthing
+
 If you're on a traditional distro, install `syncthing` from your distro's package repo.  
 Afterwards, enable the syncthing systemd service.  
+
 ```bash
 systemctl enable --user --now syncthing.service
 ```
