@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Fixes for Electron and Chromium apps - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Configure LUKS auto-unlocking with TPM2 - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-4000925e.js";
+            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-824d1b5d.js"></script>
+        <script src="../../toc-935a8826.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,52 +177,107 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="fixes-for-electron-and-chromium-apps"><a class="header" href="#fixes-for-electron-and-chromium-apps">Fixes for Electron and Chromium apps</a></h1>
-<h2 id="launch-arguments-and-flags-for-electron-apps"><a class="header" href="#launch-arguments-and-flags-for-electron-apps">Launch arguments and flags for Electron apps</a></h2>
-<p>Various launch arguments and flags for
-Electron apps.</p>
-<h3 id="launch-arguments"><a class="header" href="#launch-arguments">Launch arguments</a></h3>
-<p><strong>You need to copy the app’s <code>.desktop</code> file to <code>~/.local/share/applications/</code> and append it after <code>Exec=</code> in all entry fields.</strong><br><strong>NOTE: Arch-based distros usually have .conf files to easily handle commandline args</strong></p>
+                        <h1 id="configure-luks-auto-unlocking-with-tpm2"><a class="header" href="#configure-luks-auto-unlocking-with-tpm2">Configure LUKS auto-unlocking with TPM2</a></h1>
+<h2 id="guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip"><a class="header" href="#guide-for-setting-up-auto-unlocking-luks2-volumes-on-boot-with-a-tpm2-chip">Guide for setting up auto-unlocking LUKS2 volumes on boot with a TPM2 chip</a></h2>
+<p>Resources used : <a href="https://gist.github.com/jdoss/777e8b52c8d88eb87467935769c98a95">jdoss’s guide</a> - <a href="https://uapi-group.org/specifications/specs/linux_tpm_pcr_registry/">uapi-group</a> - <a href="https://wiki.archlinux.org/title/Systemd-cryptenroll">ArchWiki</a> - <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-cryptenroll.html">FreeDesktop</a> - <a href="https://askubuntu.com/questions/1357694/trying-to-understand-errors-from-tpm2-tools">AskUbuntu</a> - <a href="https://tpm2-tools.readthedocs.io">tpm2-tools readthedocs</a></p>
+<p><strong>IF YOU HAVE MULTIPLE TPM DEVICES, SPECIFY THE TPM TO BE USED BY ENTERING THE FULL PATH TO THE TPM DEVICE (<code>/dev/&lt;TPM2_DEVICE&gt;</code>) IN <code>--tpm2-device=</code> DURING ENROLL</strong></p>
+<p><strong>UNPLUG ANY BOOTABLE EXTERNAL STORAGE DEVICES OR INSTALL MEDIA AND REBOOT BEFORE ENROLLING TPM AUTOUNLOCK</strong></p>
+<p><strong>NEED TO BE RE-ENROLLED AFTER SECUREBOOT DBX AND UEFI FIRMWARE UPDATES</strong></p>
+<h3 id="check-if-everything-is-setup-correctly"><a class="header" href="#check-if-everything-is-setup-correctly">Check if everything is setup correctly</a></h3>
 <ul>
-<li><code>--ozone-platform-hint=auto</code><br>Runs the app with Wayland support.</li>
-<li><code>--enable-wayland-ime</code><br>Enables iBus/Fcitx support.</li>
-<li><code>--enable-features=TouchpadOverscrollHistoryNavigation</code><br>(Use for browsers. e.g. Brave)
-Enables navigation via touchpad gestures.</li>
+<li>See which volume(s) are LUKS encrypted</li>
 </ul>
-<h3 id="flags-set-with-chromeflags-mainly-for-browsers"><a class="header" href="#flags-set-with-chromeflags-mainly-for-browsers">Flags (set with <code>chrome://flags</code>) (mainly for browsers)</a></h3>
+<pre><code class="language-bash">sudo blkid -t TYPE=crypto_LUKS
+</code></pre>
 <ul>
-<li><code>#ozone-platform-hint</code> - <strong>Auto</strong><br>Enables Wayland support.</li>
-<li><code>#wayland-ui-scaling</code> - <strong>Enabled</strong><br>Enables Fractional Scaling support under Wayland.</li>
-<li><code>#wayland-per-window-scaling</code> - <strong>Enabled</strong><br>Enables per-window scaling support.</li>
-<li><code>#wayland-text-input-v3</code> - <strong>Enabled</strong><br>Used to enable proper ibus support on older GNOME versions without text-input-v1 support.</li>
-<li><code>#middle-button-autoscroll</code> - <strong>Enabled</strong><br>Enables middle-click autoscroll.</li>
-<li><code>#web-app-universal-install</code> - <strong>Enabled</strong><br>Enables installation of normal websites as webapps.</li>
+<li>See whether secureboot is enabled</li>
 </ul>
-<h2 id="guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox"><a class="header" href="#guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox">Guide on setting up any Chromium browser inside a (Fedora) distrobox</a></h2>
-<h2 id="setup-the-distrobox"><a class="header" href="#setup-the-distrobox">Setup the Distrobox</a></h2>
-<ol>
-<li><code>distrobox create -n appbox-fedora --init --additional-packages "systemd" --pre-init-hooks ""</code></li>
-<li><code>distrobox enter appbox-fedora -- sh -c db-fedora-essential.sh</code></li>
-<li>echo “max_parallel_downloads = 20” &gt;&gt; /etc/dnf/dnf.conf</li>
-<li>sudo dnf update</li>
-<li>sudo dnf install <a href="https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm">https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm</a> -E %fedora).noarch.rpm <a href="https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm">https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm</a> -E %fedora).noarch.rpm</li>
-<li>sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1</li>
-<li>sudo dnf install rpmfusion-{free,nonfree}-release-tainted</li>
-<li>sudo dnf swap ffmpeg-free ffmpeg –allowerasing
-9, sudo dnf install libdvdcss intel-media-driver libva-intel-driver gnome-keyring libsecret pipewire xdg-desktop-portal-{gtk,gnome} flatpak, xdg-user-dirs{,-gtk} xdg-utils</li>
-</ol>
-<h2 id="chromium-commands-as-of-nov-13-2025"><a class="header" href="#chromium-commands-as-of-nov-13-2025">Chromium commands (as of Nov 13 2025)</a></h2>
-<p><code>vivaldi --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,WaylandPerSurfaceScale,WaylandUiScale,MiddleClickAutoscroll --gtk-version=4</code></p>
+<pre><code class="language-bash">sudo mokutil --sb-state
+</code></pre>
+<ul>
+<li>See available TPM devices</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --tpm2-device=list
+</code></pre>
+<h3 id="clear-the-tpm-chip"><a class="header" href="#clear-the-tpm-chip">Clear the TPM chip</a></h3>
+<ul>
+<li>Either use PPI Reset via UEFI firmware options.</li>
+<li>Or run the following commands to initiate a PPI reset through linux. (Recommended)</li>
+</ul>
+<pre><code class="language-bash">sudo sh
+echo 5 &gt; /sys/class/tpm/tpm0/ppi/request
+</code></pre>
+<ul>
+<li>Reboot to finish the PPI reset</li>
+</ul>
+<pre><code class="language-bash">systemctl reboot
+</code></pre>
+<h3 id="enroll-tpm2-to-luks"><a class="header" href="#enroll-tpm2-to-luks">Enroll TPM2 to LUKS</a></h3>
+<ul>
+<li>Enroll the LUKS volumes</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=1+5+7 &lt;LUKS_Volume&gt;
+</code></pre>
+<ul>
+<li>Enroll a recovery key (QR Code)</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --recovery-key &lt;LUKS_Volume&gt;
+</code></pre>
+<ul>
+<li>Reboot to see whether it worked</li>
+</ul>
+<pre><code class="language-bash">systemctl reboot
+</code></pre>
+<h3 id="remove-tpm2-from-luks"><a class="header" href="#remove-tpm2-from-luks">Remove TPM2 from LUKS</a></h3>
+<ul>
+<li>Disable TPM autounlock</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-cryptenroll --wipe-slot=tpm2 &lt;LUKS_Volume&gt;
+</code></pre>
+<h3 id="description-of-the-tpm-pcrs-in-linux"><a class="header" href="#description-of-the-tpm-pcrs-in-linux">Description of the TPM PCRs (in linux)</a></h3>
+<ul>
+<li><code>PCR 1</code> - <strong>Hardware configuration was changed</strong> (Changing/Adding/Removing RAM/CPU/GPU etc)</li>
+<li><code>PCR 5</code> - <strong>GPT Partition Table was changed</strong> (Creating/Deleting/Modifying partitions)</li>
+<li><code>PCR 7</code> - <strong>Changes to UEFI Secureboot State</strong></li>
+</ul>
+<p>These values require systemd-boot and/or UKIs:</p>
+<ul>
+<li><code>PCR 14</code> - <strong>Changes to Secureboot “MOK” certificates and keys</strong> (Enrolling new Secureboot keys)</li>
+<li><code>PCR 15</code> - <strong>Changes to <code>machine-id</code>, UUIDs of various mountpoints, other systemd measurements</strong> <a href="https://oddlama.org/blog/bypassing-disk-encryption-with-tpm2-unlock/">(Mitigation for this ???)</a></li>
+</ul>
+<h2 id="ignore-the-section-below-its-a-scratchpad"><a class="header" href="#ignore-the-section-below-its-a-scratchpad">Ignore the section below, it’s a scratchpad</a></h2>
+<h3 id="todo-experimental-recalculate-pcr-values-after-modificationupdate"><a class="header" href="#todo-experimental-recalculate-pcr-values-after-modificationupdate">(TODO, EXPERIMENTAL) Recalculate PCR values after modification/update</a></h3>
+<ul>
+<li><strong>IF THE SYSTEM ASKS FOR A PASSWORD AFTER AN UPDATE, YOU NEED TO UPDATE THE PCR PREDICTIONS</strong></li>
+<li><strong>SCRATCH THAT, THIS WONT WORK WITUOUT SD-BOOT AND UKIS</strong></li>
+<li>Recalculate the PCRs manually.</li>
+</ul>
+<pre><code class="language-bash">sudo systemd-pcrlock predict
+sudo systemd-pcrlock make-policy
+</code></pre>
+<ul>
+<li>Enable a service that does thiws automatically on every shutdown/boot.</li>
+</ul>
+<pre><code class="language-bash">systemctl enable systemd-pcrlock-make-policy.service
+</code></pre>
+<h3 id="unsure-what-to-do-with-this-take-ownership-and-lock-the-tpm2-chip"><a class="header" href="#unsure-what-to-do-with-this-take-ownership-and-lock-the-tpm2-chip">(UNSURE WHAT TO DO WITH THIS) Take Ownership and lock the TPM2 chip</a></h3>
+<ul>
+<li>Set Owner, Endorsement and Lockout passwords to ensure they can’t be changed by unauthorized parties. (You need to remove the locks everytime you need to re-enroll the TPM)</li>
+</ul>
+<pre><code class="language-bash">tpm2_changeauth -c owner newpass
+tpm2_changeauth -c endorsement newpass
+tpm2_changeauth -c lockout newpass
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/others/configure-luks-autounlocking-with-tpm2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/general-resources/manage-environment-variables.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/others/fedora-setup-guide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/general-resources/fixes-for-electron-and-chromium-apps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -232,11 +287,11 @@ Enables navigation via touchpad gestures.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/others/configure-luks-autounlocking-with-tpm2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/general-resources/manage-environment-variables.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/others/fedora-setup-guide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/general-resources/fixes-for-electron-and-chromium-apps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

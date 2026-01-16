@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Basics - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Changing Shells - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
-        <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-2459343d.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../../css/general-2459343d.css">
+        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../";
+            const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-4000925e.js";
+            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-824d1b5d.js"></script>
+        <script src="../../toc-935a8826.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -105,7 +105,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -140,7 +140,7 @@
                     <h1 class="menu-title">ScatteredCognition&#x27;s Biblioteca</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/ScatteredCognition/" title="Git repository" aria-label="Git repository">
@@ -177,96 +177,25 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="basics-of-using-linux"><a class="header" href="#basics-of-using-linux">Basics of using Linux</a></h1>
-<h2 id="demystifying-the-jargons"><a class="header" href="#demystifying-the-jargons">Demystifying the Jargons</a></h2>
-<ul>
-<li>
-<p>The <em>terminal</em> is an application you execute commands from.</p>
-</li>
-<li>
-<p>The <em>shell</em> is the program that actually executes your commands. Think of <code>cmd.exe</code> or <em>PowerShell</em> on <em>Windows</em>.<br>On most linux distros, <code>bash</code> is usually the default shell, but I recommend using <code>fish</code> as your default shell and <code>bash</code> for writing shell scripts.</p>
+                        <h1 id="changing-shells"><a class="header" href="#changing-shells">Changing Shells</a></h1>
 <p>To list available shells in your system, type the following in a terminal:</p>
 <pre><code class="language-bash">cat /etc/shells
 </code></pre>
-<p>Note that you can usually install additional shells from your package manager.</p>
-<p>To change your default <em>shell</em>, type the following in a terminal:</p>
+<p>Note that you can usually install additional shells from your package manager.
+To change your default <em>shell</em>, type the following in a terminal:</p>
 <pre><code class="language-bash">sudo usermod -s &lt;path_to_shell&gt; $USER
 </code></pre>
-<p>Example: <code>sudo usermod -s /bin/bash $USER</code></p>
-</li>
-<li>
-<p><em>directory</em> is a synonym for a <em>folder</em>.</p>
-</li>
-<li>
-<p><em>arguments</em> are the extra options you use with a command.<br>Example: <code>grep -i bash /etc/shells</code><br>Here, <code>-i bash /etc/shells</code> are arguments for <code>grep</code></p>
-</li>
-<li>
-<p><em>path</em> can either refer to the location of a <em>directory</em> or <em>file</em>, or a special <em>environment variable</em> <code>$PATH</code> that contains the locations from where you can launch and execute commands.</p>
-</li>
-<li>
-<p><em>environment variable</em> is a <em>shell variable</em> that works and functions mostly like variables in any programming language.</p>
-</li>
-</ul>
-<h2 id="cli-basics"><a class="header" href="#cli-basics">CLI Basics</a></h2>
-<h3 id="navigating-your-files-and-folders"><a class="header" href="#navigating-your-files-and-folders">Navigating your files and folders</a></h3>
-<ul>
-<li>Use the <code>pwd</code> command to list the directory you’re currently in.</li>
-<li>Use the <code>ls -la</code> command to list the files and directories in your current directory.</li>
-<li>Use the <code>tree -C &lt;directory&gt; | less -R</code> command to list all files and subdirectories ina scorllable window.</li>
-<li>Use the <code>cd &lt;directory&gt;</code> command to change your directory.</li>
-</ul>
-<h3 id="editing-text"><a class="header" href="#editing-text">Editing text</a></h3>
-<ul>
-<li>
-<p>Use the <code>cat &lt;filename&gt;</code> command to display the text in a file.</p>
-</li>
-<li>
-<p>Use the <code>nano &lt;filename&gt;</code> command to edit text in a file.<br>Example: <code>nano /etc/dnf/dnf.conf</code></p>
-<p>To save a file, press <code>Ctrl + S</code><br>To exit <code>nano</code> after saving a file, press <code>Ctrl + X</code></p>
-</li>
-<li>
-<p>To append some text to the end of a file, use ( <code>&gt;&gt;</code> )<br>Example: <code>echo "Hello World" &gt;&gt; file.txt</code></p>
-</li>
-<li>
-<p>To create/overwrite a file and write a line to it, use ( <code>&gt;</code> )<br>Example: <code>echo "The old file is gone" &gt; file.txt</code></p>
-</li>
-<li>
-<p>You can use the <code>awk</code> and <code>sed</code> utilities to make edits to files matching a certain pattern.<br>Useful for scripting, ask AI how to use them.</p>
-</li>
-</ul>
-<h2 id="the-filesystem-layout"><a class="header" href="#the-filesystem-layout">The Filesystem Layout</a></h2>
-<p>A basic overview of the modern linux filesystem is given below.</p>
-<ul>
-<li><code>/boot</code> or <code>/efi</code> is where the bootloader is stored.</li>
-<li><code>/home/&lt;username&gt;/</code> <small>(aliased to <code>~</code>)</small> is your user’s home directory. <small>(equivalent to <code>C:\Users\</code>)</small></li>
-<li><code>/usr</code> is where your actual system is stored. <small>(equivalent to <code>C:\Windows\</code>)</small><br><small>Note: Everything here (except <code>/usr/local/</code>) is managed by your package manager.</small>
-<ul>
-<li><code>/usr/bin/</code> - Contains executable files or symlinks to executables.</li>
-<li><code>/usr/sbin/</code> - Usually either symlinked to <code>/usr/bin/</code> or contains extra executables.</li>
-<li><code>/usr/lib*/</code> - Contains library files <code>.so</code> (equivalent to <code>.dll</code>)</li>
-<li><code>/usr/share/</code> - Contains non-executable resources for apps (pictures, config files etc)
-<ul>
-<li><code>/usr/share/applications/</code> - Contains <code>.desktop</code> desktop entry files for applications installed using your package manager.</li>
-<li><code>/usr/share/icons/</code> - Contains icons for applications to use.</li>
-</ul>
-</li>
-<li><code>/usr/local/</code> - A directory for users to install their own apps not managed by the package manager. <small>(system-wide)</small></li>
-</ul>
-</li>
-<li>On modern distros, <code>/bin</code>, <code>/sbin</code>, and <code>/lib*</code> directories are usually symlinks which point to their equivalents inside <code>/usr</code>, this is called the <a href="https://systemd.io/THE_CASE_FOR_THE_USR_MERGE/">/usr merge</a>.</li>
-<li><code>/etc</code> is where configuration files are stored.</li>
-<li><code>/opt</code> is where third-party apps like <em>Google Chrome</em>, <em>Brave Software</em> or <em>DaVinci Resolve</em> usually install their things.</li>
-</ul>
+<p>Example: <code>sudo usermod -s /usr/bin/fish $USER</code></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../hobbylist/books-and-resources.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/general-resources.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../linux/fedora-silverblue.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/general-resources/configure-syncthing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -276,11 +205,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../hobbylist/books-and-resources.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/general-resources.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../linux/fedora-silverblue.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/general-resources/configure-syncthing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -300,13 +229,13 @@
         </script>
 
 
-        <script src="../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../../mark-09e88c2c.min.js"></script>
+        <script src="../../searcher-c2a407aa.js"></script>
 
-        <script src="../clipboard-1626706a.min.js"></script>
-        <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../../clipboard-1626706a.min.js"></script>
+        <script src="../../highlight-abc7f01d.js"></script>
+        <script src="../../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 

@@ -56,5 +56,5 @@ You can contact me by sending me an email at any of the following email addresse
 I would like to keep the rest of my contact information reserved.
 
 > **DISCLAIMER:**  
-> - _All of the literary, written content in this site <sup>*except code</sup> has been written **100% by a real human being**._  
-> - _The site author has not put any ads or trackers in this site, if you encounter any ads or trackers, they were most likely injected by GitHub or other third-parties._
+> - All of the literary, written content in this site <sup>*except code</sup> has been written **100% by a real human being**.  
+> - The site author has not put any ads or trackers in this site, if you encounter any ads or trackers, they were most likely injected by GitHub or other third-parties.  

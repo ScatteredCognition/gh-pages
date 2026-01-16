@@ -3,6 +3,13 @@
 I have played a plethora of videogames from most genres.  
 As usual, a list has been given below.  
 
+## Indie/One-offs
+
+- The Coffin of Andy and Leyley
+- Fear & Hunger Series
+- Mortal Sin
+- Celeste
+
 ## Pokemon Anthology
 
 - Pokemon Ruby/Sapphire/Emerald <small>(GBA)</small>
@@ -52,3 +59,7 @@ As usual, a list has been given below.
 
 - Counter Strike - Global Offensive (CSGO)
 - Valorant
+- Xonotic
+- Warface (R.I.P.)
+- Paladins
+- Blood Strike

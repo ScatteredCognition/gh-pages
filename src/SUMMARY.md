@@ -13,7 +13,20 @@
 ----
 
 - [Linux]()
-  - [Basics](./linux/basics.md)
+  - [Basics of Linux](./linux/basics-of-linux.md)
+    - [Demystifying The Jargons](./linux/basics-of-linux/demystifying-the-jargons.md)
+    - [CLI Basics](./linux/basics-of-linux/cli-basics.md)
+    - [Filesystem Layout](./linux/basics-of-linux/filesystem-layout.md)
+    - [System Overview](./linux/basics-of-linux/system-overview.md)
+
+  - [General Resources](./linux/general-resources.md)
+    - [Changing Shells](./linux/general-resources/changing-shells.md)
+    - [Configure Syncthing](./linux/general-resources/configure-syncthing.md)
+    - [Using Podman Quadlets](./linux/general-resources/using-podman-quadlets.md)
+    - [Manage Environment Variables](./linux/general-resources/manage-environment-variables.md)
+    - [Configure LUKS auto-unlocking with TPM2](./linux/general-resources/configure-luks-autounlocking-with-tpm2.md)
+    - [Fixes for Electron and Chromium apps](./linux/general-resources/fixes-for-electron-and-chromium-apps.md)
+    - [Fedora Setup Guide](./linux/general-resources/fedora-setup-guide.md)
 
   - [Fedora Silverblue](./linux/fedora-silverblue.md)
     - [Useful Commands](./linux/fedora-silverblue/useful-commands.md)
@@ -27,14 +40,6 @@
     - [Configure LUKS auto-unlocking with TPM2 in CachyOS](./linux/cachyos/configure-luks-autounlocking-with-tpm2.md)
     - [Creating a VM using virt-manager](./linux/cachyos/creating-a-vm-using-virt-manager.md)
 
-  - [Others]()
-    - [Configure Syncthing](./linux/others/configure-syncthing.md)
-    - [Using Podman Quadlets](./linux/others/using-podman-quadlets.md)
-    - [Manage Environment Variables](./linux/others/manage-environment-variables.md)
-    - [Configure LUKS auto-unlocking with TPM2](./linux/others/configure-luks-autounlocking-with-tpm2.md)
-    - [Fixes for Electron and Chromium apps](./linux/others/fixes-for-electron-and-chromium-apps.md)
-    - [Fedora Setup Guide](./linux/others/fedora-setup-guide.md)
-
 ----
 
 - [Blog]()
@@ -43,6 +48,3 @@
 
 ----
 
-- [Random]()
-
-----

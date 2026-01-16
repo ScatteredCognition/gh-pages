@@ -1,13 +1,17 @@
 # UNFINISHED Creating a VM using virt-manager on Arch Linux/CachyOS
 
 ## Installing and configuring virt-manager
+
 ### Installing `virt-manager`
+
 - Install `virt-manager` and other necessary packages.
+
   ```bash
    sudo pacman -Syu virt-manager qemu-full libguestfs guestfs-tools iptables-nft
    ```
 
 - Enable `libvirtd.socket` and `virtlogd.socket`
+
   ```bash
   systemctl enable --now libvirtd.socket
   systemctl enable --now virtlogd.socket
@@ -15,12 +19,14 @@
 
 - Ensure the variable is`firewall_backend=iptables` in `/etc/libvirt/network.conf` for NAT to function.
 - Enable `default` NAT adapter
+
   ```bash
   sudo virsh net-start default
   sudo virsh net-autostart default
   ```
 
 ### Configuring `virt-manager`
+
 - Open `Virtual Machine Manager`.
 - Goto `Edit > Preferences` from the tab bar on top.
   - Under `General`
@@ -35,10 +41,13 @@
 - `virt-manager` is now ready for creating and running VMs.
 
 ## Creating VMs
+
 ### Linux Guests
+
 Generally, Linux guests should work OOTB. IF you are facing any issues, consult your distro documentation.
 
 ### Windows Guests
+
 - Finally, click the shiny monitor icon near the top-right and create a new VM
 - While using the wizard, choose the installed OS manually by unticking the auto detect checkbox **ENSURE OS TYPE IS THE SAME OS YOU ARE GOING TO INSTALL**
 - On the last screen, select `Customize configuration before install`
@@ -53,12 +62,14 @@ Generally, Linux guests should work OOTB. IF you are facing any issues, consult 
 - You can customize the VM after installation by switching from the Graphical Console view to the Hardware Details view on the top-left
 
 ### Installing Spice and VirtIO guest tools (Windows Guests)
+
 - After installation has finished, navigate to the emulated CDROM drive with the VirtIO drivers in Windows Explorer and install the guest tools
 - Afterwards, visit these two links inside the VM and install the Spice guest tools
   - [Spice Guest tools](https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe)
   - [Spice Webdavd](https://www.spice-space.org/download/windows/spice-webdavd/)
 
 ### Setting up RDP
+
 - Enable Remote Connections inside your Windows guest. Google how to.
 - While the VM is running, Goto Hardware Details view, click on the `NIC:(random characters)` device from the sidebar and take a note of the IP Address
 - Note that the user account you want to RDP to in the Windows guest must have a password set
@@ -67,8 +78,10 @@ Generally, Linux guests should work OOTB. IF you are facing any issues, consult 
 - On the login prompt, enter your Windows username and password to connect
 
 ### Setting up GPU Passthrough
+
 - While the VM is powered off, Goto the Hardware Details view, then `Add Hardware > PCI Host Device` and select one of the vGPUs/GPU you want to passthrough to the VM.
 - **(Intel iGPUs)** To avoid the Code 43 error with the i915 sriov dkms drivers, follow [this thread](https://github.com/strongtz/i915-sriov-dkms/issues/8#issuecomment-1567465036) and add a <vendor_id> tag
 
 ### Setting up USB Passthrough
+
 - While the VM is powered off, Goto the Hardware Details view, then `Add Hardware > USB Host Device` and select one of the USB Devices you want to passthrough to the VM.

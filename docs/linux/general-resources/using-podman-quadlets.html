@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Manage Environment Variables - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Using Podman Quadlets - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-4000925e.js";
+            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-824d1b5d.js"></script>
+        <script src="../../toc-935a8826.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,21 +177,96 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="manage-environment-variables"><a class="header" href="#manage-environment-variables">Manage Environment Variables</a></h1>
+                        <h1 id="using-podman-quadlets"><a class="header" href="#using-podman-quadlets">Using Podman Quadlets</a></h1>
+<p>Sources used: <a href="https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html">podman docs</a></p>
+<h2 id="intro"><a class="header" href="#intro">Intro</a></h2>
+<p>Podman Quadlet is a Podman/systemd feature that allows you to easily create and start containers on boot.<br>A very basic Quadlet for <code>Syncthing</code> has been given below, as example is the best way to understand anything.</p>
+<h2 id="creating-a-quadlet-file"><a class="header" href="#creating-a-quadlet-file">Creating a Quadlet file</a></h2>
+<h3 id="where-to-put-stuff"><a class="header" href="#where-to-put-stuff">Where to put stuff</a></h3>
+<p>For a rootless Quadlet (recommended), create a file under…</p>
 <ul>
-<li>Drop files like <code>~/.config/environment.d/xx-&lt;name&gt;.conf</code></li>
-<li>To add <code>~/.local/bin</code> to <code>$PATH</code>, add <code>PATH=~/.local/bin:$PATH</code></li>
+<li><code>/etc/containers/systemd/users/</code> (All users)</li>
+<li><code>~/.config/containers/systemd/</code> (Your user)</li>
 </ul>
+<p>with any of the following filename extensions…</p>
+<ul>
+<li><code>.container</code></li>
+<li><code>.volume</code></li>
+<li><code>.network</code></li>
+<li><code>.build</code></li>
+<li><code>.pod</code></li>
+<li><code>.kube</code></li>
+<li><code>.artifact</code></li>
+</ul>
+<p>e.g. for our purposes, we will create the file as follows: <code>~/.config/containers/systemd/syncthing.container</code></p>
+<h3 id="basic-syntax"><a class="header" href="#basic-syntax">Basic Syntax</a></h3>
+<p>For our newly created <code>syncthing.container</code> file, we will put the following:</p>
+<pre><code class="language-bash"># syncthing.container
+[Unit]
+Description=Syncthing Quadlet (User)
+
+[Container]
+Image=docker.io/syncthing/syncthing
+
+# Equivalent to: --network host
+Network=host
+
+# Equivalent to: --security-opt label=disable
+SecurityLabelDisable=yes
+
+# Environment variables
+Environment=PUID=0
+Environment=PGID=0
+Environment=STHOMEDIR=/var/syncthing/.local/state/syncthing
+
+# Volumes
+Volume=./%h/:/var/syncthing
+
+[Install]
+WantedBy=default.target
+</code></pre>
+<p>This is a Quadlet file that roughly corresponds to the following podman command:</p>
+<pre><code class="language-bash">podman create docker.io/syncthing/syncthing \
+        --network host \
+        --security-opt label=disable \
+        -e PUID=0 -e PGID=0 \
+        -e STHOMEDIR="/var/syncthing/.local/state/syncthing" \
+        -v "$HOME:/var/syncthing"
+</code></pre>
+<p>After this, we must run <code>systemctl daemon-reload --user</code> so that the podman quadlet systemd generator can generate the necessary systemd <code>.service</code> file.</p>
+<h3 id="listing-quadlets"><a class="header" href="#listing-quadlets">Listing Quadlets</a></h3>
+<p>You can list your current Quadlets by running the following:</p>
+<pre><code class="language-bash">❯ podman quadlet list
+NAME                 UNIT NAME          PATH ON DISK                                                          STATUS         APPLICATION
+syncthing.container  syncthing.service  /var/home/faeizmahrus/.config/containers/systemd/syncthing.container  inactive/dead  
+
+</code></pre>
+<h3 id="fixing-errors"><a class="header" href="#fixing-errors">Fixing errors</a></h3>
+<p>IF the <code>STATUS</code> field shows <code>Not loaded</code>, it means the podman quadlet systemd generator couldn’t generate a systemd <code>.service</code> file, most likely due to an issue with the Quadlet file’s syntax, given everything else is configured correctly.<br>To find out the error, run the following:</p>
+<pre><code class="language-bash">## To list errors and the generated .service file for all Quadlets
+/usr/lib/systemd/system-generators/podman-system-generator --user --dryrun
+
+## To list only the errors for a single Quadlet
+systemd-analyze verify --user --generators=true syncthing.service
+
+</code></pre>
+<h2 id="starting-the-quadlet"><a class="header" href="#starting-the-quadlet">Starting the Quadlet</a></h2>
+<p>To enable the Quadlet, simply enable the generated systemd <code>.service</code> file.</p>
+<pre><code class="language-bash">systemctl enable --user --now syncthing.service
+</code></pre>
+<p>Optionally, enable linger for your user so the container stays running even when your user is logged out.</p>
+<pre><code class="language-bash">loginctl enable-linger $USER
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/others/using-podman-quadlets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/general-resources/configure-syncthing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/others/configure-luks-autounlocking-with-tpm2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/general-resources/manage-environment-variables.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -201,11 +276,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/others/using-podman-quadlets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/general-resources/configure-syncthing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/others/configure-luks-autounlocking-with-tpm2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/general-resources/manage-environment-variables.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

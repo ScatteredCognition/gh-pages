@@ -35,10 +35,10 @@
             const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-4000925e.js";
+            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-824d1b5d.js"></script>
+        <script src="../../toc-935a8826.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -198,11 +198,13 @@
 <li><code>encrypt</code> &gt; <code>sd-encrypt</code></li>
 <li>Example:
 <ul>
-<li>Original:
+<li>
+<p>Original:</p>
 <pre><code class="language-bash">HOOKS=(base udev plymouth autodetect microcode modconf kms block keyboard keymap consolefont  encrypt filesystems fsck)
 </code></pre>
 </li>
-<li>Modified:
+<li>
+<p>Modified:</p>
 <pre><code class="language-bash">HOOKS=(base systemd plymouth autodetect microcode modconf kms block keyboard sd-vconsole sd-encrypt filesystems fsck)
 </code></pre>
 </li>

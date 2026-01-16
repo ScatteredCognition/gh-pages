@@ -80,7 +80,7 @@ sudo systemd-cryptenroll --wipe-slot=tpm2 <LUKS_Volume>
 - `PCR 5` - **GPT Partition Table was changed** (Creating/Deleting/Modifying partitions)
 - `PCR 7` - **Changes to UEFI Secureboot State**
 
-#### These values require systemd-boot and/or UKIs
+These values require systemd-boot and/or UKIs:  
 
 - `PCR 14` - **Changes to Secureboot "MOK" certificates and keys** (Enrolling new Secureboot keys)
 - `PCR 15` - **Changes to `machine-id`, UUIDs of various mountpoints, other systemd measurements** [(Mitigation for this ???)](https://oddlama.org/blog/bypassing-disk-encryption-with-tpm2-unlock/)

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Fedora Silverblue - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>Fixes for Electron and Chromium apps - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
-        <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-2459343d.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../../css/general-2459343d.css">
+        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../";
+            const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-e0254ae1.js";
+            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-935a8826.js"></script>
+        <script src="../../toc-935a8826.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -105,7 +105,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -140,7 +140,7 @@
                     <h1 class="menu-title">ScatteredCognition&#x27;s Biblioteca</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/ScatteredCognition/" title="Git repository" aria-label="Git repository">
@@ -177,23 +177,52 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="fedora-silverblue"><a class="header" href="#fedora-silverblue">Fedora Silverblue</a></h1>
-<p><a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
-<p>It is an <strong>Atomic</strong>, <strong>Immutable</strong><sup>(<em>mostly</em>)</sup> linux distro built on the foundations of <em>Fedora Linux</em>, using it’s own package manager, <code>rpm-ostree</code>.</p>
-<p>You can install packages like you would on normal <em>Fedora Linux</em> <em>(“Layering” as it is called)</em>, but don’t layer too many packages. <em>Fedora Silverblue</em> ships with the <em>GNOME Desktop Environment</em>, although different spins exist like <em>Fedora Kinoite</em> (ships <em>KDE Plasma</em>), <em>Fedora Cosmic Atomic</em> and the like. But <em>Fedora Silverblue</em> remains, by far, the best experience amongst all the <em>Atomic</em> spins.</p>
-<blockquote>
-<p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br>I recommend reading the content at <a href="/linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br>Also read the <a href="/linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
-</blockquote>
+                        <h1 id="fixes-for-electron-and-chromium-apps"><a class="header" href="#fixes-for-electron-and-chromium-apps">Fixes for Electron and Chromium apps</a></h1>
+<h2 id="launch-arguments-and-flags-for-electron-apps"><a class="header" href="#launch-arguments-and-flags-for-electron-apps">Launch arguments and flags for Electron apps</a></h2>
+<p>Various launch arguments and flags for
+Electron apps.</p>
+<h3 id="launch-arguments"><a class="header" href="#launch-arguments">Launch arguments</a></h3>
+<p><strong>You need to copy the app’s <code>.desktop</code> file to <code>~/.local/share/applications/</code> and append it after <code>Exec=</code> in all entry fields.</strong><br><strong>NOTE: Arch-based distros usually have .conf files to easily handle commandline args</strong></p>
+<ul>
+<li><code>--ozone-platform-hint=auto</code><br>Runs the app with Wayland support.</li>
+<li><code>--enable-wayland-ime</code><br>Enables iBus/Fcitx support.</li>
+<li><code>--enable-features=TouchpadOverscrollHistoryNavigation</code><br>(Use for browsers. e.g. Brave)
+Enables navigation via touchpad gestures.</li>
+</ul>
+<h3 id="flags-set-with-chromeflags-mainly-for-browsers"><a class="header" href="#flags-set-with-chromeflags-mainly-for-browsers">Flags (set with <code>chrome://flags</code>) (mainly for browsers)</a></h3>
+<ul>
+<li><code>#ozone-platform-hint</code> - <strong>Auto</strong><br>Enables Wayland support.</li>
+<li><code>#wayland-ui-scaling</code> - <strong>Enabled</strong><br>Enables Fractional Scaling support under Wayland.</li>
+<li><code>#wayland-per-window-scaling</code> - <strong>Enabled</strong><br>Enables per-window scaling support.</li>
+<li><code>#wayland-text-input-v3</code> - <strong>Enabled</strong><br>Used to enable proper ibus support on older GNOME versions without text-input-v1 support.</li>
+<li><code>#middle-button-autoscroll</code> - <strong>Enabled</strong><br>Enables middle-click autoscroll.</li>
+<li><code>#web-app-universal-install</code> - <strong>Enabled</strong><br>Enables installation of normal websites as webapps.</li>
+</ul>
+<h2 id="guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox"><a class="header" href="#guide-on-setting-up-any-chromium-browser-inside-a-fedora-distrobox">Guide on setting up any Chromium browser inside a (Fedora) distrobox</a></h2>
+<h2 id="setup-the-distrobox"><a class="header" href="#setup-the-distrobox">Setup the Distrobox</a></h2>
+<ol>
+<li><code>distrobox create -n appbox-fedora --init --additional-packages "systemd" --pre-init-hooks ""</code></li>
+<li><code>distrobox enter appbox-fedora -- sh -c db-fedora-essential.sh</code></li>
+<li>echo “max_parallel_downloads = 20” &gt;&gt; /etc/dnf/dnf.conf</li>
+<li>sudo dnf update</li>
+<li>sudo dnf install <a href="https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm">https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm</a> -E %fedora).noarch.rpm <a href="https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm">https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm</a> -E %fedora).noarch.rpm</li>
+<li>sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1</li>
+<li>sudo dnf install rpmfusion-{free,nonfree}-release-tainted</li>
+<li>sudo dnf swap ffmpeg-free ffmpeg –allowerasing
+9, sudo dnf install libdvdcss intel-media-driver libva-intel-driver gnome-keyring libsecret pipewire xdg-desktop-portal-{gtk,gnome} flatpak, xdg-user-dirs{,-gtk} xdg-utils</li>
+</ol>
+<h2 id="chromium-commands-as-of-nov-13-2025"><a class="header" href="#chromium-commands-as-of-nov-13-2025">Chromium commands (as of Nov 13 2025)</a></h2>
+<p><code>vivaldi --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,TouchpadOverscrollHistoryNavigation,WaylandPerSurfaceScale,WaylandUiScale,MiddleClickAutoscroll --gtk-version=4</code></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../linux/general-resources/fedora-setup-guide.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/general-resources/configure-luks-autounlocking-with-tpm2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../linux/fedora-silverblue/useful-commands.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/general-resources/fedora-setup-guide.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -203,11 +232,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../linux/general-resources/fedora-setup-guide.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/general-resources/configure-luks-autounlocking-with-tpm2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../linux/fedora-silverblue/useful-commands.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/general-resources/fedora-setup-guide.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -227,13 +256,13 @@
         </script>
 
 
-        <script src="../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../../mark-09e88c2c.min.js"></script>
+        <script src="../../searcher-c2a407aa.js"></script>
 
-        <script src="../clipboard-1626706a.min.js"></script>
-        <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../../clipboard-1626706a.min.js"></script>
+        <script src="../../highlight-abc7f01d.js"></script>
+        <script src="../../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
