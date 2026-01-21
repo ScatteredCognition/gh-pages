@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "searchindex-e0254ae1.js";
+            window.path_to_searchindex_js = "searchindex-0c580e1e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-935a8826.js"></script>
+        <script src="toc-7a157bac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -831,59 +831,102 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 <p><a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
 <p>It is an <strong>Atomic</strong>, <strong>Immutable</strong><sup>(<em>mostly</em>)</sup> linux distro built on the foundations of <em>Fedora Linux</em>, using it’s own package manager, <code>rpm-ostree</code>.</p>
 <p>You can install packages like you would on normal <em>Fedora Linux</em> <em>(“Layering” as it is called)</em>, but don’t layer too many packages. <em>Fedora Silverblue</em> ships with the <em>GNOME Desktop Environment</em>, although different spins exist like <em>Fedora Kinoite</em> (ships <em>KDE Plasma</em>), <em>Fedora Cosmic Atomic</em> and the like. But <em>Fedora Silverblue</em> remains, by far, the best experience amongst all the <em>Atomic</em> spins.</p>
+<p><a href="https://flatpak.org/">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.<br>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
 <blockquote>
 <p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br>I recommend reading the content at <a href="/linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br>Also read the <a href="/linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
+<h1 id="silverblue-setup"><a class="header" href="#silverblue-setup">Silverblue Setup</a></h1>
+<h2 id="commands-and-documentation"><a class="header" href="#commands-and-documentation">Commands and documentation</a></h2>
+<p>You should read the <a href="https://docs.fedoraproject.org/en-US/atomic-desktops/">Fedora Silverblue docs</a> first.</p>
+<p>Some basic commands for administering your system have been given below.<br>For more advanced commands, see <a href="#ostree-commands-for-fedora-silverblue">../ostree-commands</a></p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Commands</th><th>Explanation</th></tr>
+</thead>
+<tbody>
+<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
+<tr><td><code>rpm-ostree update</code></td><td>Update your system</td></tr>
+<tr><td><code>rpm-ostree search/install/remove &lt;package&gt;</code></td><td>Search/Install/Remove packages on your base image. (Layering)</td></tr>
+<tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
+<tr><td><code>rpm-ostree reset</code></td><td>Removes all overlayed packages</td></tr>
+<tr><td><code>rpm-ostree override remove/replace/reset &lt;package&gt;</code></td><td>Remove/Replace a preinstalled package or Reset overrides</td></tr>
+<tr><td><code>rpm-ostree cleanup -rpmb</code></td><td>Remove Rollback(<code>-r</code>)/Pending(<code>-p</code>) deployments and Clean Metadata(<code>-m</code>)/Cache(<code>-c</code>) files</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="packages-to-layer"><a class="header" href="#packages-to-layer">Packages to layer</a></h2>
+<p>Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of <em>Fedora Silverblue</em>:</p>
+<ul>
+<li><code>zsh</code>/<code>nu</code>/<code>fish</code> (Your preferred shell)</li>
+<li><code>adw-gtk3-theme</code> (Themes GTK3 and some Qt apps to look like libadwaita apps)</li>
+<li><code>distrobox</code> (More flexible than toolbox)</li>
+<li><code>android-tools</code> (For using <em>ADB</em> and <em>fastboot</em>)</li>
+<li><code>langpacks-bn</code> (For <em>Bangla</em> language pack support, replace <code>bn</code> with your language code)</li>
+<li><code>podman-compose</code> (For <em>VSCode</em>/<em>DevPod</em> Devcontainers)</li>
+<li><code>OpenBangla Keyboard</code> (For <em>Bangla</em> typing) <a href="https://github.com/OpenBangla/OpenBangla-Keyboard/releases">[Download]</a></li>
+</ul>
+<p>Oneliner:</p>
+<pre><code class="language-bash">rpm-ostree install zsh nu fish adw-gtk3-theme distrobox android-tools langpacks-bn podman-compose https://github.com/OpenBangla/OpenBangla-Keyboard/releases/download/2.0.0/OpenBangla-Keyboard_2.0.0-fedora42.rpm
+</code></pre>
+<h2 id="flatpak-setup"><a class="header" href="#flatpak-setup">Flatpak Setup</a></h2>
+<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br>As such, I generally like to disable the default <em>Fedora Flatpaks</em> repository and enable the <em>Flathub</em> repository.<br>You can do so by opening the <em>GNOME Software</em> app and enabling Third-Party Repositories.</p>
+<p>For a list of Flatpak apps to install and cleaning out the preinstalled Fedora flatpaks, see <a href="#flatpak-setup-for-fedora-silverblue">../flatpak-setup</a></p>
+<h2 id="fixing-etcfstab-issues-in-fedora-silverblue"><a class="header" href="#fixing-etcfstab-issues-in-fedora-silverblue">Fixing /etc/fstab issues in Fedora Silverblue</a></h2>
+<p>Starting from <em>Fedora Silverblue 41</em> and onwards, <code>/</code> <em>(root)</em> is mounted using <a href="https://www.cncf.io/projects/composefs/"><em>ComposeFS</em></a>.<br>As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> instead of <em>systemd</em> or by arguments sourced from <code>/etc/fstab</code>.</p>
+<p>This will result in…</p>
+<ol>
+<li>Options specified in <code>/etc/fstab</code> (notably <em>btrfs compression options</em>) not applying for <code>/</code> <em>(root)</em>.</li>
+<li>Errors related to <code>systemd-remount-fs.service</code>.</li>
+<li><code>fstrim.service</code> not trimming <code>/</code> <em>(root)</em>.</li>
+</ol>
+<p>To fix this, run the following commands:</p>
+<pre><code class="language-bash"># Add btrfs compression option to kargs
+rpm-ostree kargs --delete=rootflags=subvol=root --append=rootflags=subvol=root,compress=zstd:1
+
+# Comment out the line for the root (/) mount in /etc/fstab
+sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
+
+# Manually run fstrim on /sysroot periodically
+sudo fstrim /sysroot
+</code></pre>
+<h2 id="performance-tuning"><a class="header" href="#performance-tuning">Performance tuning</a></h2>
+<h3 id="disabling-mitigations"><a class="header" href="#disabling-mitigations">Disabling mitigations</a></h3>
+<p>If you’re a casual/home user with a threat model that doesn’t involve nation-state actors, you can disable some CPU/GPU vulnerability mitigations for a beefy performance boost. (esp. on <em>Intel</em> systems)</p>
+<pre><code class="language-bash"># For all CPUs
+rpm-ostree kargs --append-if-missing=mitigations=off
+
+# If using an Intel iGPU with the i915 driver
+rpm-ostree kargs --append-if-missing=i915.mitigations=off
+</code></pre>
+<h3 id="enabling-intel-wifi-powersaving"><a class="header" href="#enabling-intel-wifi-powersaving">Enabling Intel Wifi powersaving</a></h3>
+<p>IF your system has an Intel Wifi/Bluetooth card like the AX210, you can enable powersaving and save 2~5W of power.</p>
+<pre><code class="language-bash">rpm-ostree kargs --append-if-missing=iwlwifi.power_save=Y
+rpm-ostree kargs --append-if-missing=iwlwifi.power_level=5
+</code></pre>
+<h2 id="others"><a class="header" href="#others">Others</a></h2>
+<ul>
+<li><a href="#toolbox-setup-for-fedora-silverblue">Toolbox Setup for Fedora Silverblue</a></li>
+<li><a href="#vscode-setup-for-fedora-silverblue">VSCode Setup for Fedora Silverblue</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ostree-commands-for-fedora-silverblue"><a class="header" href="#ostree-commands-for-fedora-silverblue">OSTree Commands for Fedora Silverblue</a></h1>
 <p>I have provided some commands which will hopefully make your <em>Fedora Silverblue</em> journey better.</p>
 <h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
-<h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
 <div class="table-wrapper">
 <table>
 <thead>
 <tr><th>Commands</th><th>Explanation</th></tr>
 </thead>
 <tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
-<tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
-<tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
-<tr><td><code>rpm-ostree install &lt;package&gt;</code></td><td>Overlay a package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree remove &lt;package&gt;</code></td><td>Removes a overlayed package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree reset</code></td><td>Removes all overlayed packages</td></tr>
-<tr><td><code>rpm-ostree override remove &lt;package&gt;</code></td><td>Removes a preinstalled package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree override reset</code></td><td>Resets all the package removal overrides (Requires Reboot)</td></tr>
-</tbody>
-</table>
-</div>
-<h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Commands</th><th>Explanation</th></tr>
-</thead>
-<tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
-<tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
-<tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
-<tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
-</tbody>
-</table>
-</div>
-<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Commands</th><th>Explanation</th></tr>
-</thead>
-<tbody>
+<tr><td><code>sudo ostree admin pin (-u) &lt;index&gt;</code></td><td>Pin a deployment (use <code>-u</code> to unpin a deployment)</td></tr>
 <tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your<em>Fedora Silverblue</em> installation</td></tr>
 <tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
-<tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
 </tbody>
 </table>
 </div>
-<h3 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h3>
+<h2 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -897,7 +940,7 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 </tbody>
 </table>
 </div>
-<h3 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h3>
+<h2 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -910,34 +953,10 @@ dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 </table>
 </div>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="packages-to-layer-on-fedora-silverblue"><a class="header" href="#packages-to-layer-on-fedora-silverblue">Packages to layer on Fedora Silverblue</a></h1>
-<p>Although it comes down to personal preference and needs, I prefer overlaying the following packages on a fresh install of <em>Fedora Silverblue</em>:</p>
-<!-- 
-- `distrobox` 
--->
-<ul>
-<li><code>android-tools</code> (For using <em>ADB</em> and <em>fastboot</em>)</li>
-<li><code>langpacks-bn</code> (For <em>Bangla</em> language pack support, replace <code>bn</code> with your language code)</li>
-<li><code>podman-compose</code> (For <em>VSCode</em>/<em>DevPod</em> Devcontainers)</li>
-<li><code>syncthing</code> (If you use it for file sync)</li>
-<li><code>OpenBangla Keyboard</code> (For <em>Bangla</em> typing) <a href="https://github.com/OpenBangla/OpenBangla-Keyboard/releases">[Download]</a></li>
-</ul>
-<blockquote>
-<p>Run <code>systemctl enable --user --now syncthing.service</code> if you want to use <code>syncthing</code>.</p>
-</blockquote>
-<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
-<p><a href="https://flatpak.org/">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
-<p>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
-<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br>As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
-<h2 id="configuring-flatpak-repos"><a class="header" href="#configuring-flatpak-repos">Configuring Flatpak repos</a></h2>
-<p>The commands to remove the default <em>Fedora Flatpaks</em> repo and install the <em>Flathub</em> repo has been given below.</p>
-<pre><code class="language-bash"># Remove Fedora Flatpak repos
-flatpak remote-delete fedora
-flatpak remote-delete fedora-testing
-
-# Install Flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+<h2 id="removing-preinstalled-fedora-flatpaks"><a class="header" href="#removing-preinstalled-fedora-flatpaks">Removing preinstalled Fedora Flatpaks</a></h2>
+<p>To remove all the preinstalled Fedora Flatpak apps instead of uninstalling them one-by-one, run the following:</p>
+<pre><code class="language-bash">flatpak remove --all
 </code></pre>
 <h2 id="flatpak-apps-i-use"><a class="header" href="#flatpak-apps-i-use">Flatpak apps I use</a></h2>
 <p>Here is a list of the Flatpak apps I use on my <em>Fedora Silverblue</em> install.</p>
@@ -1110,9 +1129,8 @@ timeout = 5
 <p>Install <code>podman-compose</code>.</p>
 </li>
 <li>
-<p>Enable the <code>podman</code> service and socket for your user.</p>
+<p>Enable the <code>podman</code> socket for your user.</p>
 <pre><code class="language-bash">systemctl enable --user --now podman.socket
-systemctl enable --user --now podman.service
 </code></pre>
 </li>
 <li>
@@ -1135,27 +1153,6 @@ systemctl enable --user --now podman.service
 <blockquote>
 <p>You can find my devcontainer configs at <a href="https://github.com/ScatteredCognition/devcontainers/">https://github.com/ScatteredCognition/devcontainers/</a></p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="fixing-etcfstab-issues-in-fedora-silverblue"><a class="header" href="#fixing-etcfstab-issues-in-fedora-silverblue">Fixing /etc/fstab issues in Fedora Silverblue</a></h1>
-<p>Starting from <em>Fedora Silverblue 41</em> and onwards, <code>/</code> <em>(root)</em> is mounted using <a href="https://www.cncf.io/projects/composefs/"><em>ComposeFS</em></a>.<br>As such, <code>/</code> is mounted using kargs in <em>Fedora Silverblue</em> instead of <em>systemd</em> or by arguments sourced from <code>/etc/fstab</code>.</p>
-<p>This will result in…</p>
-<ol>
-<li>Options specified in <code>/etc/fstab</code> (notably <em>btrfs compression options</em>) not applying for <code>/</code> <em>(root)</em>.</li>
-<li>Errors related to <code>systemd-remount-fs.service</code>.</li>
-<li><code>fstrim.service</code> not trimming <code>/</code> <em>(root)</em>.</li>
-</ol>
-<p>To fix this, run the following commands:</p>
-<pre><code class="language-bash"># Add btrfs compression option to kargs
-rpm-ostree kargs --delete=rootflags=subvol=root \
---append=rootflags=subvol=root,compress=zstd:1
-
-# Comment out the line for the root (/) mount in /etc/fstab
-sudo sed -i.bak '/^UUID=.*[[:space:]]\/[[:space:]]/ s/^/#/' /etc/fstab
-
-# Manually run fstrim on /sysroot periodically
-sudo fstrim /sysroot
-``
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="arch-linuxcachyos"><a class="header" href="#arch-linuxcachyos">Arch Linux/CachyOS</a></h1>
 <p><a href="https://archlinux.org/">Arch Linux</a> is a <em>community-driven</em>, <em>rolling release</em> distro that features a wide selection of packages in it’s repositories. It features a CLI installer for easy installation.<br><a href="https://cachyos.org/">CachyOS</a> is an <em>Arch Linux</em> derivative that provides their own optimizations on top of <em>Arch Linux</em>, making it blazingly fast.</p>

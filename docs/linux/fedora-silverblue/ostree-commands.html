@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Useful Commands - ScatteredCognition&#x27;s Biblioteca</title>
+        <title>OSTree Commands - ScatteredCognition&#x27;s Biblioteca</title>
 
 
         <!-- Custom HTML head -->
@@ -35,10 +35,10 @@
             const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
+            window.path_to_searchindex_js = "../../searchindex-0c580e1e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-935a8826.js"></script>
+        <script src="../../toc-7a157bac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,55 +177,22 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="useful-commands-for-fedora-silverblue"><a class="header" href="#useful-commands-for-fedora-silverblue">Useful Commands for Fedora Silverblue</a></h1>
+                        <h1 id="ostree-commands-for-fedora-silverblue"><a class="header" href="#ostree-commands-for-fedora-silverblue">OSTree Commands for Fedora Silverblue</a></h1>
 <p>I have provided some commands which will hopefully make your <em>Fedora Silverblue</em> journey better.</p>
 <h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
-<h3 id="managing-packages"><a class="header" href="#managing-packages">Managing Packages</a></h3>
 <div class="table-wrapper">
 <table>
 <thead>
 <tr><th>Commands</th><th>Explanation</th></tr>
 </thead>
 <tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
-<tr><td><code>rpm-ostree search &lt;package&gt;</code></td><td>See what packages are available in the repos</td></tr>
-<tr><td><code>rpm -qa &lt;package&gt;</code></td><td>Check whether a package is currently installed in the system</td></tr>
-<tr><td><code>rpm-ostree install &lt;package&gt;</code></td><td>Overlay a package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree remove &lt;package&gt;</code></td><td>Removes a overlayed package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree reset</code></td><td>Removes all overlayed packages</td></tr>
-<tr><td><code>rpm-ostree override remove &lt;package&gt;</code></td><td>Removes a preinstalled package (Requires Reboot)</td></tr>
-<tr><td><code>rpm-ostree override reset</code></td><td>Resets all the package removal overrides (Requires Reboot)</td></tr>
-</tbody>
-</table>
-</div>
-<h3 id="managing-deployments"><a class="header" href="#managing-deployments">Managing Deployments</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Commands</th><th>Explanation</th></tr>
-</thead>
-<tbody>
-<tr><td><code>rpm-ostree status</code></td><td>See the status of all<code>rpm-ostree</code> deployments</td></tr>
-<tr><td><code>rpm-ostree cleanup -r -p</code></td><td>Remove previous (<code>-r</code>) or pending (<code>-p</code>) deployments (except pinned ones)</td></tr>
-<tr><td><code>sudo ostree admin pin &lt;index&gt;</code></td><td>Pin a deployment</td></tr>
-<tr><td><code>sudo ostree admin pin -u &lt;index&gt;</code></td><td>Unpin a deployment</td></tr>
-</tbody>
-</table>
-</div>
-<h3 id="advanced"><a class="header" href="#advanced">Advanced</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>Commands</th><th>Explanation</th></tr>
-</thead>
-<tbody>
+<tr><td><code>sudo ostree admin pin (-u) &lt;index&gt;</code></td><td>Pin a deployment (use <code>-u</code> to unpin a deployment)</td></tr>
 <tr><td><code>sudo ostree admin fsck</code></td><td>Verify the integrity of your<em>Fedora Silverblue</em> installation</td></tr>
 <tr><td><code>rpm-ostree kargs --editor</code></td><td>Edit your kernel arguments (kargs)</td></tr>
-<tr><td><code>compsize /sysroot /var/home /var/lib/flatpak</code></td><td>Find out how much space you saved using zstd compression</td></tr>
 </tbody>
 </table>
 </div>
-<h3 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h3>
+<h2 id="deploying-a-previous-commit"><a class="header" href="#deploying-a-previous-commit">Deploying a previous commit</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -239,7 +206,7 @@
 </tbody>
 </table>
 </div>
-<h3 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h3>
+<h2 id="rebase-onto-a-different-image"><a class="header" href="#rebase-onto-a-different-image">Rebase onto a different image</a></h2>
 <div class="table-wrapper">
 <table>
 <thead>
@@ -256,11 +223,11 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/fedora-silverblue.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/fedora-silverblue/silverblue-setup.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../linux/fedora-silverblue/packages-to-layer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../linux/fedora-silverblue/flatpak-setup.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -270,11 +237,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/fedora-silverblue.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/fedora-silverblue/silverblue-setup.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../linux/fedora-silverblue/packages-to-layer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../linux/fedora-silverblue/flatpak-setup.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

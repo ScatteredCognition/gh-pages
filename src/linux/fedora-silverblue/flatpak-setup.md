@@ -1,23 +1,11 @@
 # Flatpak Setup for Fedora Silverblue
 
-[Flatpak](https://flatpak.org/) is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as *Docker* but for desktop linux apps.  
+## Removing preinstalled Fedora Flatpaks
 
-Being centered around the ideas of containerization, immutability and atomicity, *Fedora Silverblue* prefers apps to be shipped as *Flatpaks*.  
-
-Out of the box, *Fedora Silverblue* ships and configures *Fedora's* own *Flatpak* repository, which has a limited selection of apps that sometimes have issues.  
-As such, I generally like to remove the default *Fedora Flatpaks* repository and install the *Flathub* repository.  
-
-## Configuring Flatpak repos
-
-The commands to remove the default *Fedora Flatpaks* repo and install the *Flathub* repo has been given below.
+To remove all the preinstalled Fedora Flatpak apps instead of uninstalling them one-by-one, run the following:
 
 ```bash
-# Remove Fedora Flatpak repos
-flatpak remote-delete fedora
-flatpak remote-delete fedora-testing
-
-# Install Flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remove --all
 ```
 
 ## Flatpak apps I use

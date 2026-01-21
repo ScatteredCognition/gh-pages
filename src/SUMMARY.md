@@ -29,12 +29,11 @@
     - [Fedora Setup Guide](./linux/general-resources/fedora-setup-guide.md)
 
   - [Fedora Silverblue](./linux/fedora-silverblue.md)
-    - [Useful Commands](./linux/fedora-silverblue/useful-commands.md)
-    - [Packages to layer](./linux/fedora-silverblue/packages-to-layer.md)
+    - [Silverblue Setup](./linux/fedora-silverblue/silverblue-setup.md)
+    - [OSTree Commands](./linux/fedora-silverblue/ostree-commands.md)
     - [Flatpak Setup](./linux/fedora-silverblue/flatpak-setup.md)
     - [Toolbox Setup](./linux/fedora-silverblue/toolbox-setup.md)
     - [VSCode Setup](./linux/fedora-silverblue/vscode-setup.md)
-    - [Fixing `/etc/fstab issues`](./linux/fedora-silverblue/fixing-etc-fstab-issues.md)
 
   - [Arch Linux/CachyOS](./linux/cachyos.md)
     - [Configure LUKS auto-unlocking with TPM2 in CachyOS](./linux/cachyos/configure-luks-autounlocking-with-tpm2.md)

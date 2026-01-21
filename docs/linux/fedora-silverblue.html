@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../searchindex-e0254ae1.js";
+            window.path_to_searchindex_js = "../searchindex-0c580e1e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-935a8826.js"></script>
+        <script src="../toc-7a157bac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,6 +181,7 @@
 <p><a href="https://fedoraproject.org/atomic-desktops/silverblue/">Fedora Silverblue</a> is what happens when you look at a <em>Docker</em> container one day and think “Hmm… I wonder if we can build an entire OS out of this if we included a kernel and a bootloader…”.</p>
 <p>It is an <strong>Atomic</strong>, <strong>Immutable</strong><sup>(<em>mostly</em>)</sup> linux distro built on the foundations of <em>Fedora Linux</em>, using it’s own package manager, <code>rpm-ostree</code>.</p>
 <p>You can install packages like you would on normal <em>Fedora Linux</em> <em>(“Layering” as it is called)</em>, but don’t layer too many packages. <em>Fedora Silverblue</em> ships with the <em>GNOME Desktop Environment</em>, although different spins exist like <em>Fedora Kinoite</em> (ships <em>KDE Plasma</em>), <em>Fedora Cosmic Atomic</em> and the like. But <em>Fedora Silverblue</em> remains, by far, the best experience amongst all the <em>Atomic</em> spins.</p>
+<p><a href="https://flatpak.org/">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.<br>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
 <blockquote>
 <p>This section contains guides and information mostly specific to <em>Fedora Silverblue</em>.<br>I recommend reading the content at <a href="/linux/others.html">linux/others</a> section for guides and information that is applicable to most linux distros.<br>Also read the <a href="/linux/basics.html">linux/basics</a> section for a brief overview of how to use and navigate the CLI.</p>
 </blockquote>
@@ -193,7 +194,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../linux/fedora-silverblue/useful-commands.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../linux/fedora-silverblue/silverblue-setup.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -207,7 +208,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../linux/fedora-silverblue/useful-commands.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../linux/fedora-silverblue/silverblue-setup.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

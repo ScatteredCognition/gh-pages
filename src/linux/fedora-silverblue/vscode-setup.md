@@ -6,11 +6,10 @@ After flip-flopping between installing *Visual Studio Code* inside a *distrobox*
 
 - Download the VSCode appimage from [valicm's GitHub repo](https://github.com/valicm/VSCode-AppImage/releases/tag/latest) and install it using [Gear Lever](https://flathub.org/en/apps/it.mijorus.gearlever).
 - Install `podman-compose`.
-- Enable the `podman` service and socket for your user.
+- Enable the `podman` socket for your user.
 
   ```bash
   systemctl enable --user --now podman.socket
-  systemctl enable --user --now podman.service
   ```
 
 - Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VSCode extension.

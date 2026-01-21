@@ -35,10 +35,10 @@
             const path_to_root = "../../";
             const default_light_theme = "auto";
             const default_dark_theme = "ayu";
-            window.path_to_searchindex_js = "../../searchindex-e0254ae1.js";
+            window.path_to_searchindex_js = "../../searchindex-0c580e1e.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-935a8826.js"></script>
+        <script src="../../toc-7a157bac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,17 +178,9 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="flatpak-setup-for-fedora-silverblue"><a class="header" href="#flatpak-setup-for-fedora-silverblue">Flatpak Setup for Fedora Silverblue</a></h1>
-<p><a href="https://flatpak.org/">Flatpak</a> is a new packaging format for linux that puts an emphasis on containerization and sadboxing apps. Basically, think of it as <em>Docker</em> but for desktop linux apps.</p>
-<p>Being centered around the ideas of containerization, immutability and atomicity, <em>Fedora Silverblue</em> prefers apps to be shipped as <em>Flatpaks</em>.</p>
-<p>Out of the box, <em>Fedora Silverblue</em> ships and configures <em>Fedora’s</em> own <em>Flatpak</em> repository, which has a limited selection of apps that sometimes have issues.<br>As such, I generally like to remove the default <em>Fedora Flatpaks</em> repository and install the <em>Flathub</em> repository.</p>
-<h2 id="configuring-flatpak-repos"><a class="header" href="#configuring-flatpak-repos">Configuring Flatpak repos</a></h2>
-<p>The commands to remove the default <em>Fedora Flatpaks</em> repo and install the <em>Flathub</em> repo has been given below.</p>
-<pre><code class="language-bash"># Remove Fedora Flatpak repos
-flatpak remote-delete fedora
-flatpak remote-delete fedora-testing
-
-# Install Flathub repo
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+<h2 id="removing-preinstalled-fedora-flatpaks"><a class="header" href="#removing-preinstalled-fedora-flatpaks">Removing preinstalled Fedora Flatpaks</a></h2>
+<p>To remove all the preinstalled Fedora Flatpak apps instead of uninstalling them one-by-one, run the following:</p>
+<pre><code class="language-bash">flatpak remove --all
 </code></pre>
 <h2 id="flatpak-apps-i-use"><a class="header" href="#flatpak-apps-i-use">Flatpak apps I use</a></h2>
 <p>Here is a list of the Flatpak apps I use on my <em>Fedora Silverblue</em> install.</p>
@@ -294,7 +286,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../linux/fedora-silverblue/packages-to-layer.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../linux/fedora-silverblue/ostree-commands.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -308,7 +300,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../linux/fedora-silverblue/packages-to-layer.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../linux/fedora-silverblue/ostree-commands.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
